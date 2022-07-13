@@ -1,7 +1,8 @@
-package dev.checku.checku
+package com.example.nodeproject2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nodeproject2.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

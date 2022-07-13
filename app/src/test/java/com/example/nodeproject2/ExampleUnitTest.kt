@@ -1,4 +1,4 @@
-package dev.checku.checku
+package com.example.nodeproject2
 
 import org.junit.Test
 
