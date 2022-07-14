@@ -17,34 +17,17 @@ class CheckuApplication :Application(){
 //        lateinit var encryptedPrefs: EncryptedPrefsManger
         var loadingDialog: Dialog? = null
         lateinit var instance: CheckuApplication
-        lateinit var sRetrofit: Retrofit
 
     }
 
     override fun onCreate() {
 //        prefs = PrefsManager(applicationContext)
 //        encryptedPrefs = EncryptedPrefsManger(applicationContext)
-        initRetrofitInstance()
+//        initRetrofitInstance()
         instance = this
         super.onCreate()
     }
 
-    private fun initRetrofitInstance() {
-        val client: OkHttpClient = OkHttpClient.Builder()
-            .readTimeout(5000, TimeUnit.MILLISECONDS)
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            // 로그캣에 okhttp.OkHttpClient로 검색하면 http 통신 내용을 보여줍니다.
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .build()
-
-        // sRetrofit 이라는 전역변수에 API url, 인터셉터, Gson을 넣어주고 빌드해주는 코드
-        // 이 전역변수로 http 요청을 서버로 보내면 됩니다.
-        sRetrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 
 
 }
