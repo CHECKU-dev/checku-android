@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.repository.LoginRepository
@@ -21,37 +22,31 @@ class SplashActivity : AppCompatActivity() {
     @Inject lateinit var loginRepository: LoginRepository
 
     companion object {
-        private final const val SPLASH_DELAY_TIME = 2000L
+        private const val SPLASH_DELAY_TIME = 2000L
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        start()
+        login()
 
     }
 
-    private fun start() {
+    private fun login() {
         val intent = Intent(baseContext, MainActivity::class.java)
+
         CoroutineScope(Dispatchers.IO).launch {
             delay(SPLASH_DELAY_TIME)
+            val request = LoginRequest("cWgBoOvyQAyRGI91NS63Wt:APA91bE5cJShrVR-wGXJBcqZLBX7AjsG4p8e3xr2VqV_cepUHPrsDjbl5dzReapVZ9OZegdbCHEDMo_yW6iJZhfp2jRyZUXVqM0zsroYSo3-WiEeGt8fOaTp16ecqLjM1BHXMiDg4-B4")
+            val login = loginRepository.login(request)
 
-//            val request = LoginRequest("cWgBoOvyQAyRGI91NS63Wt:APA91bE5cJShrVR-wGXJBcqZLBX7AjsG4p8e3xr2VqV_cepUHPrsDjbl5dzReapVZ9OZegdbCHEDMo_yW6iJZhfp2jRyZUXVqM0zsroYSo3-WiEeGt8fOaTp16ecqLjM1BHXMiDg4-B4")
-            val request = LoginRequest("dudwls143@gmail.com")
-            val email = "dudwls143@gmail.com"
-
-            val login = loginRepository.login(email)
-
-            println(login)
             if (login is ApiResponse.Success) {
-                println(login.data.fcmToken)
-                println(login.data.userId)
+                Log.d("SplashActivity","fcmToken: ${login.data.fcmToken}, userId: ${login.data.userId}")
             }
             withContext(Dispatchers.Main) {
                 startActivity(intent)
                 finish()
             }
-
 
         }
     }
