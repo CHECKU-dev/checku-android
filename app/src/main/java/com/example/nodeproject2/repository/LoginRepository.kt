@@ -10,7 +10,6 @@ import javax.inject.Singleton
 @Singleton
 class LoginRepository @Inject constructor(private val loginApi: LoginApi){
 
-    suspend fun login(
-        @Field("email") email: String) = loginApi.login(email)
+    suspend fun login(loginRequest: LoginRequest) = loginApi.login(loginRequest)
 
 }

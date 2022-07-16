@@ -5,6 +5,11 @@
       <map>
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_checku.xml" value="0.12864583333333332" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/actionbar_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/actionbar_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/actionbar_layer_list.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
@@ -16,5 +21,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="jpab" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.13229166666666667" />
+      </ProjectState>
+    </option>
   </component>
 </project>

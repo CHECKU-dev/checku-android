@@ -11,12 +11,7 @@ import retrofit2.http.PartMap
 
 interface LoginApi {
 
-//    @POST("/api/users")
-//    suspend fun login(@Body request: LoginRequest): ApiResponse<LoginResponse>
-
-    @POST("/api/mail/send")
-    suspend fun login(@Field("email") email: String): ApiResponse<LoginResponse>
-//    @GET("/")
-//    suspend fun health()
+    @POST("/api/users")
+    suspend fun login(@Body request: LoginRequest): ApiResponse<LoginResponse>
 
 }
