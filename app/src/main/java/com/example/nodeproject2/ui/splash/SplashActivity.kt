@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.LoginRequest
+import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.repository.LoginRepository
 import com.example.nodeproject2.ui.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -17,7 +19,6 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     @Inject
@@ -25,13 +26,21 @@ class SplashActivity : AppCompatActivity() {
 
     private val TAG = "SplashActivity.class"
 
+    private lateinit var binding:ActivitySplashBinding
+
     companion object {
         private const val SPLASH_DELAY_TIME = 2000L
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
+        binding.splashImg.startAnimation(splashAnimation)
+        binding.splashText.startAnimation(splashAnimation)
 
         start()
     }
@@ -76,11 +85,13 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, MainActivity::class.java)
 
             withContext(Dispatchers.Main) {
+
                 startActivity(intent)
                 finish()
             }
 
         }
     }
+
 
 }
