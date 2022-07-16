@@ -7,4 +7,14 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
+    <ImageView
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_launcher_background"
+            android:id="@+id/splash_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="312dp" app:layout_constraintHorizontal_bias="0.497">
+    </ImageView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
