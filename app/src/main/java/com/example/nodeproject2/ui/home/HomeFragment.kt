@@ -19,5 +19,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun doViewCreated() {
+        TODO("Not yet implemented")
+    }
+
 
 }

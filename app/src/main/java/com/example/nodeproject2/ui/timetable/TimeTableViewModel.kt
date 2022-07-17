@@ -1,21 +1,13 @@
-package com.finpo.app.ui.home
+package com.example.nodeproject2.ui.timetable
 
-import android.view.inputmethod.EditorInfo
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.finpo.app.repository.SubjectRepository
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.onError
-import com.skydoves.sandwich.onSuccess
+import com.finpo.app.repository.TimetableRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SubjectViewModel @Inject constructor(
-    private val subjectRepository: SubjectRepository,
+class TimeTableViewModel @Inject constructor(
+    private val timetableRepository: TimetableRepository,
 //    val paging: Paging<PolicyContent>
 ) : ViewModel() {
 

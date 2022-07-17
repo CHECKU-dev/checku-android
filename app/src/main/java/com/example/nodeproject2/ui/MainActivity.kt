@@ -6,7 +6,6 @@ import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.ui.home.HomeFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
-import com.example.nodeproject2.ui.timetable.TimeTableFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -31,7 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 R.id.menu_main_btm_nav_timetable -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, TimeTableFragment())
+                        .replace(R.id.main_frame, com.example.nodeproject2.ui.subject.SubjectFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

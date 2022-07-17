@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.timetable.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.ResultGetSubjects
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 
-class SubjectAdapter(private val context: Context) :
-    RecyclerView.Adapter<SubjectAdapter.Holder>() {
+class TimeTableAdapter(private val context: Context) :
+    RecyclerView.Adapter<TimeTableAdapter.Holder>() {
 
 //    interface OnItemClickListener {
 //        fun onItemClick(v: View, data: InterestsListData, pos: Int)

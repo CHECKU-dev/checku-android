@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SubjectRepository @Inject constructor(private val subjectApi: SubjectApi) {
+class TimetableRepository @Inject constructor(private val subjectApi: SubjectApi) {
     suspend fun getMySubjects(
         subjects: List<String>
     ) = subjectApi.getMySubjects(subjects)

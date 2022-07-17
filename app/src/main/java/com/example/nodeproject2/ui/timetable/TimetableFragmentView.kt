@@ -1,8 +1,8 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.timetable
 
 import com.example.nodeproject2.data.model.GetSubjectsResponse
 
-interface SubjectFragmentView {
+interface TimetableFragmentView {
 
     fun onGetSubjectsSuccess(response: GetSubjectsResponse)
 
