@@ -1,13 +1,14 @@
 package com.example.nodeproject2.ui.splash
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nodeproject2.R
+import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.data.model.LoginRequest
+import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.repository.LoginRepository
 import com.example.nodeproject2.ui.MainActivity
@@ -19,24 +20,23 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
     @Inject
     lateinit var loginRepository: LoginRepository
 
     private val TAG = "SplashActivity.class"
 
-    private lateinit var binding:ActivitySplashBinding
+//    private lateinit var binding:ActivitySplashBinding
 
     companion object {
         private const val SPLASH_DELAY_TIME = 2000L
     }
 
+    //TODO 서버 통신 실패 알림 추가
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
         binding.splashImg.startAnimation(splashAnimation)
@@ -70,7 +70,6 @@ class SplashActivity : AppCompatActivity() {
     private fun login(loginRequest: LoginRequest) {
         CoroutineScope(Dispatchers.IO).launch {
             delay(SPLASH_DELAY_TIME)
-
             val login = loginRepository.login(loginRequest)
 
             if (login is ApiResponse.Success) {

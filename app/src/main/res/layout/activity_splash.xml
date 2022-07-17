@@ -5,13 +5,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/checku_main_color"
+        android:background="@color/white"
         tools:context=".ui.splash.SplashActivity">
 
     <ImageView
             android:layout_width="250dp"
             android:layout_height="70dp"
-            android:background="@drawable/ic_checku"
+            android:background="@drawable/ic_checku_logo"
             android:id="@+id/splash_img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
             android:id="@+id/splash_text"
             android:text="건국대 수강신청 인원조회"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="#00A569"
             app:layout_constraintTop_toBottomOf="@+id/splash_img"
             android:layout_marginTop="28dp"
             app:layout_constraintEnd_toEndOf="parent"

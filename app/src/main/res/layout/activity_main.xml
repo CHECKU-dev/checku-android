@@ -7,14 +7,23 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
-    <ImageView
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:background="@drawable/ic_launcher_background"
-            android:id="@+id/splash_img"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="312dp" app:layout_constraintHorizontal_bias="0.497">
-    </ImageView>
+    <FrameLayout
+            android:id="@+id/main_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_btm_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:itemBackground="@color/white"
+            app:itemIconTint="@drawable/main_btm_nav_item_color"
+            app:itemTextColor="@drawable/main_btm_nav_item_color"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_main_bottom_nav" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

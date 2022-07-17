@@ -15,7 +15,7 @@
 
     </style>
 
-<!-- 액션 바 스타일 시작 -->
+    <!-- 액션 바 스타일 시작 -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
@@ -28,8 +28,8 @@
     <!-- ActionBar styles -->
     <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@drawable/actionbar_layer_list</item>
-<!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
+        <!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
     </style>
-<!-- 액션 바 스타일 끝 -->
+    <!-- 액션 바 스타일 끝 -->
 
 </resources>
