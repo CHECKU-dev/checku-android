@@ -2,11 +2,12 @@ package com.example.nodeproject2.base
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.viewbinding.ViewBinding
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 
-abstract class BaseActivity<T : ViewBinding>(private val inflate: (LayoutInflater) -> T) :
+abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
     AppCompatActivity() {
     protected lateinit var binding: T
     private var waitTime = 0L
@@ -14,8 +15,10 @@ abstract class BaseActivity<T : ViewBinding>(private val inflate: (LayoutInflate
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = inflate(layoutInflater)
-//        binding = DataBindingUtil.setContentView(this, layoutResId)
+        binding = DataBindingUtil.setContentView(this, layoutResId)
+//        super.onCreate(savedInstanceState)
+//        binding = inflate(layoutInflater)
+//        setContentView(binding.root)
         init()
     }
 

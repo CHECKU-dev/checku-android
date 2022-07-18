@@ -10,5 +10,4 @@ class LoginRepository @Inject constructor(private val loginApi: LoginApi){
 
     suspend fun login(loginRequest: LoginRequest) = loginApi.login(loginRequest)
 
-
 }
