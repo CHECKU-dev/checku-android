@@ -3,20 +3,31 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+                name="viewModel"
+                type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:id="@+id/fragment_time_table_layout"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+            android:layout_height="match_parent">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_time_table_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello Timetable"/>
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_time_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -6,9 +6,10 @@ import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.ui.home.HomeFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
 import com.example.nodeproject2.ui.timetable.TimetableFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-
 
     override fun init() {
         supportFragmentManager.beginTransaction().replace(R.id.main_frame, HomeFragment()).commitAllowingStateLoss()

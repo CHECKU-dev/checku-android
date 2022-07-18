@@ -4,15 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class ResultGetSubjects(
 
-    @SerializedName("itemId") val itemId: Int,
-    @SerializedName("salesType") val salesType: String,
-    @SerializedName("serviceType") val serviceType: String,
-    @SerializedName("image_thumbnail") val image_thumbnail: String,
-    @SerializedName("deposit") val deposit: Int,
-    @SerializedName("monthlyRentPrice") val monthlyRentPrice: Int?,
-    @SerializedName("manageCost") val manageCost: Double,
-    @SerializedName("area") val area: Double,
-    @SerializedName("address") val address: String,
+    @SerializedName("grade") val grade: Int,
+    @SerializedName("professor") val professor: String,
+    @SerializedName("subjectName") val subjectName: String,
+    @SerializedName("numberOfPeople") val numberOfPeople: String,
+    @SerializedName("remark") val remark: String,
+    @SerializedName("subjectType") val subjectType: String,
+    @SerializedName("department") val department: String,
+    @SerializedName("subjectNumber") val subjectNumber: String
 
 
 )

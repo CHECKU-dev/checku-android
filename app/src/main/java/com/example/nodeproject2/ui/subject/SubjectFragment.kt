@@ -7,9 +7,7 @@ import com.example.nodeproject2.databinding.FragmentHomeBinding
 
 class SubjectFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_subject) {
 
-
     override fun doViewCreated() {
-
     }
 
 

@@ -1,26 +1,28 @@
 package com.example.nodeproject2.ui.timetable.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.ResultGetSubjects
-import com.example.nodeproject2.databinding.FragmentSubjectBinding
+import com.example.nodeproject2.databinding.ItemRecyclerTimeTableBinding
+import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 
-class TimeTableAdapter(private val context: Context) :
-    RecyclerView.Adapter<TimeTableAdapter.Holder>() {
+class TimeTableAdapter(val viewModel: TimeTableViewModel) :
+//    RecyclerView.Adapter<TimeTableAdapter.Holder>() {
+    ListAdapter<ResultGetSubjects, TimeTableAdapter.Holder>(diffUtil) {
 
-//    interface OnItemClickListener {
+
+    //    interface OnItemClickListener {
 //        fun onItemClick(v: View, data: InterestsListData, pos: Int)
 //    }
-
-    var listData = mutableListOf<ResultGetSubjects>()
 
     var listener: AdapterView.OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = FragmentSubjectBinding.inflate(
+        val binding = ItemRecyclerTimeTableBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -30,79 +32,49 @@ class TimeTableAdapter(private val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return listData.size
+        return currentList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val data = listData[position]
-        holder.setData(data)
+        currentList[position]?.let { holder.setData(it) }
+
+//        currentList[position]
+//        val data = listData[position]
+        println("========================")
+        println(currentList[position])
+
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
 
-    inner class Holder(val binding: FragmentSubjectBinding) :
+    inner class Holder(val binding: ItemRecyclerTimeTableBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun setData(data: ResultGetSubjects) {
 
-//            Glide.with(itemView).load("${data.image_thumbnail}?w=0&h=640").into(binding.fragmentInterestsImageView)
-//            binding.fragmentInterestsAddressTextView.text = data.address
-//            binding.fragmentInterestsPriceTextView.text = if(data.deposit >= 10000) {
-//                if(data.monthlyRentPrice!=null) {
-//                    "${data.deposit/10000}억/${data.monthlyRentPrice}"
-//                }
-//                else {
-//                    "${data.deposit/10000}억"
-//                }
-//            } else {
-//                val dec = DecimalFormat("#,###")
-//                if(data.monthlyRentPrice!=null) {
-//                    "${dec.format(data.deposit)}/${data.monthlyRentPrice}"
-//                }
-//                else {
-//                    "${dec.format(data.deposit)}"
-//                }
-//            }
-//            with(binding.fragmentInterestsSalesTypeButton) {
-//                if (data.salesType == "YEARLY_RENT") {
-//                    text = "전세"
-//                    setBackgroundColor(Color.parseColor("#E09100"))
-//                }
-//                else if (data.salesType == "MONTHLY_RENT") {
-//                    text = "월세"
-//                    backgroundTintList = ColorStateList.valueOf(Color.parseColor("#72CC82"))
-//                }
-//                else {
-//                    text = "매매"
-//                    setBackgroundColor(Color.parseColor("#4D515A"))
-//                }
-//            }
-//            binding.fragmentInterestsServiceTypeButton.text = if (data.serviceType == "ONEROOM") {
-//                "원룸"
-//            } else if (data.serviceType == "VILLA") {
-//                "빌라"
-//            } else if (data.serviceType == "OFFICETEL") {
-//                "오피스텔"
-//            } else {
-//                "아파트"
-//            }
-//            binding.fragmentInterestsManageCostTextView.text = if(data.manageCost == 0.0) {
-//                "관리비 없음"
-//            } else {
-//                "관리비 ${data.manageCost.toInt()}만원"
-//            }
-//            binding.fragmentInterestsAreaTextView.text = "${data.area}㎡"
-//            binding.fragmentInterestsAddressTextView.text = data.address
-//
-//
-//            val pos = adapterPosition
-//            if (pos != RecyclerView.NO_POSITION) {
-//                itemView.setOnClickListener {
-//                    listener?.onItemClick(itemView, data, pos)
-//                }
-//            }
+            binding.data = data
+            binding.viewModel = viewModel
+            binding.executePendingBindings()
 
         }
 
+    }
+
+    companion object {
+        private val diffUtil = object : DiffUtil.ItemCallback<ResultGetSubjects>() {
+            override fun areItemsTheSame(oldItem: ResultGetSubjects, newItem: ResultGetSubjects): Boolean {
+                return oldItem.subjectNumber.equals(newItem.subjectNumber)
+            }
+
+            override fun areContentsTheSame(
+                oldItem: ResultGetSubjects,
+                newItem: ResultGetSubjects
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
 
