@@ -1,13 +1,12 @@
 package com.example.nodeproject2.ui.timetable
 
 import androidx.lifecycle.ViewModel
-import com.finpo.app.repository.TimetableRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class TimeTableViewModel @Inject constructor(
-    private val timetableRepository: TimetableRepository,
+//    private val timetableRepository: TimetableRepository,
 //    val paging: Paging<PolicyContent>
 ) : ViewModel() {
 

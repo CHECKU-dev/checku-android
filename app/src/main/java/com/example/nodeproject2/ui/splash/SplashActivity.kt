@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.data.model.LoginRequest
-import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.repository.LoginRepository
 import com.example.nodeproject2.ui.MainActivity
@@ -20,14 +19,13 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
+class SplashActivity : AppCompatActivity() {
 
-    @Inject
+    lateinit var binding:ActivitySplashBinding
+        @Inject
     lateinit var loginRepository: LoginRepository
 
     private val TAG = "SplashActivity.class"
-
-//    private lateinit var binding:ActivitySplashBinding
 
     companion object {
         private const val SPLASH_DELAY_TIME = 2000L
@@ -35,8 +33,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
     //TODO 서버 통신 실패 알림 추가
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
         binding.splashImg.startAnimation(splashAnimation)

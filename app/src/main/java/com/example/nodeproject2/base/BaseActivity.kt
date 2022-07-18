@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<T : ViewBinding>(private val inflate: (LayoutInflater) -> T) :
+abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
     AppCompatActivity() {
     protected lateinit var binding: T
     private var waitTime = 0L
@@ -14,14 +17,14 @@ abstract class BaseActivity<T : ViewBinding>(private val inflate: (LayoutInflate
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = inflate(layoutInflater)
-        setContentView(binding.root)
-
-//        binding = DataBindingUtil.setContentView(this, layoutResId)
-//        init()
+        binding = DataBindingUtil.setContentView(this, layoutResId)
+//        super.onCreate(savedInstanceState)
+//        binding = inflate(layoutInflater)
+//        setContentView(binding.root)
+        init()
     }
 
-//    abstract fun init()
+    abstract fun init()
 
     // 로딩 다이얼로그, 즉 로딩창을 띄워줌.
     // 네트워크가 시작될 때 사용자가 무작정 기다리게 하지 않기 위해 작성.

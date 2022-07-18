@@ -10,4 +10,7 @@ interface LoginApi {
     @POST("/api/users")
     suspend fun login(@Body request: LoginRequest): ApiResponse<LoginResponse>
 
+//    @GET("/api/my-subjects")
+//    suspend fun getMySubjects(@Part subjects: List<String>): ApiResponse<GetSubjectsResponse>
+
 }

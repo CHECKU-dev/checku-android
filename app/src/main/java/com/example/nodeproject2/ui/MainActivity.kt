@@ -1,17 +1,16 @@
 package com.example.nodeproject2.ui
 
-import android.os.Bundle
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.ui.home.HomeFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
+import com.example.nodeproject2.ui.timetable.TimetableFragment
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
+    override fun init() {
         supportFragmentManager.beginTransaction().replace(R.id.main_frame, HomeFragment()).commitAllowingStateLoss()
 
         binding.mainBtmNav.setOnItemSelectedListener { item ->
@@ -30,14 +29,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 R.id.menu_main_btm_nav_timetable -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, com.example.nodeproject2.ui.subject.SubjectFragment())
+                        .replace(R.id.main_frame, TimetableFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
             }
             false
         }
-
     }
 
 }
