@@ -34,7 +34,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private fun initRecyclerView() {
         timeTableAdapter = TimeTableAdapter(viewModel)
         binding.rvTimeTable.adapter = timeTableAdapter
-        timeTableAdapter.setHasStableIds(true)
+//        timeTableAdapter.setHasStableIds(true)
 
     }
 

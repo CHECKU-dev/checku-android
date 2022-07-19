@@ -11,7 +11,6 @@ import com.example.nodeproject2.databinding.ItemRecyclerTimeTableBinding
 import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 
 class TimeTableAdapter(val viewModel: TimeTableViewModel) :
-//    RecyclerView.Adapter<TimeTableAdapter.Holder>() {
     ListAdapter<ResultGetSubjects, TimeTableAdapter.Holder>(diffUtil) {
 
 
@@ -37,12 +36,6 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         currentList[position]?.let { holder.setData(it) }
-
-//        currentList[position]
-//        val data = listData[position]
-        println("========================")
-        println(currentList[position])
-
     }
 
     override fun getItemId(position: Int): Long {

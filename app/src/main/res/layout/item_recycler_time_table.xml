@@ -4,6 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
                 name="data"
                 type="com.example.nodeproject2.data.model.ResultGetSubjects"/>
@@ -11,174 +12,95 @@
                 name="viewModel"
                 type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
     </data>
-    <LinearLayout
-            android:id="@+id/viewLayout"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:orientation="vertical">
+            android:layout_height="85dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+        <!--            android:paddingTop="10dp"-->
+        <!--            android:paddingLeft="20dp"-->
+        <!--            android:paddingStart="17dp"-->
+        <!--            android:paddingEnd="17dp">-->
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
+        <TextView
+                android:id="@+id/emptySeat"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-            >
-                <Button
-                        android:id="@+id/emptySize"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:text="220"
-                        android:textSize="20dp"
-                        android:background="@android:color/transparent"
-                        android:textColor="@color/checkuMainColor"/>
-
-                <TextView
-                        android:id="@+id/capacity_total"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="30/250"/>
-
-
-                <Switch
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:id="@+id/start_switch"/>
-            </LinearLayout>
-
-
-            <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_margin="5dp">
-
-                <TextView
-                        android:id="@+id/subject_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:text="선형대수학"
-                        android:textColor="@color/black"
-                        android:textSize="14dp"/>
-
-                <TextView
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/professor_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:text="유승주"
-                        android:textSize="12dp"/>
-                <TextView
-                        android:id="@+id/room"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:text="월 1시~3시"
-                        android:textSize="12dp"/>
-
-            </LinearLayout>
-
-            <com.skydoves.elasticviews.ElasticButton
-                    android:id="@+id/register_btn"
-                    app:button_cornerRadius="4dp"
-                    app:button_duration="250"
-                    app:button_scale="0.87"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:text="수강신청"
-                    android:textColor="@color/white"
-                    android:layout_width="60dp"
-                    android:layout_margin="10dp"
-                    android:layout_height="match_parent"/>
-
-            <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                <com.skydoves.elasticviews.ElasticButton
-                        android:id="@+id/favorite_btn"
-                        app:button_cornerRadius="4dp"
-                        app:button_duration="250"
-                        app:button_scale="0.87"
-                        android:layout_gravity="center"
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"/>
-
-                <LinearLayout
-                        android:layout_width="70dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_margin="5dp">
-
-
-                    <TextView
-                            android:id="@+id/type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="전선"
-                            android:textColor="@color/black"/>
-
-                    <TextView
-                            android:id="@+id/grade"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:text="1학년"
-                            android:textColor="@color/black"/>
-
-                    <TextView
-                            android:id="@+id/subject_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:text="0001"
-                            android:textColor="@color/black"/>
-                </LinearLayout>
-
-            </FrameLayout>
-
-
-        </LinearLayout>
-        <LinearLayout
-                android:id="@+id/detail_layout"
-                android:layout_width="match_parent"
+                android:textSize="20dp"
+                android:text="@{data.emptySeat}"
+                tools:text="255"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+                android:id="@+id/number_of_people"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:orientation="horizontal">
-            <View android:layout_width="0dp" android:layout_height="match_parent"
-                  android:layout_weight="0.2"/>
+                android:textSize="14dp"
+                android:text="@{data.numberOfPeople}"
+                tools:text="0/255"
+                app:layout_constraintStart_toStartOf="@+id/emptySeat"
+                app:layout_constraintTop_toBottomOf="@id/emptySeat"
+                app:layout_constraintEnd_toEndOf="@+id/emptySeat"/>
 
-            <TextView
-                    android:id="@+id/detail"
-                    android:layout_width="0dp"
-                    android:layout_weight="3.5"
 
-                    android:textSize="10dp"
-                    android:layout_gravity="center"
+        <TextView
+                android:id="@+id/subject_name"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:gravity="left"
+                android:text="@{data.subjectName}"
+                tools:text="대학영어1"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="53dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-                    android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/subject_type"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:gravity="left"
+                android:text="@{@string/service_type_and_grade_and_subject_number(data.subjectType, data.grade, data.subjectNumber)}"
+                tools:text="지교 / 1학년 / 1225"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="53dp"
+                app:layout_constraintTop_toBottomOf="@id/subject_name"/>
 
-        </LinearLayout>
+        <TextView
+                android:id="@+id/professor"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:gravity="left"
+                android:text="@{data.professor}"
+                tools:text="믹키"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="53dp"
+                app:layout_constraintTop_toBottomOf="@+id/subject_type"/>
 
-    </LinearLayout>
+        <TextView
+                android:id="@+id/time_and_place"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:gravity="left"
+                android:text="@{data.timeAndPlace}"
+                tools:text="월 12:00-13:30(산학208), 목 09:00-10:30(산학208)"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="53dp"
+                app:layout_constraintTop_toBottomOf="@+id/professor"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
