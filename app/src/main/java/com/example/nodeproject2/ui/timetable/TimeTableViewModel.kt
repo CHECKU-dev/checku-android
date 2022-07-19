@@ -32,8 +32,7 @@ class TimeTableViewModel @Inject constructor(
 
             val mySubjectsResponse = timetableRepository.getMySubjects(list_one)
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
-            _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it].copy()}
-            println(_subjectList.value)
+            _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
         }

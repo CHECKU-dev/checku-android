@@ -35,6 +35,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.itemView.translationX = 0f
         currentList[position]?.let { holder.setData(it) }
     }
 
