@@ -1,6 +1,7 @@
 package com.example.nodeproject2.ui.timetable
 
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentTimeTableBinding
@@ -32,11 +33,27 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     }
 
     private fun initRecyclerView() {
+
         timeTableAdapter = TimeTableAdapter(viewModel)
         binding.rvTimeTable.adapter = timeTableAdapter
-        timeTableAdapter.setHasStableIds(true)
+
+        val swipeHelperCallback = SwipeHelperCallback().apply {
+            setClamp(resources.displayMetrics.widthPixels.toFloat() / 4)
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.rvTimeTable)
+
+        binding.rvTimeTable.apply {
+            setOnTouchListener { _, _ ->
+                swipeHelperCallback.removePreviousClamp(this)
+                false
+            }
+        }
+//        timeTableAdapter.setHasStableIds(true)
 
     }
+
+
 
 
 }
