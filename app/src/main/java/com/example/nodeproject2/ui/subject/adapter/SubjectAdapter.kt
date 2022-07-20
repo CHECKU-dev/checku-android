@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.timetable.adapter
+package com.example.nodeproject2.ui.subject.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
-import com.example.nodeproject2.databinding.ItemRecyclerTimeTableBinding
-import com.example.nodeproject2.ui.timetable.TimeTableViewModel
+import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
+import com.example.nodeproject2.ui.subject.SubjectViewModel
 
-class TimeTableAdapter(val viewModel: TimeTableViewModel) :
-    ListAdapter<Subject, TimeTableAdapter.Holder>(diffUtil) {
+class SubjectAdapter(val viewModel: SubjectViewModel) :
+    ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {
 
 
     //    interface OnItemClickListener {
@@ -21,7 +21,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     var listener: AdapterView.OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemRecyclerTimeTableBinding.inflate(
+        val binding = ItemRecyclerSubjectBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -44,7 +44,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     }
 
 
-    inner class Holder(val binding: ItemRecyclerTimeTableBinding) :
+    inner class Holder(val binding: ItemRecyclerSubjectBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setData(data: Subject) {
 

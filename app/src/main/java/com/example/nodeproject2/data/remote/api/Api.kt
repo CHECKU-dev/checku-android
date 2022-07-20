@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface LoginApi {
+interface Api {
 
     @POST("/api/users")
     suspend fun login(@Body request: LoginRequest): ApiResponse<LoginResponse>
@@ -17,5 +17,11 @@ interface LoginApi {
     @GET("/api/my-subjects")
     suspend fun getMySubjects(@Query("subjects") subjects: List<String>): ApiResponse<GetSubjectsResponse>
 
+    @GET("/api/subjects")
+    suspend fun getSubjects(
+        @Query("department") department: String,
+        @Query("grade") grade: String,
+        @Query("type") type: String
+    ): ApiResponse<GetSubjectsResponse>
 
 }

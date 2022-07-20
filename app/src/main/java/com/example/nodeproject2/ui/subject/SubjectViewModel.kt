@@ -1,10 +1,11 @@
-package com.example.nodeproject2.ui.timetable
+package com.example.nodeproject2.ui.subject
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nodeproject2.data.model.Subject
+import com.example.nodeproject2.repository.SubjectRepository
 import com.example.nodeproject2.repository.TimetableRepository
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,9 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TimeTableViewModel @Inject constructor(
-    private val timetableRepository: TimetableRepository
-//    val paging: Paging<PolicyContent>
+class SubjectViewModel @Inject constructor(
+    private val subjectRepository: SubjectRepository
 ) : ViewModel() {
 
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
@@ -22,12 +22,13 @@ class TimeTableViewModel @Inject constructor(
 
     fun getInitData() {
         viewModelScope.launch {
-            var list_one = ArrayList<String>()
+            // TODO enum 관리
 
-            list_one.add("1224")
-            list_one.add("1225")
+            val department = "공과대학_컴퓨터공학부"
+            val grade = "THIRD"
+            val type = "OPTIONAL"
 
-            val mySubjectsResponse = timetableRepository.getMySubjects(list_one)
+            val mySubjectsResponse = subjectRepository.getSubjects(department, grade, type)
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
             _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            _policySize.value = myInterestPolicyResponse.data.data.size

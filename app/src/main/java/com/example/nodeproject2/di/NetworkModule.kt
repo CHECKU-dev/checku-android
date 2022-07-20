@@ -1,6 +1,6 @@
 package com.example.nodeproject2.di
 
-import com.example.nodeproject2.data.remote.api.LoginApi
+import com.example.nodeproject2.data.remote.api.Api
 import com.example.nodeproject2.widget.utils.Utils.BASE_URL
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import okhttp3.logging.HttpLoggingInterceptor
@@ -60,14 +60,14 @@ object NetworkModule {
     fun provideLoginApiService(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ): LoginApi {
+    ): Api {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addConverterFactory(gsonConverterFactory)
             .build()
-            .create(LoginApi::class.java)
+            .create(Api::class.java)
     }
 
 
