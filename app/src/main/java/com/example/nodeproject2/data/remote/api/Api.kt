@@ -1,10 +1,9 @@
 package com.example.nodeproject2.data.remote.api
 
-import com.example.nodeproject2.data.model.GetSubjectsResponse
-import com.example.nodeproject2.data.model.LoginRequest
-import com.example.nodeproject2.data.model.LoginResponse
+import com.example.nodeproject2.data.model.*
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -23,5 +22,15 @@ interface Api {
         @Query("grade") grade: String,
         @Query("type") type: String
     ): ApiResponse<GetSubjectsResponse>
+
+    @POST("/api/notification")
+    suspend fun applyNotification(
+        @Body request: NotificationRequest
+    ): ApiResponse<NotificationResponse>
+
+    @DELETE("/api/my-subjects")
+    suspend fun removeSubject(
+        @Body request: RemoveSubjectRequest
+    ): ApiResponse<NotificationResponse>
 
 }

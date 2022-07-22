@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.repository.SubjectRepository
-import com.example.nodeproject2.repository.TimetableRepository
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

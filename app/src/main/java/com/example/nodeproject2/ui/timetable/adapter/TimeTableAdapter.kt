@@ -50,7 +50,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
 
             binding.data = data
             binding.viewModel = viewModel
-            binding.executePendingBindings()
+//            binding.executePendingBindings()
 
         }
 

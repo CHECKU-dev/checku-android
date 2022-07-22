@@ -7,4 +7,12 @@
 
     <string name="service_type_and_grade_and_subject_number">%s / %s / %s</string>
 
+    <string-array name="my_header_title">
+        <item></item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+    </string-array>
 </resources>

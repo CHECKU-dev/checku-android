@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nodeproject2.data.model.NotificationRequest
+import com.example.nodeproject2.data.model.RemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.repository.TimetableRepository
 import com.skydoves.sandwich.ApiResponse
@@ -33,6 +35,43 @@ class TimeTableViewModel @Inject constructor(
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
         }
+    }
+
+    fun removeSubject() {
+        viewModelScope.launch {
+            val request = RemoveSubjectRequest(1L, "1224")
+            timetableRepository.removeSubject(request)
+
+//            timetableRepository.getMySubjects()
+
+        }
+    }
+
+//    fun applyNotification() {
+//        paging.resetPage()
+//
+//        viewModelScope.launch {
+//            val writingResponse = getWritingResponse()
+//            writingResponse.onSuccess {
+//                paging.loadData(
+//                    data.data.content.toMutableList(),
+//                    data.data.last, _writingList,
+//                    paging.changeData()
+//                )
+//                _writingSize.value = data.data.totalElements
+//                Log.d("CommunityViewModel", "${_writingList.value}")
+//            }
+//        }
+//    }
+
+     fun applyNotification() {
+        viewModelScope.launch {
+
+            val request = NotificationRequest(1L, "1224", "대학영어1")
+            val applyNotification = timetableRepository.applyNotification(request)
+            println(applyNotification)
+        }
+
     }
 
 //    private val _policyList = MutableLiveData<List<PolicyContent?>>()
