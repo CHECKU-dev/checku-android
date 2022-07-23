@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.timetable
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nodeproject2.R
@@ -18,6 +19,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+
         viewModel.getInitData()
 
         initRecyclerView()
@@ -27,18 +29,23 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
+
+            println(it)
+
+            println("================================")
             timeTableAdapter.submitList(it)
         }
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initRecyclerView() {
 
         timeTableAdapter = TimeTableAdapter(viewModel)
         binding.rvTimeTable.adapter = timeTableAdapter
 
         val swipeHelperCallback = SwipeHelperCallback().apply {
-            setClamp(resources.displayMetrics.widthPixels.toFloat() / 4)
+            setClamp(resources.displayMetrics.widthPixels.toFloat() / 3)
         }
         val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvTimeTable)

@@ -2,7 +2,7 @@ package com.example.nodeproject2.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultGetSubjects(
+data class Subject(
 
     @SerializedName("grade") val grade: String,
     @SerializedName("professor") val professor: String,

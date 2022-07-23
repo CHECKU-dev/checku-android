@@ -1,22 +1,19 @@
-package com.example.nodeproject2.ui.timetable
+package com.example.nodeproject2.ui.subject
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nodeproject2.data.model.AddSubjectRequest
-import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.model.Subject
-import com.example.nodeproject2.repository.TimetableRepository
+import com.example.nodeproject2.repository.SubjectRepository
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TimeTableViewModel @Inject constructor(
-    private val timetableRepository: TimetableRepository
-//    val paging: Paging<PolicyContent>
+class SubjectViewModel @Inject constructor(
+    private val subjectRepository: SubjectRepository
 ) : ViewModel() {
 
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
@@ -24,59 +21,18 @@ class TimeTableViewModel @Inject constructor(
 
     fun getInitData() {
         viewModelScope.launch {
+            // TODO enum 관리
 
-            // TODO 삭제
-            val request1 = AddSubjectRequest(1L, "1224")
-            val request2 = AddSubjectRequest(1L, "1225")
+            val department = "공과대학_컴퓨터공학부"
+            val grade = "THIRD"
+            val type = "OPTIONAL"
 
-            timetableRepository.addSubject(request1)
-            timetableRepository.addSubject(request2)
-
-            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
+            val mySubjectsResponse = subjectRepository.getSubjects(department, grade, type)
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
             _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
         }
-    }
-
-    fun removeSubject() {
-        viewModelScope.launch {
-            timetableRepository.removeSubject(1L, "1224")
-            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
-
-            if(mySubjectsResponse !is ApiResponse.Success) return@launch
-            _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
-//            timetableRepository.getMySubjects()
-
-        }
-    }
-
-//    fun applyNotification() {
-//        paging.resetPage()
-//
-//        viewModelScope.launch {
-//            val writingResponse = getWritingResponse()
-//            writingResponse.onSuccess {
-//                paging.loadData(
-//                    data.data.content.toMutableList(),
-//                    data.data.last, _writingList,
-//                    paging.changeData()
-//                )
-//                _writingSize.value = data.data.totalElements
-//                Log.d("CommunityViewModel", "${_writingList.value}")
-//            }
-//        }
-//    }
-
-     fun applyNotification() {
-        viewModelScope.launch {
-
-            val request = NotificationRequest(1L, "1224", "대학영어1")
-            val applyNotification = timetableRepository.applyNotification(request)
-            println(applyNotification)
-        }
-
     }
 
 //    private val _policyList = MutableLiveData<List<PolicyContent?>>()

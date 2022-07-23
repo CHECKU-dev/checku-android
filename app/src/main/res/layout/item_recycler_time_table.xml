@@ -9,7 +9,7 @@
                 type="String"/>
         <variable
                 name="data"
-                type="com.example.nodeproject2.data.model.ResultGetSubjects"/>
+                type="com.example.nodeproject2.data.model.Subject"/>
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
@@ -105,23 +105,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-                android:id="@+id/swipe_view"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:elevation="-2dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:elevation="-1dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/ic_checku_logo">
+                android:weightSum="5">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{label}"
-                    android:textColor="#000000"
-                    android:layout_marginStart="25dp"
-                    android:layout_gravity="start|center_vertical"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            <ImageView
+                    android:id="@+id/tv_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:text="알림"
+                    android:onClick="@{() -> viewModel.applyNotification()}"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_weight="2"/>
+
+            <ImageView
+                    android:id="@+id/tv_remove"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"
+                    android:text="삭제"
+                    android:onClick="@{() -> viewModel.removeSubject()}"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_weight="2"/>
+
         </LinearLayout>
     </FrameLayout>
 
