@@ -1,6 +1,7 @@
 package com.example.nodeproject2.ui.timetable.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
@@ -13,12 +14,11 @@ import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     ListAdapter<Subject, TimeTableAdapter.Holder>(diffUtil) {
 
+    interface OnItemClickListener {
+        fun onItemClick(holder: Holder)
+    }
 
-    //    interface OnItemClickListener {
-//        fun onItemClick(v: View, data: InterestsListData, pos: Int)
-//    }
-
-    var listener: AdapterView.OnItemClickListener? = null
+    var listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerTimeTableBinding.inflate(
@@ -36,23 +36,31 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.translationX = 0f
-        currentList[position]?.let { holder.setData(it) }
+        currentList[position]?.let { holder.setData(it, position) }
     }
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
-
     inner class Holder(val binding: ItemRecyclerTimeTableBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setData(data: Subject) {
+
+
+        fun setData(data: Subject, position: Int) {
 
             binding.data = data
             binding.viewModel = viewModel
+            binding.ivRemove.isClickable = false
+            binding.ivNotification.isClickable = false
+
 //            binding.executePendingBindings()
+            itemView.setOnClickListener {
+                listener?.onItemClick(this)
+            }
 
         }
+
 
     }
 

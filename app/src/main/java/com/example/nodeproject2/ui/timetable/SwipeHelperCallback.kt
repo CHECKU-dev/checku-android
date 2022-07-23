@@ -125,6 +125,7 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
         this.clamp = clamp
     }
 
+
     fun removePreviousClamp(recyclerView: RecyclerView) {
         if (currentPosition == previousPosition)
             return
@@ -134,6 +135,10 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
             setTag(viewHolder, false)
             previousPosition = null
         }
+    }
+
+    companion object {
+
     }
 
 }

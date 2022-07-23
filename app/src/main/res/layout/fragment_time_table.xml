@@ -3,6 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
+
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
@@ -14,29 +15,28 @@
             android:layout_height="match_parent"
             android:background="@color/white">
 
-<!--        <com.github.tlaabs.timetableview.TimetableView-->
-<!--                android:id="@+id/timetable"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="120dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:header_title="@array/my_header_title"-->
-<!--                app:column_count="6"-->
-<!--                app:row_count="12" />-->
+        <!--        <com.github.tlaabs.timetableview.TimetableView-->
+        <!--                android:id="@+id/timetable"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="120dp"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:header_title="@array/my_header_title"-->
+        <!--                app:column_count="6"-->
+        <!--                app:row_count="12" />-->
 
 
-
-<!--        <com.skydoves.elasticviews.ElasticButton-->
-<!--                android:id="@+id/codeBtn"-->
-<!--                app:button_cornerRadius="4dp"-->
-<!--                app:button_duration="250"-->
-<!--                app:button_scale="0.87"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_width="match_parent"/>-->
+        <!--        <com.skydoves.elasticviews.ElasticButton-->
+        <!--                android:id="@+id/codeBtn"-->
+        <!--                app:button_cornerRadius="4dp"-->
+        <!--                app:button_duration="250"-->
+        <!--                app:button_scale="0.87"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_width="match_parent"/>-->
 
 
         <androidx.recyclerview.widget.RecyclerView
