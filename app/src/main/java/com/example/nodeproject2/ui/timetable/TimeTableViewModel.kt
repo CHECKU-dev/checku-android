@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
-import com.example.nodeproject2.data.model.RemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.repository.TimetableRepository
 import com.skydoves.sandwich.ApiResponse
@@ -24,12 +24,15 @@ class TimeTableViewModel @Inject constructor(
 
     fun getInitData() {
         viewModelScope.launch {
-            var list_one = ArrayList<String>()
 
-            list_one.add("1224")
-            list_one.add("1225")
+            // TODO 삭제
+            val request1 = AddSubjectRequest(1L, "1224")
+            val request2 = AddSubjectRequest(1L, "1225")
 
-            val mySubjectsResponse = timetableRepository.getMySubjects(list_one)
+            timetableRepository.addSubject(request1)
+            timetableRepository.addSubject(request2)
+
+            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
             _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            _policySize.value = myInterestPolicyResponse.data.data.size
@@ -39,9 +42,11 @@ class TimeTableViewModel @Inject constructor(
 
     fun removeSubject() {
         viewModelScope.launch {
-            val request = RemoveSubjectRequest(1L, "1224")
-            timetableRepository.removeSubject(request)
+            timetableRepository.removeSubject(1L, "1224")
+            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
 
+            if(mySubjectsResponse !is ApiResponse.Success) return@launch
+            _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            timetableRepository.getMySubjects()
 
         }

@@ -29,6 +29,10 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
+
+            println(it)
+
+            println("================================")
             timeTableAdapter.submitList(it)
         }
 

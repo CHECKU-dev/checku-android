@@ -1,6 +1,7 @@
 package com.example.nodeproject2.data.remote.api
 
 import com.example.nodeproject2.data.model.*
+import com.google.gson.JsonElement
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -14,7 +15,7 @@ interface Api {
     suspend fun login(@Body request: LoginRequest): ApiResponse<LoginResponse>
 
     @GET("/api/my-subjects")
-    suspend fun getMySubjects(@Query("subjects") subjects: List<String>): ApiResponse<GetSubjectsResponse>
+    suspend fun getMySubjects(@Query("userId") userId: Long): ApiResponse<GetSubjectsResponse>
 
     @GET("/api/subjects")
     suspend fun getSubjects(
@@ -28,9 +29,15 @@ interface Api {
         @Body request: NotificationRequest
     ): ApiResponse<NotificationResponse>
 
+    @POST("/api/my-subjects")
+    suspend fun addSubject(
+        @Body request: AddSubjectRequest
+    ): ApiResponse<JsonElement>
+
     @DELETE("/api/my-subjects")
     suspend fun removeSubject(
-        @Body request: RemoveSubjectRequest
-    ): ApiResponse<NotificationResponse>
+        @Query("userId") userId: Long,
+        @Query("subjectNumber") subjectNumber: String
+    ): ApiResponse<JsonElement>
 
 }

@@ -137,6 +137,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/red"
                     android:text="삭제"
+                    android:onClick="@{() -> viewModel.removeSubject()}"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_weight="2"/>
