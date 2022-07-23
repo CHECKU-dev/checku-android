@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nodeproject2.R
-import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.di.CheckuApplication
