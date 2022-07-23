@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.model.Subject
+import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,6 +17,8 @@ import javax.inject.Inject
 class SubjectViewModel @Inject constructor(
     private val subjectRepository: SubjectRepository
 ) : ViewModel() {
+
+    private val userId = CheckuApplication.prefs.getUserId()
 
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
     val subjectList: LiveData<MutableList<Subject>> = _subjectList
@@ -32,6 +36,12 @@ class SubjectViewModel @Inject constructor(
             _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
+        }
+    }
+
+    fun addSubject(subjectNumber: String) {
+        viewModelScope.launch {
+            subjectRepository.addSubject(AddSubjectRequest(userId, subjectNumber))
         }
     }
 
