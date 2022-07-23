@@ -22,7 +22,7 @@
 
     <style name="CustomActionBarTheme" parent="@style/AppTheme">
         <item name="actionBarStyle">@style/CustomActionBar</item>
-        <item name="actionBarSize">100dp</item>
+        <item name="actionBarSize">80dp</item>
     </style>
 
     <!-- ActionBar styles -->
