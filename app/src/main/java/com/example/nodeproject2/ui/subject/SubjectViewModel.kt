@@ -8,6 +8,8 @@ import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
+import com.example.nodeproject2.widget.utils.MutableSingleLiveData
+import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,7 +25,15 @@ class SubjectViewModel @Inject constructor(
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
     val subjectList: LiveData<MutableList<Subject>> = _subjectList
 
+    private val _subjectErrorToastEvent = MutableSingleLiveData<Boolean>()
+    val subjectErrorToastEvent: SingleLiveData<Boolean> = _subjectErrorToastEvent
+
+    private val _subjectWaitEvent = MutableSingleLiveData<Boolean>()
+    val subjectWaitEvent: SingleLiveData<Boolean> = _subjectWaitEvent
+
     fun getInitData() {
+        _subjectWaitEvent.setValue(true)
+
         viewModelScope.launch {
             // TODO enum 관리
 
@@ -32,8 +42,12 @@ class SubjectViewModel @Inject constructor(
             val type = "OPTIONAL"
 
             val mySubjectsResponse = subjectRepository.getSubjects(department, grade, type)
-            if(mySubjectsResponse !is ApiResponse.Success) return@launch
-            _subjectList.value = MutableList(mySubjectsResponse.data.size) {mySubjectsResponse.data[it]}
+            if (mySubjectsResponse is ApiResponse.Success) {
+                _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
+
+            }else {
+                _subjectErrorToastEvent.setValue(true)
+            }
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
         }

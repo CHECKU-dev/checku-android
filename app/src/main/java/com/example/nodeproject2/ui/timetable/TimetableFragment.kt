@@ -1,6 +1,7 @@
 package com.example.nodeproject2.ui.timetable
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nodeproject2.R
@@ -29,12 +30,21 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
-
-            println(it)
-            println("================================")
-
             timeTableAdapter.submitList(it)
+            hideLoadingDialog()
         }
+
+        viewModel.timeTableErrorToastEvent.observe(viewLifecycleOwner) {
+            showCustomToast("실패 실패 실패 실패")
+            hideLoadingDialog()
+
+        }
+
+        viewModel.timeTableWaitEvent.observe(viewLifecycleOwner) {
+            showLoadingDialog()
+        }
+
+
 
     }
 

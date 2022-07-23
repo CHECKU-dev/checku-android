@@ -28,6 +28,17 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             subjectAdapter.submitList(it)
+            hideLoadingDialog()
+        }
+
+        viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
+            showCustomToast("실패 실패 실패 실패")
+            hideLoadingDialog()
+        }
+
+        viewModel.subjectWaitEvent.observe(viewLifecycleOwner) {
+            showLoadingDialog()
+            // 로딩창 삭제 등등..
         }
 
     }
@@ -36,7 +47,6 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         subjectAdapter = SubjectAdapter(viewModel)
         binding.rvSubject.adapter = subjectAdapter
-
 
     }
 
