@@ -31,8 +31,8 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         viewModel.subjectList.observe(viewLifecycleOwner) {
 
             println(it)
-
             println("================================")
+
             timeTableAdapter.submitList(it)
         }
 

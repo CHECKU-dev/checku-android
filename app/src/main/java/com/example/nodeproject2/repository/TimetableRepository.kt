@@ -17,10 +17,6 @@ class TimetableRepository @Inject constructor(private val api: Api) {
         request: NotificationRequest
     ) = api.applyNotification(request)
 
-    // TODO 위치변경
-    suspend fun addSubject(
-        request: AddSubjectRequest
-    ) = api.addSubject(request)
 
     suspend fun removeSubject(
         userId: Long,

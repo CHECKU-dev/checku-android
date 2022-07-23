@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.model.Subject
+import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.TimetableRepository
 import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,18 +20,13 @@ class TimeTableViewModel @Inject constructor(
 //    val paging: Paging<PolicyContent>
 ) : ViewModel() {
 
+    private val userId = CheckuApplication.prefs.getUserId()
+
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
     val subjectList: LiveData<MutableList<Subject>> = _subjectList
 
     fun getInitData() {
         viewModelScope.launch {
-
-            // TODO 삭제
-            val request1 = AddSubjectRequest(1L, "1224")
-            val request2 = AddSubjectRequest(1L, "1225")
-
-            timetableRepository.addSubject(request1)
-            timetableRepository.addSubject(request2)
 
             val mySubjectsResponse = timetableRepository.getMySubjects(1L)
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
@@ -40,9 +36,9 @@ class TimeTableViewModel @Inject constructor(
         }
     }
 
-    fun removeSubject() {
+    fun removeSubject(subjectNumber: String) {
         viewModelScope.launch {
-            timetableRepository.removeSubject(1L, "1224")
+            timetableRepository.removeSubject(userId, subjectNumber)
             val mySubjectsResponse = timetableRepository.getMySubjects(1L)
 
             if(mySubjectsResponse !is ApiResponse.Success) return@launch
@@ -69,10 +65,10 @@ class TimeTableViewModel @Inject constructor(
 //        }
 //    }
 
-     fun applyNotification() {
+     fun applyNotification(subjectNumber: String, subjectName: String) {
         viewModelScope.launch {
 
-            val request = NotificationRequest(1L, "1224", "대학영어1")
+            val request = NotificationRequest(userId, subjectNumber, subjectName)
             val applyNotification = timetableRepository.applyNotification(request)
             println(applyNotification)
         }

@@ -9,6 +9,7 @@ import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.databinding.ActivitySplashBinding
+import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.LoginRepository
 import com.example.nodeproject2.ui.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -21,8 +22,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivitySplashBinding
-        @Inject
+    lateinit var binding: ActivitySplashBinding
+
+    @Inject
     lateinit var loginRepository: LoginRepository
 
     private val TAG = "SplashActivity.class"
@@ -47,21 +49,28 @@ class SplashActivity : AppCompatActivity() {
     private fun start(): String? {
         var fcmToken: String? = null
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
+        val userId = CheckuApplication.prefs.getUserId() ?: ""
 
-            // Get new FCM registration token
-            fcmToken = task.result
+        if (userId == 0L) {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+                // Get new FCM registration token
+                fcmToken = task.result
 
-            fcmToken?.let {
-                login(LoginRequest(it))
-            }
+                fcmToken?.let {
+                    login(LoginRequest(it))
+                }
 
-            Log.d(TAG, "FCM: $fcmToken")
-        })
+                Log.d(TAG, "FCM: $fcmToken")
+            })
+        }else {
+            val intent = Intent(baseContext, MainActivity::class.java)
+            startActivity(intent)
+        }
+
 
         return fcmToken
     }
@@ -78,6 +87,7 @@ class SplashActivity : AppCompatActivity() {
                             "fcmToken: ${login.data.fcmToken},\nuserId: ${login.data.userId}\n" +
                             ")"
                 )
+                CheckuApplication.prefs.saveUserId(login.data.userId)
             }
 
             val intent = Intent(baseContext, MainActivity::class.java)

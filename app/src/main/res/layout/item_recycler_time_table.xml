@@ -126,7 +126,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/black"
                     android:text="알림"
-                    android:onClick="@{() -> viewModel.applyNotification()}"
+                    android:onClick="@{() -> viewModel.applyNotification(data.subjectNumber, data.subjectName)}"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_weight="2"/>
@@ -137,7 +137,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/red"
                     android:text="삭제"
-                    android:onClick="@{() -> viewModel.removeSubject()}"
+                    android:onClick="@{() -> viewModel.removeSubject(data.subjectNumber)}"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_weight="2"/>
