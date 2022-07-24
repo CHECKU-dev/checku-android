@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_fill_main_color_round_20.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_main_color_round_100.xml" value="0.17039473684210527" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_main_color_round_20.xml" value="0.17039473684210527" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_solid_main_color_rounded_shadow_20.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_solid_w01_rounded_shadow_20.xml" value="0.17039473684210527" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/bg_solid_w01_rounded_shadow_5.xml" value="0.1611842105263158" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_back_button_arrow.xml" value="0.17039473684210527" />
@@ -25,7 +27,7 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_splash.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/dialog_loading.xml" value="0.11885245901639344" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_home.xml" value="0.1983695652173913" />
-        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_subject.xml" value="0.2" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_subject.xml" value="0.26684931506849313" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_time_table.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_subject.xml" value="0.176" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_time_table.xml" value="0.264" />
