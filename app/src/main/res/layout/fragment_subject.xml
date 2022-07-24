@@ -62,21 +62,27 @@
                 app:umanoPanelHeight="20dp"
                 app:umanoShadowHeight="0dp"
                 app:umanoOverlay="true">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/rv_subject"
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/swipe_refresh_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:onRefreshListener="@{() -> viewModel.refreshData()}"
+                        app:refreshing="@{viewModel.refreshed}">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_subject"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
                 <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
                         app:layout_constraintEnd_toEndOf="parent"

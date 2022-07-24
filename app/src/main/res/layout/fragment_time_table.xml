@@ -15,40 +15,27 @@
             android:layout_height="match_parent"
             android:background="@color/white">
 
-        <!--        <com.github.tlaabs.timetableview.TimetableView-->
-        <!--                android:id="@+id/timetable"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="120dp"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                app:header_title="@array/my_header_title"-->
-        <!--                app:column_count="6"-->
-        <!--                app:row_count="12" />-->
-
-
-        <!--        <com.skydoves.elasticviews.ElasticButton-->
-        <!--                android:id="@+id/codeBtn"-->
-        <!--                app:button_cornerRadius="4dp"-->
-        <!--                app:button_duration="250"-->
-        <!--                app:button_scale="0.87"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_width="match_parent"/>-->
-
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_time_table"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:onRefreshListener="@{() -> viewModel.refreshData()}"
+                app:refreshing="@{viewModel.refreshed}">
 
-        <!--        app:layout_constraintTop_toBottomOf="@+id/timetable"-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_time_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
