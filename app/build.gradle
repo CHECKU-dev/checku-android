@@ -47,6 +47,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
 
+    // FloatingButton
+    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:3.1.5'
+
     // SlidingUpPanel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
 

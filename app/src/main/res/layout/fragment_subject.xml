@@ -53,179 +53,233 @@
                     android:id="@+id/appCompatImageView"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:gravity="top"
-            app:umanoDragView="@id/sliding_panel_drag_view"
-            app:umanoPanelHeight="20dp"
-            app:umanoShadowHeight="0dp"
-            app:umanoOverlay="true">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="top"
+                app:umanoDragView="@id/sliding_panel_drag_view"
+                app:umanoPanelHeight="20dp"
+                app:umanoShadowHeight="0dp"
+                app:umanoOverlay="true">
 
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_subject"
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/rv_subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-        <LinearLayout
-                android:id="@+id/sliding_panel_drag_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/background_round">
+                <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:alpha="0.8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom|end"/>
 
-            <androidx.cardview.widget.CardView
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                    android:id="@+id/sliding_panel_drag_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardCornerRadius="20dp">
+                    android:orientation="vertical"
+                    android:background="@drawable/background_round">
+
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                        android:autofillHints="전공을 선택해주세요."
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_solid_w01_rounded_shadow_20"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"/>
+
+
+                <!--    학년 라디오 버튼-->
+                <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
-
-            </androidx.cardview.widget.CardView>
-
-            <!--    학년 라디오 버튼-->
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="horizontal">
-
-                <TextView
-                        android:text="학년"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
 
-                <RadioGroup
-                        android:layout_weight="5"
-                        android:layout_width="0dp"
+                    <TextView
+                            android:text="학년"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"/>
+
+                    <RadioGroup
+                            android:layout_weight="7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <RadioButton
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="전체"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="1"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="2"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="3"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="4"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <!--    종류 라디오 버튼-->
+                <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                    <RadioButton
-                            android:text="전체"
+                    <TextView
+                            android:text="종류"
                             android:layout_weight="1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"/>
 
-                    <RadioButton
-                            android:text="1"
-                            android:layout_weight="1"
+                    <RadioGroup
+                            android:layout_weight="7"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                    <RadioButton
-                            android:text="2"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="전체"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
 
-                    <RadioButton
-                            android:text="3"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="전필"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
 
-                    <RadioButton
-                            android:text="4"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="전선"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
 
-                </RadioGroup>
+                        <RadioButton
+                                android:layout_marginStart="2dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text"
+                                android:button="@null"
+                                android:text="기타"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+
+                <View
+                        android:layout_gravity="center"
+                        android:background="#DADADA"
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"/>
+
+                <View
+                        android:layout_marginTop="3dp"
+                        android:layout_gravity="center"
+                        android:background="#DADADA"
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"/>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"/>
+
 
             </LinearLayout>
 
-            <!--    종류 라디오 버튼-->
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <TextView
-                        android:text="종류"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
-
-                <RadioGroup
-                        android:layout_weight="5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    <RadioButton
-                            android:text="전체"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                    <RadioButton
-                            android:text="전필"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                    <RadioButton
-                            android:text="전선"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                    <RadioButton
-                            android:text="기타"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-
-            <View
-                    android:layout_gravity="center"
-                    android:background="#DADADA"
-                    android:layout_width="50dp"
-                    android:layout_height="2dp"/>
-            <View
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center"
-                    android:background="#DADADA"
-                    android:layout_width="50dp"
-                    android:layout_height="2dp"/>
-
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"/>
-
-
-        </LinearLayout>
-
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
     </LinearLayout>
 
 
