@@ -22,7 +22,6 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         initRecyclerView()
         observeRecyclerView()
-
     }
 
     private fun observeRecyclerView() {

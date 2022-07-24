@@ -22,14 +22,21 @@
 
     <style name="CustomActionBarTheme" parent="@style/AppTheme">
         <item name="actionBarStyle">@style/CustomActionBar</item>
-        <item name="actionBarSize">100dp</item>
+        <item name="actionBarSize">80dp</item>
     </style>
 
     <!-- ActionBar styles -->
     <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@drawable/actionbar_layer_list</item>
-        <!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
+        <item name="background">@drawable/actionbar_background</item>
+<!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
     </style>
     <!-- 액션 바 스타일 끝 -->
+
+    <style name="CustomActionBarTextStyle" parent="android:TextAppearance">
+        <!--        <item name="android:fontFamily">@font/your_desired_font</item>-->
+        <item name="android:textSize">20dp</item>
+        <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:textColor">@color/checkuMainColor</item>
+    </style>
 
 </resources>
