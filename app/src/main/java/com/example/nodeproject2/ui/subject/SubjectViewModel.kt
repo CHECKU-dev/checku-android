@@ -31,6 +31,9 @@ class SubjectViewModel @Inject constructor(
     private val _subjectWaitEvent = MutableSingleLiveData<Boolean>()
     val subjectWaitEvent: SingleLiveData<Boolean> = _subjectWaitEvent
 
+    private val _refreshed = MutableLiveData<Boolean>()
+    val refreshed: LiveData<Boolean> = _refreshed
+
     fun getInitData() {
         _subjectWaitEvent.setValue(true)
 
@@ -51,6 +54,12 @@ class SubjectViewModel @Inject constructor(
 //            _policySize.value = myInterestPolicyResponse.data.data.size
 
         }
+    }
+
+    fun refreshData() {
+        _refreshed.value = true
+        getInitData()
+        _refreshed.value = false
     }
 
     fun addSubject(subjectNumber: String) {
