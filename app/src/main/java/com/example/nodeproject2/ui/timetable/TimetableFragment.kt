@@ -44,11 +44,9 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
             showLoadingDialog()
         }
 
-
-
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility") // warning 무시용
     private fun initRecyclerView() {
 
         timeTableAdapter = TimeTableAdapter(viewModel)

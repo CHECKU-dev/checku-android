@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="checkuMainColor">#00A569</color>
-    <color name="colorAccent">#00A569</color>
+    <color name="checkuMain">#00A569</color>
+    <color name="checkuText">#00603D</color>
     <color name="blackForText">#4a4a4a</color>
     <color name="transparent">#00ff0000</color>
 
+    <color name="black_b01">#000000</color>
+    <color name="black_b02">#4D000000</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="white_w01">#FFFFFF</color>
+    <color name="white_w02">#33FFFFFF</color>
+
+    <color name="gray_g01">#494949</color>
+    <color name="gray_g02">#616161</color>
+    <color name="gray_g03">#999999</color>
+    <color name="gray_g04">#A2A2A2</color>
+    <color name="gray_g05">#C4C4C5</color>
+    <color name="gray_g06">#D9D9D9</color>
+    <color name="gray_g07">#EBEBEB</color>
+    <color name="gray_g08">#F0F0F0</color>
+    <color name="gray_g09">#F9F9F9</color>
+    <color name="gray_g10">#EAEAEA</color>
+
+
+    <color name="point_p01">#5B43EF</color>
+    <color name="point_p02">#1A5B43EF</color>
+    <color name="point_p03">#0D5B43EF</color>
+
+    <color name="error_e01">#FF3C00</color>
+    <color name="error_e02">#1AFF3C00</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>

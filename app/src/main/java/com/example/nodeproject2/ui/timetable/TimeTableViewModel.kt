@@ -1,6 +1,5 @@
 package com.example.nodeproject2.ui.timetable
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,6 +32,9 @@ class TimeTableViewModel @Inject constructor(
     private val _timeTableWaitEvent = MutableSingleLiveData<Boolean>()
     val timeTableWaitEvent: SingleLiveData<Boolean> = _timeTableWaitEvent
 
+    private val _refreshed = MutableLiveData<Boolean>()
+    val refreshed: LiveData<Boolean> = _refreshed
+
 
     fun getInitData() {
         _timeTableWaitEvent.setValue(true)
@@ -47,6 +49,13 @@ class TimeTableViewModel @Inject constructor(
 
         }
     }
+
+    fun refreshData() {
+        _refreshed.value = true
+        getInitData()
+        _refreshed.value = false
+    }
+
 
 
     fun removeSubject(subjectNumber: String) {

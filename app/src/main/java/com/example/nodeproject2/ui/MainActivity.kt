@@ -13,9 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun init() {
-        println("=============================")
-        println(CheckuApplication.prefs.getUserId())
-
         supportFragmentManager.beginTransaction().replace(R.id.main_frame, HomeFragment()).commitAllowingStateLoss()
 
         binding.mainBtmNav.setOnItemSelectedListener { item ->

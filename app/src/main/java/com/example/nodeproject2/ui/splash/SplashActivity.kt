@@ -65,9 +65,17 @@ class SplashActivity : AppCompatActivity() {
 
                 Log.d(TAG, "FCM: $fcmToken")
             })
-        }else {
-            val intent = Intent(baseContext, MainActivity::class.java)
-            startActivity(intent)
+        } else {
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(SPLASH_DELAY_TIME)
+
+                val intent = Intent(baseContext, MainActivity::class.java)
+
+                withContext(Dispatchers.Main) {
+                    startActivity(intent)
+                    finish()
+                }
+            }
         }
 
 
