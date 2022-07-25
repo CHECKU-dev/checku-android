@@ -66,7 +66,7 @@
                     android:gravity="left"
                     android:text="@{data.subjectName}"
                     tools:text="대학영어1"
-                    android:textColor="@color/black"
+                    android:textColor="@color/checkuText"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="53dp"

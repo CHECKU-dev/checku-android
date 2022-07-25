@@ -2,7 +2,6 @@ package com.example.nodeproject2.repository
 
 import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.remote.api.Api
-import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 

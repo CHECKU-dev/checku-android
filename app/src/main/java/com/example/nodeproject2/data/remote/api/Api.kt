@@ -1,6 +1,7 @@
 package com.example.nodeproject2.data.remote.api
 
 import com.example.nodeproject2.data.model.*
+import com.example.nodeproject2.data.model.GetScheduleResponse
 import com.google.gson.JsonElement
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.Body
@@ -39,5 +40,8 @@ interface Api {
         @Query("userId") userId: Long,
         @Query("subjectNumber") subjectNumber: String
     ): ApiResponse<JsonElement>
+
+    @GET("/api/schedule")
+    suspend fun getSchedule() : ApiResponse<GetScheduleResponse>
 
 }
