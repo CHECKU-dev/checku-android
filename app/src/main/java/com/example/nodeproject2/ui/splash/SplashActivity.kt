@@ -8,6 +8,7 @@ import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.LoginRepository
+import com.example.nodeproject2.repository.ScheduleRepository
 import com.example.nodeproject2.ui.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -23,6 +24,9 @@ class SplashActivity : AppCompatActivity() {
 
     @Inject
     lateinit var loginRepository: LoginRepository
+
+    @Inject
+    lateinit var scheduleRepository: ScheduleRepository
 
     private val TAG = "SplashActivity.class"
 
@@ -48,7 +52,11 @@ class SplashActivity : AppCompatActivity() {
 
         val userId = CheckuApplication.prefs.getUserId() ?: ""
 
+        getSchedule()
+
         if (userId == 0L) {
+
+
             FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     Log.w(TAG, "Fetching FCM registration token failed", task.exception)
@@ -76,8 +84,19 @@ class SplashActivity : AppCompatActivity() {
             }
         }
 
-
         return fcmToken
+    }
+
+    private fun getSchedule() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val schedule = scheduleRepository.getScheduleFromServer()
+            if (schedule is ApiResponse.Success) {
+                scheduleRepository.insertSchedule(schedule.data)
+                println(scheduleRepository.getSchedule())
+            }else {
+                println(schedule)
+            }
+        }
     }
 
     private fun login(loginRequest: LoginRequest) {

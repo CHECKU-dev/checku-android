@@ -1,6 +1,5 @@
 package com.example.nodeproject2.repository
 
-import com.example.nodeproject2.data.model.AddSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.remote.api.Api
 import javax.inject.Inject
