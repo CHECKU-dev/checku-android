@@ -1,5 +1,7 @@
 package com.example.nodeproject2.ui.subject
 
+import android.view.View
+import android.widget.AdapterView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +16,7 @@ import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @HiltViewModel
 class SubjectViewModel @Inject constructor(
@@ -34,31 +37,46 @@ class SubjectViewModel @Inject constructor(
     private val _refreshed = MutableLiveData<Boolean>()
     val refreshed: LiveData<Boolean> = _refreshed
 
-    fun getInitData() {
+    private val _department = MutableLiveData<String>("공과대학_컴퓨터공학부")
+    val department:LiveData<String> = _department
+
+    private val _grade = MutableLiveData<SubjectGrade>(SubjectGrade.ALL)
+    val grade:LiveData<SubjectGrade> = _grade
+
+    private val _type = MutableLiveData<SubjectType>(SubjectType.ALL)
+    val type:LiveData<SubjectType> = _type
+
+    fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+        _department.value = parent!!.selectedItem.toString().replace(" ","_")
+        getSubjectData()
+
+        //pos                                 get selected item position
+        //view.getText()                      get lable of selected item
+        //parent.getAdapter().getItem(pos)    get item by pos
+        //parent.getAdapter().getCount()      get item count
+        //parent.getCount()                   get item count
+        //parent.getSelectedItem()            get selected item
+        //and other...
+    }
+
+    fun getSubjectData() {
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {
-            // TODO enum 관리
-
-            val department = "공과대학_컴퓨터공학부"
-            val grade = "THIRD"
-            val type = "OPTIONAL"
-
-            val mySubjectsResponse = subjectRepository.getSubjects(department, grade, type)
+            //TODO null 체크 확인해보기
+            val mySubjectsResponse = subjectRepository.getSubjects(department.value!!, grade.value!!.name, type.value!!.name)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
-
-            }else {
+            } else {
                 _subjectErrorToastEvent.setValue(true)
             }
 //            _policySize.value = myInterestPolicyResponse.data.data.size
-
         }
     }
 
     fun refreshData() {
         _refreshed.value = true
-        getInitData()
+        getSubjectData()
         _refreshed.value = false
     }
 
@@ -66,6 +84,21 @@ class SubjectViewModel @Inject constructor(
         viewModelScope.launch {
             subjectRepository.addSubject(AddSubjectRequest(userId, subjectNumber))
         }
+    }
+
+    fun updateDepartment(department:String) {
+        _department.value = department
+        getSubjectData()
+    }
+
+    fun updateSubjectGrade(grade: SubjectGrade) {
+        _grade.value = grade
+        getSubjectData()
+    }
+
+    fun updateSubjectType(type: SubjectType) {
+        _type.value = type
+        getSubjectData()
     }
 
 //    private val _policyList = MutableLiveData<List<PolicyContent?>>()

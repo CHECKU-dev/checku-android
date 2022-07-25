@@ -3,9 +3,7 @@ package com.example.nodeproject2.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.di.CheckuApplication
@@ -42,9 +40,9 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
-        binding.splashImg.startAnimation(splashAnimation)
-        binding.splashText.startAnimation(splashAnimation)
+//        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
+//        binding.splashImg.startAnimation(splashAnimation)
+//        binding.splashText.startAnimation(splashAnimation)
 
         start()
     }
