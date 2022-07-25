@@ -12,12 +12,6 @@ import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     ListAdapter<Subject, TimeTableAdapter.Holder>(diffUtil) {
 
-    interface OnItemClickListener {
-        fun onItemClick(holder: Holder)
-    }
-
-    var listener: OnItemClickListener? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerTimeTableBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -34,7 +28,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.translationX = 0f
-        currentList[position]?.let { holder.setData(it, position) }
+        currentList[position]?.let { holder.setData(it) }
     }
 
     override fun getItemId(position: Int): Long {
@@ -44,21 +38,10 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     inner class Holder(val binding: ItemRecyclerTimeTableBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-
-        fun setData(data: Subject, position: Int) {
-
+        fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
-            binding.ivRemove.isClickable = false
-            binding.ivNotification.isClickable = false
-
-//            binding.executePendingBindings()
-            itemView.setOnClickListener {
-                listener?.onItemClick(this)
-            }
-
         }
-
 
     }
 

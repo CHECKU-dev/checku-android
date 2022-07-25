@@ -14,12 +14,6 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {
 
 
-    //    interface OnItemClickListener {
-//        fun onItemClick(v: View, data: InterestsListData, pos: Int)
-//    }
-
-    var listener: AdapterView.OnItemClickListener? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerSubjectBinding.inflate(
             LayoutInflater.from(parent.context),
