@@ -23,22 +23,17 @@
                 android:gravity="center"
                 android:text="@string/application_classes_schedule"/>
 
-<!--        currentPage="@{viewModel.currentPage}"-->
-
         <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_home"
                 android:layout_width="match_parent"
                 android:layout_height="138dp"
                 android:paddingStart="30dp"
-                android:paddingEnd="30dp"
+                android:paddingEnd="220dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:layout_marginTop="78dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

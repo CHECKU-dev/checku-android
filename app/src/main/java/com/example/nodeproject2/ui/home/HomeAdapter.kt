@@ -16,6 +16,8 @@ import java.time.temporal.ChronoUnit
 
 class HomeAdapter(val context: Context, val schedule: List<Schedule>) : RecyclerView.Adapter<HomeAdapter.Holder>() {
 
+    private var selectedPosition = 0
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -30,6 +32,10 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
         )
     }
 
+    fun setPageSelected(position: Int) {
+        selectedPosition = position
+    }
+
     inner class Holder(val binding: ItemViewPagerHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -37,8 +43,12 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
         fun setData(data: Schedule) {
             binding.tvDeadline.text = Utils.getDeadline(data.deadline.toLocalDate())
             binding.data = data
+            if (selectedPosition == adapterPosition) {
+                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_solid_main_color_rounded_shadow_20)
+            }else {
+                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_solid_w01_rounded_shadow_20)
+            }
         }
-
     }
 
     override fun getItemCount(): Int = schedule.size
