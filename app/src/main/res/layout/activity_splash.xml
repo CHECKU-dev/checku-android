@@ -8,34 +8,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@drawable/bg_splash"
             tools:context=".ui.splash.SplashActivity">
 
-
-        <ImageView
-                android:layout_width="250dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ic_checku_logo"
-                android:id="@+id/splash_img"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="312dp"
-                app:layout_constraintHorizontal_bias="0.497">
-        </ImageView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/splash_text"
-                android:text="건국대 수강신청 인원조회"
-                android:textSize="18sp"
-                android:textColor="#00A569"
-                app:layout_constraintTop_toBottomOf="@+id/splash_img"
-                android:layout_marginTop="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-        >
-        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

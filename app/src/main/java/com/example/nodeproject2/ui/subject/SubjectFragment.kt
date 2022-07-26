@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.subject
 
+import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
@@ -18,8 +19,9 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.getInitData()
+//        viewModel.getInitData()
 
+        initMajorTextView()
         initRecyclerView()
         observeRecyclerView()
     }
@@ -46,6 +48,21 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         subjectAdapter = SubjectAdapter(viewModel)
         binding.rvSubject.adapter = subjectAdapter
+
+    }
+
+    private fun initMajorTextView() {
+        val departmentArray = resources.getStringArray(R.array.department_list)
+
+        val adapter = ArrayAdapter<String>(
+            activity!!.applicationContext,
+            android.R.layout.simple_dropdown_item_1line,
+            departmentArray
+        )
+
+        val majorTextView = binding.majorAutoCompleteTv
+
+        majorTextView.setAdapter(adapter)
 
     }
 

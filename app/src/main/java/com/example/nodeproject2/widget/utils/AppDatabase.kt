@@ -8,7 +8,7 @@ import com.example.nodeproject2.data.model.dao.ScheduleDao
 import com.example.nodeproject2.di.CheckuApplication
 import java.time.LocalDateTime
 
-@Database(entities = arrayOf(Schedule::class), version = 1)
+@Database(entities = arrayOf(Schedule::class), version = 2)
 @TypeConverters(AppDatabase.Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun scheduleDao(): ScheduleDao

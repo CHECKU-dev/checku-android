@@ -20,7 +20,6 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         viewModel.getInitData()
 
         initRecyclerView()

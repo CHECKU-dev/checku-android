@@ -5,6 +5,10 @@
 
     <data>
 
+        <import type="com.example.nodeproject2.ui.subject.SubjectGrade"/>
+
+        <import type="com.example.nodeproject2.ui.subject.SubjectType"/>
+
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
@@ -62,6 +66,7 @@
                 app:umanoPanelHeight="20dp"
                 app:umanoShadowHeight="0dp"
                 app:umanoOverlay="true">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -101,15 +106,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-
                     android:background="@drawable/bg_solid_w01_bottom_rounded_shadow_30">
 
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                        android:layout_gravity="center"
+                <AutoCompleteTextView
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textSize="16dp"
                         android:background="@drawable/bg_solid_w01_rounded_shadow_20"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"/>
+                        android:layout_gravity="center"
+                        android:id="@+id/major_auto_complete_tv"
+                        android:layout_width="320dp"
+                        android:layout_height="50dp"
+                        android:hint="전공을 입력해주세요."
+                        android:completionThreshold="1"/>
 
 
                 <!--    학년 라디오 버튼-->
@@ -129,12 +139,15 @@
                             android:layout_gravity="center"/>
 
                     <RadioGroup
+                            android:checkedButton="@id/subject_grade_all"
                             android:layout_weight="7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                         <RadioButton
+                                android:id="@+id/subject_grade_all"
+                                android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.ALL)}'
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
                                 android:textColor="@drawable/radio_button_text"
@@ -145,6 +158,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FIRST)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -156,6 +170,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.SECOND)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -167,6 +182,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.THIRD)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -178,6 +194,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FOURTH)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -209,12 +226,15 @@
                             android:layout_gravity="center"/>
 
                     <RadioGroup
+                            android:checkedButton="@id/subject_type_all"
                             android:layout_weight="7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ALL)}'
+                                android:id="@+id/subject_type_all"
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -226,6 +246,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ESSENTIAL)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -237,6 +258,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OPTIONAL)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
@@ -248,6 +270,7 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OTHER)}'
                                 android:layout_marginStart="2dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
