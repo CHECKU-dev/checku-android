@@ -8,7 +8,7 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_time_table.xml" value="0.9717741935483871" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_subject.xml" value="0.536" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_time_table.xml" value="0.2" />
-        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_view_pager_home.xml" value="0.264" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_view_pager_home.xml" value="0.2" />
       </map>
     </option>
   </component>
@@ -16,7 +16,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
   <component name="ProjectType">
     <option name="id" value="jpab" />
   </component>

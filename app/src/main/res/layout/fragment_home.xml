@@ -31,10 +31,10 @@
                 android:layout_height="138dp"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_marginTop="78dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
 

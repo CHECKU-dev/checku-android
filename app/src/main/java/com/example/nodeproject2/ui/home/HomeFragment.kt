@@ -1,5 +1,10 @@
 package com.example.nodeproject2.ui.home
 
+import android.graphics.Rect
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
@@ -7,6 +12,7 @@ import com.example.nodeproject2.databinding.FragmentHomeBinding
 import com.example.nodeproject2.repository.ScheduleRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.abs
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -18,9 +24,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun doViewCreated() {
 
-        val schedule = scheduleRepository.getSchedule()
-        viewPager = binding.vpHome
-        viewPager.adapter = HomeAdapter(context!!, schedule)
+        initViewPager()
+
 //        viewPager.offscreenPageLimit = 3
 //        var transform = CompositePageTransformer()
 //        transform.addTransformer(MarginPageTransformer(8))
@@ -31,6 +36,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 //        })
 
 //        binding.vpHome.setPageTransformer(transform)
+
+    }
+
+    private fun initViewPager() {
+        val schedule = scheduleRepository.getSchedule()
+
+        viewPager = binding.vpHome
+        viewPager.adapter = HomeAdapter(context!!, schedule)
+
+        viewPager.offscreenPageLimit = 1
+        viewPager.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
+
+        var transform = CompositePageTransformer()
+        transform.addTransformer(MarginPageTransformer(8))
+
+        transform.addTransformer { view: View, fl: Float ->
+            var v = 1 - abs(fl)
+            view.scaleY = 0.8f + v * 0.2f
+        }
+
+        viewPager.setPageTransformer(transform)
+
 
     }
 
