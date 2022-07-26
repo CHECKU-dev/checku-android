@@ -19,10 +19,13 @@ data class Schedule @RequiresApi(Build.VERSION_CODES.O) constructor(
     val scheduleId: Long,
 
     @SerializedName("title")
-    val title: String = "",
+    val title: String,
 
     @SerializedName("date")
-    val date: String = "",
+    val date: String,
+
+    @SerializedName("time")
+    val time: String,
 
     @NotNull
     @SerializedName("deadline")

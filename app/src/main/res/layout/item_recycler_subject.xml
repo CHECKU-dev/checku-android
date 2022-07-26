@@ -33,7 +33,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                    android:textStyle="bold"
                     android:id="@+id/emptySeat"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -57,9 +56,10 @@
                     app:layout_constraintTop_toBottomOf="@id/emptySeat"
                     app:layout_constraintEnd_toEndOf="@+id/emptySeat"/>
 
+<!--            android:fontFamily="@font/notosanskrbold"-->
+<!--            style="@style/customTextViewBoldFontStyle"-->
 
             <TextView
-                    android:textStyle="bold"
                     android:id="@+id/subject_name"
                     android:layout_width="wrap_content"
                     android:layout_height="29dp"
