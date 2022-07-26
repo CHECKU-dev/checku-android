@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+                name="label"
+                type="String"/>
+        <variable
+                name="data"
+                type="com.example.nodeproject2.data.model.Notification"/>
+        <variable
+                name="viewModel"
+                type="com.example.nodeproject2.ui.home.HomeViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_notification_layout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            android:layout_marginBottom="10dp">
+
+        <TextView
+                android:id="@+id/subject_number"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="@{data.subjectNumber}"
+                android:textColor="@color/checkuMain"
+                tools:text="0265"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <TextView
+                android:id="@+id/subject_name"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="left"
+                android:text="@{data.subjectName}"
+                tools:text="피부생명공학"
+                android:textColor="@color/checkuText"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@id/subject_number"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <TextView
+                android:id="@+id/professor"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:gravity="left"
+                tools:text="믹키"
+                android:textSize="12dp"
+                android:layout_marginStart="57dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subject_name"/>
+
+        <!--                android:text="@{data.professor}"-->
+
+
+        <View
+                android:id="@+id/view_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="56dp"
+                android:background="@color/gray_g10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</layout>

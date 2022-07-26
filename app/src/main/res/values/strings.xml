@@ -6,6 +6,7 @@
     <string name="main_btm_nav_timetable_title">시간표</string>
 
     <string name="application_classes_schedule">수강신청 일정</string>
+    <string name="empty_seat_notification">빈 자리 알림</string>
 
     <string name="service_type_and_grade_and_subject_number">%s / %s / %s</string>
 

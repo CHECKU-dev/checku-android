@@ -40,7 +40,7 @@ class TimeTableViewModel @Inject constructor(
         _timeTableWaitEvent.setValue(true)
         viewModelScope.launch {
 
-            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
+            val mySubjectsResponse = timetableRepository.getMySubjects(userId)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_time_table_layout"
+                android:id="@+id/item_time_table_layout"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
                 android:clickable="true"

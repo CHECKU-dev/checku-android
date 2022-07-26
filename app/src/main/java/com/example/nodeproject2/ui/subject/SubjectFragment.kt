@@ -39,7 +39,6 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         viewModel.subjectWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
-            // 로딩창 삭제 등등..
         }
 
     }

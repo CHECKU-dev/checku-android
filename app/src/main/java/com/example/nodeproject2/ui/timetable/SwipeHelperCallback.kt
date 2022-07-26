@@ -118,7 +118,7 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
     }
 
     private fun getView(viewHolder: RecyclerView.ViewHolder) : View {
-        return (viewHolder as TimeTableAdapter.Holder).itemView.fragment_time_table_layout
+        return (viewHolder as TimeTableAdapter.Holder).itemView.item_time_table_layout
     }
 
     fun setClamp(clamp: Float) {

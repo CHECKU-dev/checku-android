@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.home
+package com.example.nodeproject2.ui.home.adapter
 
 import android.content.Context
 import android.os.Build
@@ -11,8 +11,6 @@ import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Schedule
 import com.example.nodeproject2.databinding.ItemViewPagerHomeBinding
 import com.example.nodeproject2.widget.utils.Utils
-import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
 
 class HomeAdapter(val context: Context, val schedule: List<Schedule>) : RecyclerView.Adapter<HomeAdapter.Holder>() {
 
