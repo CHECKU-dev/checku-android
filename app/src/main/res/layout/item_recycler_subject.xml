@@ -18,10 +18,6 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item_subject_layout"
@@ -55,9 +51,6 @@
                     app:layout_constraintStart_toStartOf="@+id/emptySeat"
                     app:layout_constraintTop_toBottomOf="@id/emptySeat"
                     app:layout_constraintEnd_toEndOf="@+id/emptySeat"/>
-
-            <!--            android:fontFamily="@font/notosanskrbold"-->
-            <!--            style="@style/customTextViewBoldFontStyle"-->
 
             <TextView
                     android:id="@+id/subject_name"
@@ -119,14 +112,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-            <!--            <View-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="1dp"-->
-            <!--                    android:layout_marginTop="95dp"-->
-            <!--                    app:layout_constraintStart_toStartOf="parent"-->
-            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                    app:layout_constraintTop_toBottomOf="parent"-->
-            <!--                    android:background="@color/gray_g10"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,10 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="95dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/gray_g10"/>
 
     </FrameLayout>
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
 
 </layout>
