@@ -26,6 +26,12 @@ class TimeTableViewModel @Inject constructor(
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
     val subjectList: LiveData<MutableList<Subject>> = _subjectList
 
+    private val _notificationApplySuccessEvent = MutableSingleLiveData<Boolean>()
+    val notificationApplySuccessEvent: SingleLiveData<Boolean> = _notificationApplySuccessEvent
+
+    private val _subjectRemoveSuccessEvent = MutableSingleLiveData<Boolean>()
+    val subjectRemoveSuccessEvent: SingleLiveData<Boolean> = _subjectRemoveSuccessEvent
+
     private val _timeTableErrorToastEvent = MutableSingleLiveData<Boolean>()
     val timeTableErrorToastEvent: SingleLiveData<Boolean> = _timeTableErrorToastEvent
 
@@ -40,7 +46,7 @@ class TimeTableViewModel @Inject constructor(
         _timeTableWaitEvent.setValue(true)
         viewModelScope.launch {
 
-            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
+            val mySubjectsResponse = timetableRepository.getMySubjects(userId)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
@@ -60,11 +66,15 @@ class TimeTableViewModel @Inject constructor(
 
     fun removeSubject(subjectNumber: String) {
         viewModelScope.launch {
-            timetableRepository.removeSubject(userId, subjectNumber)
-            val mySubjectsResponse = timetableRepository.getMySubjects(1L)
-
-            if (mySubjectsResponse !is ApiResponse.Success) return@launch
-            _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
+            val response = timetableRepository.removeSubject(userId, subjectNumber)
+            if (response is ApiResponse.Success) {
+                println(response)
+                _subjectRemoveSuccessEvent.setValue(true)
+                getInitData()
+            } else {
+                println(response)
+                _timeTableErrorToastEvent.setValue(true)
+            }
 
         }
     }
@@ -74,8 +84,12 @@ class TimeTableViewModel @Inject constructor(
         viewModelScope.launch {
 
             val request = NotificationRequest(userId, subjectNumber, subjectName)
-            val applyNotification = timetableRepository.applyNotification(request)
-            println(applyNotification)
+            val response = timetableRepository.applyNotification(request)
+            if (response is ApiResponse.Success) {
+                _notificationApplySuccessEvent.setValue(true)
+            } else {
+                _timeTableErrorToastEvent.setValue(true)
+            }
         }
 
     }

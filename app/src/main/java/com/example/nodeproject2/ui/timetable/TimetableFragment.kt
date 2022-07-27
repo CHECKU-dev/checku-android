@@ -1,7 +1,6 @@
 package com.example.nodeproject2.ui.timetable
 
 import android.annotation.SuppressLint
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nodeproject2.R
@@ -41,6 +40,14 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
         viewModel.timeTableWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
+        }
+
+        viewModel.subjectRemoveSuccessEvent.observe(viewLifecycleOwner) {
+            showCustomToast("즐겨찾기 삭제 성공!!!")
+        }
+
+        viewModel.notificationApplySuccessEvent.observe(viewLifecycleOwner) {
+            showCustomToast("알림 신청 성공!!!")
         }
 
     }

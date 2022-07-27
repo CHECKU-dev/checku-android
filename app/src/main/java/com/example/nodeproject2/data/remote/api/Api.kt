@@ -2,6 +2,7 @@ package com.example.nodeproject2.data.remote.api
 
 import com.example.nodeproject2.data.model.*
 import com.example.nodeproject2.data.model.GetScheduleResponse
+import com.example.nodeproject2.data.model.dao.GetNotificationResponse
 import com.google.gson.JsonElement
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.Body
@@ -28,7 +29,7 @@ interface Api {
     @POST("/api/notification")
     suspend fun applyNotification(
         @Body request: NotificationRequest
-    ): ApiResponse<NotificationResponse>
+    ): ApiResponse<JsonElement>
 
     @POST("/api/my-subjects")
     suspend fun addSubject(
@@ -43,5 +44,16 @@ interface Api {
 
     @GET("/api/schedule")
     suspend fun getSchedule() : ApiResponse<GetScheduleResponse>
+
+    //TODO 확인
+    @GET("/api/notification")
+    suspend fun getNotifications(@Query("userId") userId: Long): ApiResponse<GetNotificationResponse>
+
+    @DELETE("/api/notification")
+    suspend fun cancelNotification(
+        @Query("userId") userId: Long,
+        @Query("subjectNumber") subjectNumber: String
+    ): ApiResponse<JsonElement>
+
 
 }

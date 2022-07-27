@@ -3,6 +3,7 @@ package com.example.nodeproject2.di
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.nodeproject2.data.remote.api.Api
+import com.example.nodeproject2.widget.utils.NullOnEmptyConverterFactory
 import com.example.nodeproject2.widget.utils.Utils.BASE_URL
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
@@ -100,6 +101,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
+            .addConverterFactory(NullOnEmptyConverterFactory())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .addConverterFactory(gsonConverterFactory)
             .build()
