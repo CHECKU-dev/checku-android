@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="138dp"
                 android:paddingStart="30dp"
-                android:paddingEnd="225dp"
+                android:paddingEnd="210dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:layout_marginTop="78dp"

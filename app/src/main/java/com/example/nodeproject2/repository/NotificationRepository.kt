@@ -11,6 +11,11 @@ class NotificationRepository @Inject constructor(private val api: Api) {
         userId: Long
     ) = api.getNotifications(userId)
 
+    suspend fun cancelNotification(
+        userId: Long,
+        subjectNumber: String
+    ) = api.cancelNotification(userId, subjectNumber)
+
 
 
 }

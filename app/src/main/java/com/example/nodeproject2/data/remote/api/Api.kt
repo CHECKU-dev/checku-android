@@ -29,7 +29,7 @@ interface Api {
     @POST("/api/notification")
     suspend fun applyNotification(
         @Body request: NotificationRequest
-    ): ApiResponse<NotificationResponse>
+    ): ApiResponse<JsonElement>
 
     @POST("/api/my-subjects")
     suspend fun addSubject(
@@ -47,6 +47,13 @@ interface Api {
 
     //TODO 확인
     @GET("/api/notification")
-    suspend fun getNotifications(userId: Long): ApiResponse<GetNotificationResponse>
+    suspend fun getNotifications(@Query("userId") userId: Long): ApiResponse<GetNotificationResponse>
+
+    @DELETE("/api/notification")
+    suspend fun cancelNotification(
+        @Query("userId") userId: Long,
+        @Query("subjectNumber") subjectNumber: String
+    ): ApiResponse<JsonElement>
+
 
 }

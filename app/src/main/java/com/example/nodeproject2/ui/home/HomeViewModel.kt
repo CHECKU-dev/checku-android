@@ -27,6 +27,9 @@ class HomeViewModel @Inject constructor(
     private val _homeErrorToastEvent = MutableSingleLiveData<Boolean>()
     val homeErrorToastEvent: SingleLiveData<Boolean> = _homeErrorToastEvent
 
+    private val _homeSuccessToastEvent = MutableSingleLiveData<Boolean>()
+    val homeSuccessToastEvent: SingleLiveData<Boolean> = _homeSuccessToastEvent
+
     private val _homeWaitEvent = MutableSingleLiveData<Boolean>()
     val homeWaitEvent: SingleLiveData<Boolean> = _homeWaitEvent
 
@@ -41,6 +44,20 @@ class HomeViewModel @Inject constructor(
             } else {
                 _homeErrorToastEvent.setValue(true)
             }
+        }
+    }
+
+    fun cancelNotification(subjectNumber: String) {
+
+        viewModelScope.launch {
+            val response = notificationRepository.cancelNotification(userId, subjectNumber)
+            if (response is ApiResponse.Success) {
+                _homeSuccessToastEvent.setValue(true)
+            } else {
+                _homeErrorToastEvent.setValue(true)
+            }
+            getInitData()
+
         }
     }
 

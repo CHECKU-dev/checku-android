@@ -12,8 +12,8 @@
             android:id="@+id/schedule_item_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
             android:background="@drawable/bg_solid_w01_rounded_shadow_20">
-<!--        android:elevation="1dp"-->
 
         <TextView
                 android:id="@+id/tv_deadline"

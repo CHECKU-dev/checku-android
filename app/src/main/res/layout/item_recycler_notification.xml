@@ -64,6 +64,17 @@
         <!--                android:text="@{data.professor}"-->
 
 
+        <ImageButton
+                android:id="@+id/notification_cancel_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_notification_cancel_button"
+                android:onClick="@{() -> viewModel.cancelNotification(data.subjectNumber)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
         <View
                 android:id="@+id/view_divider"
                 android:layout_width="match_parent"
@@ -74,9 +85,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </layout>

@@ -51,9 +51,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             showCustomToast("실패 실패 실패 실패")
             hideLoadingDialog()
         }
-//
+
         viewModel.homeWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
+        }
+
+        viewModel.homeSuccessToastEvent.observe(viewLifecycleOwner) {
+            // TODO String 상수 관리
+            showCustomToast("알림 삭제 성공!!")
         }
 
     }
