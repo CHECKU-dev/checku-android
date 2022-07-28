@@ -14,10 +14,11 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private val viewModel by viewModels<TimeTableViewModel>()
     private lateinit var timeTableAdapter: TimeTableAdapter
 
-
     override fun doViewCreated() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+
 
         viewModel.getInitData()
 
@@ -56,15 +57,15 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private fun initRecyclerView() {
 
         timeTableAdapter = TimeTableAdapter(viewModel)
-        binding.rvTimeTable.adapter = timeTableAdapter
+        binding.rvFavorite.adapter = timeTableAdapter
 
         val swipeHelperCallback = SwipeHelperCallback().apply {
             setClamp(resources.displayMetrics.widthPixels.toFloat() / 3)
         }
         val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
-        itemTouchHelper.attachToRecyclerView(binding.rvTimeTable)
+        itemTouchHelper.attachToRecyclerView(binding.rvFavorite)
 
-        binding.rvTimeTable.apply {
+        binding.rvFavorite.apply {
             setOnTouchListener { _, _ ->
                 swipeHelperCallback.removePreviousClamp(this)
                 false

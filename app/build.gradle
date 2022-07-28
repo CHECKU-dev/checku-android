@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.nodeproject2"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -43,13 +43,11 @@ apply plugin: 'com.google.gms.google-services'
 dependencies {
 
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def appcompat_version = "1.4.2"
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
-
-    // FloatingButton
-    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:3.1.5'
 
     // SlidingUpPanel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
@@ -102,9 +100,6 @@ dependencies {
     implementation "com.github.skydoves:elasticviews:2.1.0"
     implementation "com.github.skydoves:balloon:1.4.2"
 
-    // timetable
-    implementation 'com.github.tlaabs:TimetableView:1.0.3-fx1'
-
     // Room
     def room_version = "2.2.6"
     implementation "androidx.room:room-runtime:$room_version"
@@ -112,7 +107,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
 
-    // CommonUtils
-    implementation 'com.aminography:commonutils:1.1.0'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
 
 }

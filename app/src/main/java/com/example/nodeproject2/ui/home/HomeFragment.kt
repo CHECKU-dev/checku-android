@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.home
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -32,6 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
 
         viewModel.getInitData()
 
@@ -78,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         viewPager.offscreenPageLimit = 2
         viewPager.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onPageSelected(position: Int) {
                 homeAdapter.setPageSelected(position)
                 homeAdapter.notifyDataSetChanged()

@@ -25,6 +25,7 @@
                 tools:text="D-21"
                 android:textColor="@color/checkuMain"
                 android:gravity="center"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
