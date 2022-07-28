@@ -33,13 +33,14 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_notification_cancel_button.xml" value="0.10394736842105264" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_zzim_active.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/radio_button_selector.xml" value="0.16052631578947368" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/radio_button_selector_rectangle.xml" value="0.16973684210526316" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/radio_button_text.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/font/noto_sans.xml" value="0.17927631578947367" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_main.xml" value="0.24929444967074318" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/dialog_loading.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_subject.xml" value="0.264" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_subject.xml" value="0.12" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_time_table.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_program.xml" value="0.15953947368421054" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_home.xml" value="0.15098684210526317" />
