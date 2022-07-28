@@ -63,7 +63,7 @@
                 android:background="@color/white"
                 android:gravity="top"
                 app:umanoDragView="@id/sliding_panel_drag_view"
-                app:umanoPanelHeight="20dp"
+                app:umanoPanelHeight="50dp"
                 app:umanoShadowHeight="0dp"
                 app:umanoOverlay="true">
 
@@ -75,7 +75,7 @@
                         android:id="@+id/swipe_refresh_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="50dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:onRefreshListener="@{() -> viewModel.refreshData()}"
@@ -91,15 +91,42 @@
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:alpha="0.8"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_major"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="bottom|end"/>
+                        android:layout_margin="24dp"
+                        android:layout_marginEnd="24dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/fab_main"
+                        app:layout_constraintEnd_toEndOf="@+id/fab_main"
+                        app:layout_constraintStart_toStartOf="@+id/fab_main"
+                        app:layout_constraintTop_toTopOf="@+id/fab_main"
+                        android:background="@color/white"
+                        android:backgroundTint="@color/checkuMain"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_electives"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="24dp"
+                        android:layout_marginEnd="24dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/fab_main"
+                        app:layout_constraintEnd_toEndOf="@+id/fab_main"
+                        app:layout_constraintStart_toStartOf="@+id/fab_main"
+                        app:layout_constraintTop_toTopOf="@+id/fab_main"
+                        android:background="@color/white"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:background="@color/checkuMain"
+                        android:text="전공"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,30 +138,36 @@
                     android:background="@drawable/bg_solid_w01_bottom_rounded_shadow_30">
 
 
-                <AutoCompleteTextView
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textSize="16dp"
-                        android:background="@drawable/bg_solid_w01_rounded_shadow_20"
-                        android:layout_gravity="center"
-                        android:id="@+id/major_auto_complete_tv"
-                        android:layout_width="320dp"
-                        android:layout_height="50dp"
-                        android:hint="전공을 입력해주세요."
-                        android:completionThreshold="1"/>
+<!--                <AutoCompleteTextView-->
+<!--                        android:paddingStart="12dp"-->
+<!--                        android:paddingEnd="12dp"-->
+<!--                        android:textSize="16dp"-->
+<!--                        android:background="@drawable/bg_solid_w01_rounded_shadow_20"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:id="@+id/major_auto_complete_tv"-->
+<!--                        android:layout_width="320dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:hint="전공을 입력해주세요."-->
+<!--                        android:completionThreshold="1"/>-->
 
+                <androidx.appcompat.widget.AppCompatSpinner
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_solid_w01_rounded_shadow_20"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:entries="@array/department_list"
+                        android:onItemSelected="@{(parent,view,pos,id) -> viewModel.onSelectItem(parent,view,pos,id)}"/>
 
                 <!--    학년 라디오 버튼-->
                 <LinearLayout
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                     <TextView
                             android:text="학년"
+                            android:layout_marginStart="15dp"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -151,17 +184,18 @@
                                 android:id="@+id/subject_grade_all"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.ALL)}'
                                 android:textAlignment="center"
-                                android:background="@drawable/radio_button_selector"
+                                android:background="@drawable/radio_button_selector_rectangle"
                                 android:textColor="@drawable/radio_button_text"
                                 android:button="@null"
                                 android:text="전체"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FIRST)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="15dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
                                 android:textColor="@drawable/radio_button_text"
@@ -169,11 +203,12 @@
                                 android:text="1"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.SECOND)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="15dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
                                 android:textColor="@drawable/radio_button_text"
@@ -181,11 +216,12 @@
                                 android:text="2"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.THIRD)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="15dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
                                 android:textColor="@drawable/radio_button_text"
@@ -193,11 +229,12 @@
                                 android:text="3"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FOURTH)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="15dp"
                                 android:textAlignment="center"
                                 android:background="@drawable/radio_button_selector"
                                 android:textColor="@drawable/radio_button_text"
@@ -205,7 +242,9 @@
                                 android:text="4"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="15dp"
+                                />
 
                     </RadioGroup>
 
@@ -214,14 +253,13 @@
                 <!--    종류 라디오 버튼-->
                 <LinearLayout
                         android:layout_marginTop="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                     <TextView
                             android:text="종류"
+                            android:layout_marginStart="15dp"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -237,51 +275,55 @@
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ALL)}'
                                 android:id="@+id/subject_type_all"
-                                android:layout_marginStart="2dp"
                                 android:textAlignment="center"
-                                android:background="@drawable/radio_button_selector"
+                                android:background="@drawable/radio_button_selector_rectangle"
                                 android:textColor="@drawable/radio_button_text"
                                 android:button="@null"
                                 android:text="전체"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ESSENTIAL)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="17dp"
                                 android:textAlignment="center"
-                                android:background="@drawable/radio_button_selector"
+                                android:background="@drawable/radio_button_selector_rectangle"
                                 android:textColor="@drawable/radio_button_text"
                                 android:button="@null"
                                 android:text="전필"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OPTIONAL)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="17dp"
                                 android:textAlignment="center"
-                                android:background="@drawable/radio_button_selector"
+                                android:background="@drawable/radio_button_selector_rectangle"
                                 android:textColor="@drawable/radio_button_text"
                                 android:button="@null"
                                 android:text="전선"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                />
 
                         <RadioButton
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OTHER)}'
-                                android:layout_marginStart="2dp"
+                                android:layout_marginStart="17dp"
                                 android:textAlignment="center"
-                                android:background="@drawable/radio_button_selector"
+                                android:background="@drawable/radio_button_selector_rectangle"
                                 android:textColor="@drawable/radio_button_text"
                                 android:button="@null"
                                 android:text="기타"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="15dp"
+                                />
 
                     </RadioGroup>
 
