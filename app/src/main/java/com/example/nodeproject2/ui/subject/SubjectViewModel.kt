@@ -38,16 +38,16 @@ class SubjectViewModel @Inject constructor(
     val refreshed: LiveData<Boolean> = _refreshed
 
     private val _department = MutableLiveData<String>("공과대학_컴퓨터공학부")
-    val department:LiveData<String> = _department
+    val department: LiveData<String> = _department
 
     private val _grade = MutableLiveData<SubjectGrade>(SubjectGrade.ALL)
-    val grade:LiveData<SubjectGrade> = _grade
+    val grade: LiveData<SubjectGrade> = _grade
 
     private val _type = MutableLiveData<SubjectType>(SubjectType.ALL)
-    val type:LiveData<SubjectType> = _type
+    val type: LiveData<SubjectType> = _type
 
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-        _department.value = parent!!.selectedItem.toString().replace(" ","_")
+        _department.value = parent!!.selectedItem.toString().replace(" ", "_")
         getSubjectData()
 
         //pos                                 get selected item position
@@ -62,9 +62,11 @@ class SubjectViewModel @Inject constructor(
     fun getSubjectData() {
         _subjectWaitEvent.setValue(true)
 
+        // 플로팅 버튼 전공일 경우
         viewModelScope.launch {
             //TODO null 체크 확인해보기
-            val mySubjectsResponse = subjectRepository.getSubjects(department.value!!, grade.value!!.name, type.value!!.name)
+            val mySubjectsResponse =
+                subjectRepository.getSubjects(department.value!!, grade.value!!.name, type.value!!.name)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
@@ -72,6 +74,7 @@ class SubjectViewModel @Inject constructor(
             }
 //            _policySize.value = myInterestPolicyResponse.data.data.size
         }
+
     }
 
     fun refreshData() {
@@ -86,7 +89,7 @@ class SubjectViewModel @Inject constructor(
         }
     }
 
-    fun updateDepartment(department:String) {
+    fun updateDepartment(department: String) {
         _department.value = department
         getSubjectData()
     }

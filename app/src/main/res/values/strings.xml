@@ -183,4 +183,6 @@
         <item>정치대학 정치외교학과</item>
         <item>정치대학 행정학과</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

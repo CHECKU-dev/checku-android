@@ -43,13 +43,11 @@ apply plugin: 'com.google.gms.google-services'
 dependencies {
 
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def appcompat_version = "1.4.2"
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
-
-    // FloatingButton
-    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:3.1.5'
 
     // SlidingUpPanel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
