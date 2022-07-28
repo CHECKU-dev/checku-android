@@ -10,6 +10,7 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_checku_logo.xml" value="0.10394736842105264" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_favorite_unselected.xml" value="0.10394736842105264" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_home_unselected.xml" value="0.10394736842105264" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_main_color_bottom_arrow.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/ic_map_unselected.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable-v24/main_btm_nav_item_color.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/actionbar_background.xml" value="0.16872964169381108" />
@@ -19,6 +20,11 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/bg_solid_main_color_rounded_shadow_20.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/bg_solid_w01_bottom_rounded_shadow_30.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/bg_splash.xml" value="0.15493421052631579" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_action_bar.xml" value="0.16872964169381108" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_bottom_item_list_1.xml" value="0.16872964169381108" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_bottom_layout_home.xml" value="0.16872964169381108" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_bottom_layout_subject.xml" value="0.16872964169381108" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_bottom_layout_time_table.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_checku_launcher_background.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_checku_launcher_foreground.xml" value="0.16872964169381108" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/ic_checku_logo.xml" value="0.16872964169381108" />
@@ -29,16 +35,20 @@
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/radio_button_selector.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/drawable/radio_button_text.xml" value="0.16052631578947368" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/font/noto_sans.xml" value="0.17927631578947367" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_main.xml" value="0.24929444967074318" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/dialog_loading.xml" value="0.1" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_subject.xml" value="0.264" />
-        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_time_table.xml" value="0.1747394236664623" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/fragment_time_table.xml" value="0.1" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_program.xml" value="0.15953947368421054" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_home.xml" value="0.15098684210526317" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_notification.xml" value="0.2" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_subject.xml" value="0.264" />
         <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_recycler_time_table.xml" value="0.152" />
-        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_view_pager_home.xml" value="0.128" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_space.xml" value="0.15953947368421054" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/layout/item_view_pager_home.xml" value="0.264" />
+        <entry key="..\:/Users/dudwl/WorkSpace/checku-android/app/src/main/res/menu/menu_main_bottom_nav.xml" value="0.16940789473684212" />
       </map>
     </option>
   </component>

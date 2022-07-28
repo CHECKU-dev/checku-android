@@ -10,18 +10,20 @@
             android:title="@string/main_btm_nav_home_title"
             app:showAsAction="always"/>
 
+
     <item
             android:id="@+id/menu_main_btm_nav_subject"
             android:enabled="true"
-            android:icon="@drawable/ic_map_unselected"
+            android:icon="@drawable/ic_bottom_item_list_1"
             android:title="@string/main_btm_nav_subject_title"
             app:showAsAction="always"/>
+
 
     <item
             android:id="@+id/menu_main_btm_nav_timetable"
             android:enabled="true"
-            android:icon="@drawable/ic_interests_unselected"
             android:title="@string/main_btm_nav_timetable_title"
+            android:icon="@drawable/ic_bottom_item_favorite_1"
             app:showAsAction="always"/>
 
 
