@@ -187,7 +187,6 @@
                         android:layout_marginBottom="20dp"
                         android:layout_height="50dp"
                         android:entries="@array/department_list"
-                        android:popupBackground="@drawable/ic_main_color_bottom_arrow"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
