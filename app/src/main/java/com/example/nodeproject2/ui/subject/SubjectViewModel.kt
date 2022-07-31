@@ -2,6 +2,7 @@ package com.example.nodeproject2.ui.subject
 
 import android.view.View
 import android.widget.AdapterView
+import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,13 +39,16 @@ class SubjectViewModel @Inject constructor(
     val refreshed: LiveData<Boolean> = _refreshed
 
     private val _department = MutableLiveData<String>("공과대학_컴퓨터공학부")
-    val department: LiveData<String> = _department
+    private val department: LiveData<String> = _department
 
     private val _grade = MutableLiveData<SubjectGrade>(SubjectGrade.ALL)
-    val grade: LiveData<SubjectGrade> = _grade
+    private val grade: LiveData<SubjectGrade> = _grade
 
     private val _type = MutableLiveData<SubjectType>(SubjectType.ALL)
     val type: LiveData<SubjectType> = _type
+
+    private val _vacancy = MutableLiveData<Boolean>(false)
+    val vacancy: LiveData<Boolean> = _vacancy
 
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         _department.value = parent!!.selectedItem.toString().replace(" ", "_")
@@ -66,7 +70,7 @@ class SubjectViewModel @Inject constructor(
         viewModelScope.launch {
             //TODO null 체크 확인해보기
             val mySubjectsResponse =
-                subjectRepository.getSubjects(department.value!!, grade.value!!.name, type.value!!.name)
+                subjectRepository.getSubjects(department.value!!, grade.value!!.name, type.value!!.name, vacancy.value!!)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
@@ -103,6 +107,12 @@ class SubjectViewModel @Inject constructor(
         _type.value = type
         getSubjectData()
     }
+
+    fun onCheckboxVacancyChange(button: CompoundButton, check: Boolean) {
+        _vacancy.value = check
+        getSubjectData()
+    }
+
 
 //    private val _policyList = MutableLiveData<List<PolicyContent?>>()
 //    val policyList: LiveData<List<PolicyContent?>> = _policyList

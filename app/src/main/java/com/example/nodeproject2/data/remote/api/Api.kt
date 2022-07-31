@@ -23,7 +23,8 @@ interface Api {
     suspend fun getSubjects(
         @Query("department") department: String,
         @Query("grade") grade: String,
-        @Query("type") type: String
+        @Query("type") type: String,
+        @Query("vacancy") vacancy: Boolean
     ): ApiResponse<GetSubjectsResponse>
 
     @POST("/api/notification")
