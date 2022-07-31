@@ -11,8 +11,9 @@ class SubjectRepository @Inject constructor(private val api: Api) {
     suspend fun getSubjects(
         department: String,
         grade: String?,
-        type: String?
-    ) = api.getSubjects(department, grade!!, type!!)
+        type: String?,
+        vacancy: Boolean
+    ) = api.getSubjects(department, grade!!, type!!, vacancy)
 
     suspend fun addSubject(
         request: AddSubjectRequest

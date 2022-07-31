@@ -52,9 +52,9 @@ class SplashActivity : AppCompatActivity() {
 
         val userId = CheckuApplication.prefs.getUserId() ?: ""
 
-        getSchedule()
 
         if (userId == 0L) {
+            getSchedule()
 
             FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {

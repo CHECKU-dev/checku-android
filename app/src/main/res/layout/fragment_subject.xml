@@ -65,7 +65,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/rb_empty_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,8 +82,9 @@
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
                     android:textSize="15dp"
+                    android:checked="@{viewModel.vacancy}"
+                    android:onCheckedChanged="@{viewModel.onCheckboxVacancyChange}"
                     android:text="빈 강의"/>
-            <!--            android:onClick="@{() -> viewModel.selectAdditionalRegionDetail(data.id, data.name)}"-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -187,7 +188,6 @@
                         android:layout_marginBottom="20dp"
                         android:layout_height="50dp"
                         android:entries="@array/department_list"
-                        android:popupBackground="@drawable/ic_main_color_bottom_arrow"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
