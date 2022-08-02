@@ -1,17 +1,16 @@
 package com.example.nodeproject2.ui.subject
 
 import androidx.fragment.app.viewModels
-import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
-import com.example.nodeproject2.databinding.FragmentSubjectBinding
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.databinding.FragmentElectiveBinding
+import com.example.nodeproject2.ui.subject.adapter.ElectiveAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
+class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodeproject2.R.layout.fragment_elective) {
 
-    private val viewModel by viewModels<SubjectViewModel>()
-    private lateinit var subjectAdapter: SubjectAdapter
+    private val viewModel by viewModels<ElectiveViewModel>()
+    private lateinit var electiveAdapter: ElectiveAdapter
 
     override fun doViewCreated() {
         binding.viewModel = viewModel
@@ -23,7 +22,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
-            subjectAdapter.submitList(it)
+            electiveAdapter.submitList(it)
             hideLoadingDialog()
         }
 
@@ -39,10 +38,8 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     }
 
     private fun initRecyclerView() {
-
-        subjectAdapter = SubjectAdapter(viewModel)
-        binding.rvSubject.adapter = subjectAdapter
-
+        electiveAdapter = ElectiveAdapter(viewModel)
+        binding.rvSubject.adapter = electiveAdapter
     }
 
 }
