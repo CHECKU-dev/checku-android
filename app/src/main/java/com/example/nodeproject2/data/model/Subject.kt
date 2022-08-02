@@ -3,7 +3,6 @@ package com.example.nodeproject2.data.model
 import com.google.gson.annotations.SerializedName
 
 data class Subject(
-
     @SerializedName("grade") val grade: String,
     @SerializedName("professor") val professor: String,
     @SerializedName("subjectName") val subjectName: String,
@@ -14,5 +13,5 @@ data class Subject(
     @SerializedName("department") val department: String,
     @SerializedName("subjectNumber") val subjectNumber: String,
     @SerializedName("timeAndPlace") val timeAndPlace: String,
-
+    @SerializedName("isMySubject") val isMySubject: Boolean
 )

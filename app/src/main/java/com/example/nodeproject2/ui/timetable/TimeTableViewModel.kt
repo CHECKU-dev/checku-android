@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
@@ -66,13 +67,11 @@ class TimeTableViewModel @Inject constructor(
 
     fun removeSubject(subjectNumber: String) {
         viewModelScope.launch {
-            val response = timetableRepository.removeSubject(userId, subjectNumber)
+            val response = timetableRepository.removeSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
             if (response is ApiResponse.Success) {
-                println(response)
                 _subjectRemoveSuccessEvent.setValue(true)
                 getInitData()
             } else {
-                println(response)
                 _timeTableErrorToastEvent.setValue(true)
             }
 

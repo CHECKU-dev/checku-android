@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nodeproject2.data.model.AddSubjectRequest
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
@@ -17,8 +17,6 @@ import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -122,6 +120,7 @@ class SubjectViewModel @Inject constructor(
             //TODO null 체크 확인해보기
             val mySubjectsResponse =
                 subjectRepository.getSubjects(
+                    userId,
                     department.value!!,
                     grade.value!!.name,
                     type.value!!.name,
@@ -149,9 +148,9 @@ class SubjectViewModel @Inject constructor(
         _refreshed.value = false
     }
 
-    fun addSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subjectNumber: String) {
         viewModelScope.launch {
-            subjectRepository.addSubject(AddSubjectRequest(userId, subjectNumber))
+            subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
         }
     }
 
