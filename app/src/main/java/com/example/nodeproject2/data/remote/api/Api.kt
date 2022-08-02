@@ -3,6 +3,7 @@ package com.example.nodeproject2.data.remote.api
 import com.example.nodeproject2.data.model.*
 import com.example.nodeproject2.data.model.GetScheduleResponse
 import com.example.nodeproject2.data.model.dao.GetNotificationResponse
+import com.finder.android.mbti.dataobj.SubjectListDto
 import com.google.gson.JsonElement
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.Body
@@ -44,7 +45,7 @@ interface Api {
     ): ApiResponse<JsonElement>
 
     @GET("/api/schedule")
-    suspend fun getSchedule() : ApiResponse<GetScheduleResponse>
+    suspend fun getSchedule(): ApiResponse<GetScheduleResponse>
 
     //TODO 확인
     @GET("/api/notification")
@@ -55,6 +56,13 @@ interface Api {
         @Query("userId") userId: Long,
         @Query("subjectNumber") subjectNumber: String
     ): ApiResponse<JsonElement>
+
+
+    @GET("/api/subjects/search")
+    suspend fun getSubjectBySearch(
+        @Query("searchQuery") searchQuery: String,
+        @Query("page") page: Int? = 0
+    ): ApiResponse<SubjectListDto>
 
 
 }

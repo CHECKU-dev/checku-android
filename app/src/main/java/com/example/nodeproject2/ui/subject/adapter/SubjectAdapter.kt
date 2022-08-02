@@ -1,8 +1,8 @@
 package com.example.nodeproject2.ui.subject.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +25,7 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun getItemCount(): Int {
-        return currentList.size
+        return super.getItemCount() - 1
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -41,7 +41,6 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     inner class Holder(val binding: ItemRecyclerSubjectBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setData(data: Subject) {
-
             binding.data = data
             binding.viewModel = viewModel
             binding.executePendingBindings()

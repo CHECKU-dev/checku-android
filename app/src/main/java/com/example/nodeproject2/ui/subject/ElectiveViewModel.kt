@@ -42,7 +42,7 @@ class ElectiveViewModel @Inject constructor(
     private val _vacancy = MutableLiveData<Boolean>(false)
     val vacancy: LiveData<Boolean> = _vacancy
 
-    fun getElectives() {
+    private fun getElectives() {
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {

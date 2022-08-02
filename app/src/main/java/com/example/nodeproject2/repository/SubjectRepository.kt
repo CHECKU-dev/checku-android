@@ -19,5 +19,10 @@ class SubjectRepository @Inject constructor(private val api: Api) {
         request: AddSubjectRequest
     ) = api.addSubject(request)
 
+    suspend fun getSubjectBySearch(
+        searchQuery: String,
+        page: Int?
+    ) = api.getSubjectBySearch(searchQuery, page)
+
 
 }
