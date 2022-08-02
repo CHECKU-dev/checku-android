@@ -2,6 +2,7 @@ package com.example.nodeproject2.ui
 
 import android.animation.ObjectAnimator
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
@@ -15,42 +16,27 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var isFabOpen = false
-    private val homeFragment = HomeFragment()
-    private val subjectFragment = SubjectFragment()
-    private val electiveFragment = ElectiveFragment()
-    private val timetableFragment = TimetableFragment()
 
     override fun init() {
         fabOff()
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, HomeFragment())
-            .commitAllowingStateLoss()
+        showFragment(HomeFragment(), "HomeFragment")
 
         binding.mainBtmNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_main_btm_nav_home -> {
                     fabOff()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, HomeFragment())
-                        .commitAllowingStateLoss()
+                    showFragment(HomeFragment(), "HomeFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_subject -> {
                     fabOn()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, SubjectFragment())
-                        .commitAllowingStateLoss()
+                    showFragment(SubjectFragment(), "SubjectFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_timetable -> {
                     fabOff()
-                    binding.fabMain.visibility = View.GONE
-                    binding.fabMajor.visibility = View.GONE
-                    binding.fabElective.visibility = View.GONE
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, TimetableFragment())
-                        .commitAllowingStateLoss()
+                    showFragment(TimetableFragment(), "TimetableFragment")
                     return@setOnItemSelectedListener true
                 }
             }
@@ -66,15 +52,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 toggleFab()
             }
             fabMajor.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, SubjectFragment())
-                    .commitAllowingStateLoss()
+                showFragment(SubjectFragment(), "SubjectFragment")
                 closeFab()
             }
             fabElective.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, ElectiveFragment())
-                    .commitAllowingStateLoss()
+                showFragment(ElectiveFragment(), "ElectiveFragment")
                 closeFab()
             }
         }
@@ -118,6 +100,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.fabMain.visibility = View.GONE
         binding.fabMajor.visibility = View.GONE
         binding.fabElective.visibility = View.GONE
+    }
+
+    private fun showFragment(fragment: Fragment, tag: String) {
+        val findFragment = supportFragmentManager.findFragmentByTag(tag)
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        supportFragmentManager.fragments.forEach { fm ->
+            fragmentTransaction.hide(fm)
+        }
+
+        findFragment?.let { fm ->
+            fragmentTransaction.show(fm).commit()
+        } ?: kotlin.run {
+            fragmentTransaction
+                .add(R.id.fragment_container, fragment, tag)
+                .commitAllowingStateLoss()
+        }
     }
 
 }

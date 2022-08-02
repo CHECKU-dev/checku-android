@@ -14,6 +14,11 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private val viewModel by viewModels<TimeTableViewModel>()
     private lateinit var timeTableAdapter: TimeTableAdapter
 
+    companion object {
+        fun newInstance() = TimetableFragment()
+        const val TAG = "TimetableFragment"
+    }
+
     override fun doViewCreated() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
