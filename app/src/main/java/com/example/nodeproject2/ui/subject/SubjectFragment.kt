@@ -13,6 +13,11 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     private val viewModel by viewModels<SubjectViewModel>()
     private lateinit var subjectAdapter: SubjectAdapter
 
+    companion object {
+        fun newInstance() = SubjectFragment()
+        const val TAG = "SubjectFragment"
+    }
+
     override fun doViewCreated() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

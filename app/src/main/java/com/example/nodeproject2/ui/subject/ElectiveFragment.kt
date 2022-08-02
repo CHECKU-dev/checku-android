@@ -12,6 +12,11 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
     private val viewModel by viewModels<ElectiveViewModel>()
     private lateinit var electiveAdapter: ElectiveAdapter
 
+    companion object {
+        fun newInstance() = ElectiveFragment()
+        const val TAG = "ElectiveFragment"
+    }
+
     override fun doViewCreated() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

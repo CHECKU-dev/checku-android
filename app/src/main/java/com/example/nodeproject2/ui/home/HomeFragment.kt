@@ -12,8 +12,6 @@ import com.example.nodeproject2.databinding.FragmentHomeBinding
 import com.example.nodeproject2.repository.ScheduleRepository
 import com.example.nodeproject2.ui.home.adapter.HomeAdapter
 import com.example.nodeproject2.ui.home.adapter.NotificationAdapter
-import com.example.nodeproject2.ui.subject.SubjectViewModel
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +25,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private lateinit var homeAdapter: HomeAdapter
 
     private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var notifcationAdapter: NotificationAdapter
+    private lateinit var notificationAdapter: NotificationAdapter
+
+    companion object {
+        fun newInstance() = HomeFragment()
+        const val TAG = "HomeFragment"
+    }
 
     override fun doViewCreated() {
 
@@ -45,7 +48,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private fun observeRecyclerView() {
         viewModel.notificationList.observe(viewLifecycleOwner) {
-            notifcationAdapter.submitList(it)
+            notificationAdapter.submitList(it)
             hideLoadingDialog()
         }
 
@@ -66,8 +69,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private fun initRecyclerView() {
-        notifcationAdapter = NotificationAdapter(viewModel)
-        binding.rvNotification.adapter = notifcationAdapter
+        notificationAdapter = NotificationAdapter(viewModel)
+        binding.rvNotification.adapter = notificationAdapter
     }
 
     private fun initViewPager() {
