@@ -9,6 +9,7 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
+import com.example.nodeproject2.ui.subject.model.ElectiveType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
@@ -42,7 +43,7 @@ class ElectiveViewModel @Inject constructor(
     private val _vacancy = MutableLiveData<Boolean>(false)
     val vacancy: LiveData<Boolean> = _vacancy
 
-    private fun getElectives() {
+    fun getElectives() {
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {

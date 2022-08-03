@@ -47,4 +47,12 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         binding.rvSubject.adapter = electiveAdapter
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(hidden) {
+        }else {
+            viewModel.getElectives()
+        }
+    }
+
 }

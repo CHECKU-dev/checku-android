@@ -11,6 +11,8 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
+import com.example.nodeproject2.ui.subject.model.SubjectGrade
+import com.example.nodeproject2.ui.subject.model.SubjectType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.Paging
 import com.example.nodeproject2.widget.utils.SingleLiveData
@@ -116,7 +118,7 @@ class SubjectViewModel @Inject constructor(
         //and other...
     }
 
-    private fun getSubjectData() {
+    fun getSubjectData() {
         _subjectWaitEvent.setValue(true)
 
         // 플로팅 버튼 전공일 경우
@@ -188,5 +190,7 @@ class SubjectViewModel @Inject constructor(
         _vacancy.value = check
         getSubjectData()
     }
+
+
 
 }

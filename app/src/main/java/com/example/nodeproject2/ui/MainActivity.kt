@@ -17,13 +17,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-    val viewModel by viewModels<TimeTableViewModel>()
 
     private var isFabOpen = false
 
     override fun init() {
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
         fabOff()
 
         showFragment(HomeFragment(), "HomeFragment")
