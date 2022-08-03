@@ -13,5 +13,5 @@ data class Subject(
     @SerializedName("department") val department: String,
     @SerializedName("subjectNumber") val subjectNumber: String,
     @SerializedName("timeAndPlace") val timeAndPlace: String,
-    @SerializedName("isMySubject") val isMySubject: Boolean
+    @SerializedName("isMySubject") var isMySubject: Boolean
 )

@@ -57,7 +57,6 @@ class Paging<T> @Inject constructor() {
     }
 
     fun addData(): (data: MutableList<T?>) -> Unit = { data ->
-        println(data)
         _itemList.value?.addAll(data)
         _itemList.value = _itemList.value
     }

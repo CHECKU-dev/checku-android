@@ -120,6 +120,7 @@
             <!--                    tools:text="창업 준비중" />-->
 
             <CheckBox
+                    android:id="@+id/cb_checkButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="@{data.isMySubject}"

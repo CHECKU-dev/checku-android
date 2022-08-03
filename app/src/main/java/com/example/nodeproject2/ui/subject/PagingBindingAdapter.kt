@@ -1,9 +1,11 @@
 package com.example.nodeproject2.ui.subject
 
 import android.util.Log
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nodeproject2.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.delay
@@ -25,4 +27,13 @@ fun RecyclerView.infiniteScrolls(doScrollBottom: () -> Unit) {
             }
         }
     }))
+}
+
+@BindingAdapter("isLiked")
+fun setLikeImg(
+    imageView: ImageView,
+    isLiked: Boolean
+) {
+    if(isLiked) imageView.setBackgroundResource(R.drawable.ic_drag_button)
+    else imageView.setBackgroundResource(R.drawable.ic_checku_logo)
 }

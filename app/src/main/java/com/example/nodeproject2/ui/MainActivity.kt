@@ -2,22 +2,28 @@ package com.example.nodeproject2.ui
 
 import android.animation.ObjectAnimator
 import android.view.View
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.ui.home.HomeFragment
 import com.example.nodeproject2.ui.subject.ElectiveFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
+import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 import com.example.nodeproject2.ui.timetable.TimetableFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    val viewModel by viewModels<TimeTableViewModel>()
 
     private var isFabOpen = false
 
     override fun init() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         fabOff()
 
         showFragment(HomeFragment(), "HomeFragment")
@@ -32,6 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 R.id.menu_main_btm_nav_subject -> {
                     fabOn()
                     showFragment(SubjectFragment(), "SubjectFragment")
+//                    SubjectFragment().binding.viewModel.()
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_timetable -> {

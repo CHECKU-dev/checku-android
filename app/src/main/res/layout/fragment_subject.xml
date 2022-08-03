@@ -12,6 +12,10 @@
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
+        <variable
+                name="viewModel2"
+                type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
+
     </data>
 
     <LinearLayout

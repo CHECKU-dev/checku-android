@@ -91,9 +91,7 @@ class SplashActivity : AppCompatActivity() {
             val schedule = scheduleRepository.getScheduleFromServer()
             if (schedule is ApiResponse.Success) {
                 scheduleRepository.insertSchedule(schedule.data)
-                println(scheduleRepository.getSchedule())
             }else {
-                println(schedule)
             }
         }
     }
