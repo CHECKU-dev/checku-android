@@ -51,7 +51,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         super.onHiddenChanged(hidden)
         if(hidden) {
         }else {
-            viewModel.getSubjectData()
+            viewModel.getElectives()
         }
     }
 
