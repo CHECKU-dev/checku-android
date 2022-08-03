@@ -2,6 +2,9 @@ package com.example.nodeproject2.ui.timetable
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -17,7 +20,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 //    private val viewModel by activityViewModels<TimeTableViewModel>()
 
     private lateinit var timeTableAdapter: TimeTableAdapter
-
+    private lateinit var swipeHelperCallback:SwipeHelperCallback
     companion object {
         fun newInstance() = TimetableFragment()
         const val TAG = "TimetableFragment"
@@ -27,8 +30,6 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-        viewModel.getInitData()
 
         initRecyclerView()
         observeRecyclerView()
@@ -67,7 +68,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         timeTableAdapter = TimeTableAdapter(viewModel)
         binding.rvFavorite.adapter = timeTableAdapter
 
-        val swipeHelperCallback = SwipeHelperCallback().apply {
+        swipeHelperCallback = SwipeHelperCallback().apply {
             setClamp(resources.displayMetrics.widthPixels.toFloat() / 3)
         }
         val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
@@ -83,5 +84,13 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
     }
 
-
+    // TODO 데이터 새로 추가 시 열려있음;
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(hidden) {
+            swipeHelperCallback.closeClamp(binding.rvFavorite)
+        }else {
+            viewModel.getInitData()
+        }
+    }
 }

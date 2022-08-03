@@ -127,8 +127,8 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
 
 
     fun removePreviousClamp(recyclerView: RecyclerView) {
-        if (currentPosition == previousPosition)
-            return
+        if (currentPosition == previousPosition)return
+
         previousPosition?.let {
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(it) ?: return
             getView(viewHolder).translationX = 0f
@@ -137,8 +137,15 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
         }
     }
 
-    companion object {
-
+    fun closeClamp(recyclerView: RecyclerView) {
+        previousPosition?.let {
+            val viewHolder = recyclerView.findViewHolderForAdapterPosition(it) ?: return
+            getView(viewHolder).translationX = 0f
+            setTag(viewHolder, false)
+            currentPosition = null
+            previousPosition = null
+        }
     }
+
 
 }

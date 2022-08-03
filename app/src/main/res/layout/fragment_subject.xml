@@ -5,16 +5,14 @@
 
     <data>
 
-        <import type="com.example.nodeproject2.ui.subject.SubjectGrade"/>
+        <import type="com.example.nodeproject2.ui.subject.model.SubjectGrade"/>
 
-        <import type="com.example.nodeproject2.ui.subject.SubjectType"/>
+        <import type="com.example.nodeproject2.ui.subject.model.SubjectType"/>
 
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
-        <variable
-                name="viewModel2"
-                type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
+
 
     </data>
 
