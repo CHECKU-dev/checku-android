@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nodeproject2.data.model.AddSubjectRequest
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
@@ -47,7 +47,7 @@ class ElectiveViewModel @Inject constructor(
 
         viewModelScope.launch {
             val mySubjectsResponse =
-                subjectRepository.getSubjects("교양", "ALL", type.value!!.name, vacancy.value!!)
+                subjectRepository.getSubjects(userId, "교양", "ALL", type.value!!.name, vacancy.value!!)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
@@ -62,9 +62,9 @@ class ElectiveViewModel @Inject constructor(
         _refreshed.value = false
     }
 
-    fun addSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subjectNumber: String) {
         viewModelScope.launch {
-            subjectRepository.addSubject(AddSubjectRequest(userId, subjectNumber))
+            subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
         }
     }
 

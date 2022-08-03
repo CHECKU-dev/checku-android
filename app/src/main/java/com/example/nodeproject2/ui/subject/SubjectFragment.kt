@@ -5,9 +5,7 @@ import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
-import com.skydoves.elasticviews.elasticAnimation
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.notify
 
 @AndroidEntryPoint
 class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
@@ -31,7 +29,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             subjectAdapter.submitList(it.toMutableList()) {
-                if(viewModel.paging.page.value == 1) {
+                if (viewModel.paging.page.value == 1) {
                     binding.rvSubject.scrollToPosition(0)
                 }
             }
@@ -47,6 +45,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
             showLoadingDialog()
         }
 
+
     }
 
     private fun initRecyclerView() {
@@ -55,6 +54,8 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         binding.rvSubject.adapter = subjectAdapter
 
     }
+
+
 
 
 }

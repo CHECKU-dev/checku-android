@@ -1,6 +1,6 @@
 package com.example.nodeproject2.repository
 
-import com.example.nodeproject2.data.model.AddSubjectRequest
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.remote.api.Api
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,15 +9,16 @@ import javax.inject.Singleton
 class SubjectRepository @Inject constructor(private val api: Api) {
 
     suspend fun getSubjects(
+        userId : Long,
         department: String,
         grade: String?,
         type: String?,
         vacancy: Boolean
-    ) = api.getSubjects(department, grade!!, type!!, vacancy)
+    ) = api.getSubjects(userId, department, grade!!, type!!, vacancy)
 
-    suspend fun addSubject(
-        request: AddSubjectRequest
-    ) = api.addSubject(request)
+    suspend fun addOrRemoveSubject(
+        request: AddOrRemoveSubjectRequest
+    ) = api.addOrRemoveSubject(request)
 
     suspend fun getSubjectBySearch(
         searchQuery: String,

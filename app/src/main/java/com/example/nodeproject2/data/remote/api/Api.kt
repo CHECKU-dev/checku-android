@@ -22,6 +22,7 @@ interface Api {
 
     @GET("/api/subjects")
     suspend fun getSubjects(
+        @Query("userId") userId: Long,
         @Query("department") department: String,
         @Query("grade") grade: String,
         @Query("type") type: String,
@@ -34,15 +35,15 @@ interface Api {
     ): ApiResponse<JsonElement>
 
     @POST("/api/my-subjects")
-    suspend fun addSubject(
-        @Body request: AddSubjectRequest
+    suspend fun addOrRemoveSubject(
+        @Body request: AddOrRemoveSubjectRequest
     ): ApiResponse<JsonElement>
 
-    @DELETE("/api/my-subjects")
-    suspend fun removeSubject(
-        @Query("userId") userId: Long,
-        @Query("subjectNumber") subjectNumber: String
-    ): ApiResponse<JsonElement>
+//    @DELETE("/api/my-subjects")
+//    suspend fun removeSubject(
+//        @Query("userId") userId: Long,
+//        @Query("subjectNumber") subjectNumber: String
+//    ): ApiResponse<JsonElement>
 
     @GET("/api/schedule")
     suspend fun getSchedule(): ApiResponse<GetScheduleResponse>

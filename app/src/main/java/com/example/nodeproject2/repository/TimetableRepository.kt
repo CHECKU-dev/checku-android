@@ -1,5 +1,6 @@
 package com.example.nodeproject2.repository
 
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.remote.api.Api
 import javax.inject.Inject
@@ -18,9 +19,8 @@ class TimetableRepository @Inject constructor(private val api: Api) {
 
 
     suspend fun removeSubject(
-        userId: Long,
-        subjectNumber: String
-    ) = api.removeSubject(userId, subjectNumber)
+        request: AddOrRemoveSubjectRequest
+    ) = api.addOrRemoveSubject(request)
 
 
 }

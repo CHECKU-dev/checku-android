@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nodeproject2.data.model.AddSubjectRequest
+import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
@@ -15,10 +15,9 @@ import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.Paging
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
+import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -57,6 +56,9 @@ class SubjectViewModel @Inject constructor(
     private val _vacancy = MutableLiveData<Boolean>(false)
     val vacancy: LiveData<Boolean> = _vacancy
 
+
+
+
     fun changeSubject() {
         _subjectWaitEvent.setValue(true)
         paging.resetPage()
@@ -80,7 +82,7 @@ class SubjectViewModel @Inject constructor(
     fun searchSubject() {
         if (paging.isLastPage) {
             return
-        }else {
+        } else {
             _subjectWaitEvent.setValue(true)
         }
         viewModelScope.launch {
@@ -122,6 +124,7 @@ class SubjectViewModel @Inject constructor(
             //TODO null 체크 확인해보기
             val mySubjectsResponse =
                 subjectRepository.getSubjects(
+                    userId,
                     department.value!!,
                     grade.value!!.name,
                     type.value!!.name,
@@ -140,7 +143,7 @@ class SubjectViewModel @Inject constructor(
     //TODO 리프레쉬 어케할지 고민해야할듯;
     fun refreshData() {
         _refreshed.value = true
-        changeSubject()
+        getSubjectData()
 //        if (searchQuery == "") {
 //            getSubjectData()
 //        }else {
@@ -149,11 +152,22 @@ class SubjectViewModel @Inject constructor(
         _refreshed.value = false
     }
 
-    fun addSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subjectNumber: String) {
         viewModelScope.launch {
-            subjectRepository.addSubject(AddSubjectRequest(userId, subjectNumber))
+            val response = subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
+            response.onSuccess {
+                setChecked(subjectNumber)
+            }.onFailure {
+//                setChecked(!subjectNumber)
+            }
         }
     }
+
+    private fun setChecked(subjectNumber: String) {
+        _subjectList.value?.forEach { if (it!!.subjectNumber == subjectNumber) it.isMySubject = !it.isMySubject }
+        _subjectList.value = _subjectList.value
+    }
+
 
     fun updateDepartment(department: String) {
         _department.value = department

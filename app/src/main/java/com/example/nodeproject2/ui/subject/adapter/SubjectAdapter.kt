@@ -1,6 +1,5 @@
 package com.example.nodeproject2.ui.subject.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -44,8 +43,8 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
             binding.data = data
             binding.viewModel = viewModel
             binding.executePendingBindings()
-
         }
+
 
     }
 
