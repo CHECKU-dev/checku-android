@@ -132,6 +132,7 @@
                             android:paddingEnd="30dp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
