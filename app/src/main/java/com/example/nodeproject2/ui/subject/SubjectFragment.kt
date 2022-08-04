@@ -1,10 +1,14 @@
 package com.example.nodeproject2.ui.subject
 
+import android.graphics.Color
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.google.android.material.snackbar.Snackbar
+import com.skydoves.elasticviews.ElasticCheckButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,6 +65,21 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }else {
             viewModel.getSubjectData()
         }
+    }
+
+
+    fun checkButtons(v: View) {
+        val elasticCheckButton = v as ElasticCheckButton
+        Snackbar.make(
+            v,
+            "[Change checked state] " +
+                    elasticCheckButton.text.toString() +
+                    " : " +
+                    elasticCheckButton.isChecked,
+            200
+        )
+            .setActionTextColor(Color.WHITE)
+            .show()
     }
 
 

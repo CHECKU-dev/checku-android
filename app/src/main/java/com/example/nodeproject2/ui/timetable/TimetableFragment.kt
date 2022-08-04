@@ -88,6 +88,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if(hidden) {
+//            swipeHelperCallback.currentPosition = null
             swipeHelperCallback.closeClamp(binding.rvFavorite)
         }else {
             viewModel.getInitData()
