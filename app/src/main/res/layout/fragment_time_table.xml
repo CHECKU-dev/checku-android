@@ -16,6 +16,8 @@
 
 
         <TextView
+                android:fontFamily="@font/noto_sans_medium"
+                android:includeFontPadding="false"
                 android:id="@+id/tv_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"

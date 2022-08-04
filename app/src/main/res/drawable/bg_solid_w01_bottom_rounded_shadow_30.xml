@@ -8,7 +8,7 @@
                     android:bottomLeftRadius="10dp"
                     android:bottomRightRadius="10dp"/>
             <padding
-                    android:bottom="1dp"
+                    android:bottom="2.5dp"
                     />
 
             <solid android:color="#00CCCCCC"/>
@@ -20,7 +20,7 @@
                     android:bottomLeftRadius="30dp"
                     android:bottomRightRadius="30dp"/>
             <padding
-                    android:bottom="1dp"/>
+                    android:bottom="2.5dp"/>
 
             <solid android:color="#0DCCCCCC"/>
         </shape>
@@ -31,7 +31,7 @@
                     android:bottomLeftRadius="30dp"
                     android:bottomRightRadius="30dp"/>
             <padding
-                    android:bottom="1dp"
+                    android:bottom="2.5dp"
                     />
 
             <solid android:color="#10CCCCCC"/>
@@ -43,7 +43,7 @@
                     android:bottomLeftRadius="30dp"
                     android:bottomRightRadius="30dp"/>
             <padding
-                    android:bottom="1dp"
+                    android:bottom="2.5dp"
                     />
 
             <solid android:color="#12CCCCCC"/>
