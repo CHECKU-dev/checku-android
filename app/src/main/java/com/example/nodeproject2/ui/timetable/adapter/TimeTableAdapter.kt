@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerTimeTableBinding
 import com.example.nodeproject2.ui.timetable.TimeTableViewModel
+import kotlinx.android.synthetic.main.fragment_subject.view.*
+import kotlinx.android.synthetic.main.item_recycler_time_table.view.*
 
 class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     ListAdapter<Subject, TimeTableAdapter.Holder>(diffUtil) {
@@ -27,7 +29,7 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.itemView.translationX = 0f
+        holder.itemView.item_time_table_layout.translationX = 0f
         currentList[position]?.let { holder.setData(it) }
     }
 

@@ -186,7 +186,7 @@
                     <RadioGroup
                             android:checkedButton="@id/subject_grade_all"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:orientation="horizontal">
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
