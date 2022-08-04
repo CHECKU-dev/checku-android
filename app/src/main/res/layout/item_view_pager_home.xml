@@ -16,6 +16,8 @@
             android:background="@drawable/bg_solid_w01_rounded_shadow_20">
 
         <TextView
+                android:fontFamily="@font/noto_sans_bold"
+                android:includeFontPadding="false"
                 android:id="@+id/tv_deadline"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
@@ -30,6 +32,8 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/noto_sans_medium"
+                android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="20dp"
@@ -43,6 +47,8 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -56,6 +62,8 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

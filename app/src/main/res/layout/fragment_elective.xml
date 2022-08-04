@@ -38,6 +38,8 @@
                     android:background="@drawable/bg_solid_w01_rounded_shadow_20">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                        android:fontFamily="@font/noto_sans_regular"
+                        android:includeFontPadding="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="과목명, 번호 검색하기"
@@ -64,6 +66,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                    android:fontFamily="@font/noto_sans_regular"
+                    android:includeFontPadding="false"
                     android:id="@+id/rb_empty_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,6 +151,8 @@
                         android:orientation="horizontal">
 
                     <TextView
+                            android:fontFamily="@font/noto_sans_medium"
+                            android:includeFontPadding="false"
                             android:text="종류"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -160,6 +166,8 @@
                             android:orientation="horizontal">
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateElectiveType(ElectiveType.BASIC_ELECTIVE)}'
                                 android:id="@+id/subject_type_all"
                                 android:layout_marginStart="27dp"
@@ -179,6 +187,8 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateElectiveType(ElectiveType.ADVANCED_ELECTIVE)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -198,6 +208,8 @@
                                 />
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateElectiveType(ElectiveType.GENERAL_ELECTIVE)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
