@@ -1,11 +1,6 @@
 package com.example.nodeproject2.ui.timetable
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nodeproject2.R
@@ -17,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragment_time_table) {
     private val viewModel by viewModels<TimeTableViewModel>()
-//    private val viewModel by activityViewModels<TimeTableViewModel>()
 
     private lateinit var timeTableAdapter: TimeTableAdapter
     private lateinit var swipeHelperCallback:SwipeHelperCallback

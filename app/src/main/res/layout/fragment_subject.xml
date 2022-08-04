@@ -42,6 +42,8 @@
                     android:background="@drawable/bg_solid_w01_rounded_shadow_20">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                        android:fontFamily="@font/noto_sans_regular"
+                        android:includeFontPadding="false"
                         android:id="@+id/et_search"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -72,6 +74,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                    android:fontFamily="@font/noto_sans_regular"
+                    android:includeFontPadding="false"
                     android:id="@+id/rb_empty_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +105,7 @@
                 android:background="@color/white"
                 android:gravity="top"
                 app:umanoDragView="@id/sliding_panel_drag_view"
-                app:umanoPanelHeight="50dp"
+                app:umanoPanelHeight="70dp"
                 app:umanoShadowHeight="0dp"
                 app:umanoOverlay="true">
 
@@ -113,7 +117,7 @@
                         android:id="@+id/swipe_refresh_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="70dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:onRefreshListener="@{() -> viewModel.refreshData()}"
@@ -127,6 +131,7 @@
                             android:paddingStart="30dp"
                             android:paddingEnd="30dp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -171,6 +176,8 @@
                         android:orientation="horizontal">
 
                     <TextView
+                            android:fontFamily="@font/noto_sans_medium"
+                            android:includeFontPadding="false"
                             android:text="학년"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -180,9 +187,11 @@
                     <RadioGroup
                             android:checkedButton="@id/subject_grade_all"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:orientation="horizontal">
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:id="@+id/subject_grade_all"
                                 android:layout_marginStart="27dp"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.ALL)}'
@@ -202,6 +211,8 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FIRST)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -213,6 +224,8 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.SECOND)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -225,6 +238,8 @@
                         />
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.THIRD)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -237,6 +252,8 @@
                         />
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectGrade(SubjectGrade.FOURTH)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -259,6 +276,8 @@
                         android:orientation="horizontal">
 
                     <TextView
+                            android:fontFamily="@font/noto_sans_medium"
+                            android:includeFontPadding="false"
                             android:text="종류"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -272,6 +291,8 @@
                             android:orientation="horizontal">
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ALL)}'
                                 android:id="@+id/subject_type_all"
                                 android:layout_marginStart="27dp"
@@ -291,6 +312,8 @@
                                 android:layout_height="wrap_content"/>
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.ESSENTIAL)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -310,6 +333,8 @@
                         />
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OPTIONAL)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -330,6 +355,8 @@
 
 
                         <RadioButton
+                                android:fontFamily="@font/noto_sans_regular"
+                                android:includeFontPadding="false"
                                 android:onClick='@{() -> viewModel.updateSubjectType(SubjectType.OTHER)}'
                                 android:layout_marginStart="20dp"
                                 android:textAlignment="center"
@@ -351,26 +378,21 @@
 
                 </LinearLayout>
 
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="37dp"/>
+<!--                <TextView-->
+<!--                        android:fontFamily="@font/notosanskrregular"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:layout_marginTop="40dp"-->
+<!--                        android:text="검색 필터"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"/>-->
 
-                <View
+                <ImageView
+                        android:layout_marginTop="30dp"
                         android:layout_gravity="center"
-                        android:background="#DADADA"
-                        android:layout_width="50dp"
-                        android:layout_height="2dp"/>
-
-                <View
-                        android:layout_marginTop="3dp"
-                        android:layout_gravity="center"
-                        android:background="#DADADA"
-                        android:layout_width="50dp"
-                        android:layout_height="2dp"/>
-
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"/>
+                        android:src="@drawable/ic_bar_horizontal_round"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"/>
 
 
             </LinearLayout>

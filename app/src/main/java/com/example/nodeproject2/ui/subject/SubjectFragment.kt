@@ -65,5 +65,4 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
 
 
-
 }
