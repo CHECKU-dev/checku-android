@@ -5,10 +5,13 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.replace
+import androidx.transition.Visibility
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
 import com.example.nodeproject2.ui.home.HomeFragment
+import com.example.nodeproject2.ui.search.SearchFragment
 import com.example.nodeproject2.ui.subject.ElectiveFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
 import com.example.nodeproject2.ui.timetable.TimeTableViewModel
@@ -35,7 +38,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 R.id.menu_main_btm_nav_subject -> {
                     fabOn()
                     showFragment(SubjectFragment(), "SubjectFragment")
-//                    SubjectFragment().binding.viewModel.()
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_timetable -> {
@@ -121,6 +123,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 .add(R.id.fragment_container, fragment, tag)
                 .commitAllowingStateLoss()
         }
+    }
+
+    fun changeToSearch() {
+        binding.mainBtmNav.visibility
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commit();
     }
 
 }

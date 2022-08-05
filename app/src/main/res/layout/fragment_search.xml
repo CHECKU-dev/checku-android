@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.example.nodeproject2.ui.search.SearchViewModel"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="24dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/bg_solid_w01_rounded_shadow_20">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search_button"
+                    android:id="@+id/appCompatImageView"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_search"
+                    android:fontFamily="@font/noto_sans_regular"
+                    android:includeFontPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@={viewModel.searchQuery}"
+                    android:hint="과목명으로 검색하기"
+                    android:textSize="16dp"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:layout_marginLeft="8dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+                android:id="@+id/tv_search_result"
+                android:fontFamily="@font/noto_sans_regular"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="검색어를 입력해주세요."
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search_layout"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search"
+                android:layout_width="match_parent"
+                doScrollBottom="@{() -> viewModel.searchSubject()}"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="@+id/search_layout"
+                app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

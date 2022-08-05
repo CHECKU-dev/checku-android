@@ -27,10 +27,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SubjectViewModel @Inject constructor(
     private val subjectRepository: SubjectRepository,
-    val paging: Paging<Subject>
 ) : ViewModel() {
 
-    var searchQuery = ""
 
     private val userId = CheckuApplication.prefs.getUserId()
 
@@ -61,50 +59,6 @@ class SubjectViewModel @Inject constructor(
 
 
 
-    fun changeSubject() {
-        _subjectWaitEvent.setValue(true)
-        paging.resetPage()
-
-        viewModelScope.launch {
-            val response = subjectRepository.getSubjectBySearch(searchQuery, paging.page.value ?: 0);
-            if (response is ApiResponse.Success) {
-                response.onSuccess {
-                    paging.loadData(
-                        this.data.contents.toMutableList(),
-                        this.data.last, _subjectList,
-                        paging.changeData()
-                    )
-                }
-            } else {
-                _subjectErrorToastEvent.setValue(true)
-            }
-        }
-    }
-
-    fun searchSubject() {
-        if (paging.isLastPage) {
-            return
-        } else {
-            _subjectWaitEvent.setValue(true)
-        }
-        viewModelScope.launch {
-            val response = subjectRepository.getSubjectBySearch(searchQuery, paging.page.value ?: 0);
-            if (response is ApiResponse.Success) {
-                response.onSuccess {
-//                    clearSubject()
-                    paging.loadData(
-                        this.data.contents.toMutableList(),
-                        this.data.last, _subjectList,
-                        paging.addData()
-                    )
-                }
-            } else {
-                _subjectErrorToastEvent.setValue(true)
-            }
-        }
-    }
-
-
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         _department.value = parent!!.selectedItem.toString().replace(" ", "_")
         getSubjectData()
@@ -133,24 +87,16 @@ class SubjectViewModel @Inject constructor(
                     vacancy.value!!
                 )
             if (mySubjectsResponse is ApiResponse.Success) {
-                paging.isLastPage = true
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
                 _subjectErrorToastEvent.setValue(true)
             }
         }
-
     }
 
-    //TODO 리프레쉬 어케할지 고민해야할듯;
     fun refreshData() {
         _refreshed.value = true
         getSubjectData()
-//        if (searchQuery == "") {
-//            getSubjectData()
-//        }else {
-//            changeSubject()
-//        }
         _refreshed.value = false
     }
 
@@ -158,16 +104,18 @@ class SubjectViewModel @Inject constructor(
         viewModelScope.launch {
             val response = subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
             response.onSuccess {
-                setChecked(subjectNumber)
+                setChecked(subjectNumber, true)
             }.onFailure {
-//                setChecked(!subjectNumber)
+                setChecked(subjectNumber, false)
             }
         }
     }
 
-    private fun setChecked(subjectNumber: String) {
-        _subjectList.value?.forEach { if (it!!.subjectNumber == subjectNumber) it.isMySubject = !it.isMySubject }
-        _subjectList.value = _subjectList.value
+    private fun setChecked(subjectNumber: String, success: Boolean) {
+        if (success) {
+            _subjectList.value?.forEach { if (it!!.subjectNumber == subjectNumber) it.isMySubject = !it.isMySubject }
+            _subjectList.value = _subjectList.value
+        }
     }
 
 
