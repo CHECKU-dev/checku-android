@@ -26,15 +26,20 @@
 
     <!-- ActionBar styles -->
     <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@drawable/actionbar_background</item>
-        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>
+        <item name="elevation">0dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="displayOptions">showHome|useLogo</item>
+        <item name="logo">@drawable/ic_actionbar_logo</item>
+        <item name="background">@color/white</item>
+<!--        <item name="background">@drawable/actionbar_background</item>-->
+<!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
     </style>
     <!-- 액션 바 스타일 끝 -->
 
-    <style name="CustomActionBarTextStyle" parent="android:TextAppearance">
-        <item name="android:fontFamily">@font/changwon_dangam_asac</item>
-        <item name="android:textSize">30dp</item>
-        <item name="android:textColor">@color/checkuMain</item>
-    </style>
+<!--    <style name="CustomActionBarTextStyle" parent="android:TextAppearance">-->
+<!--        <item name="android:fontFamily">@font/changwon_dangam_asac</item>-->
+<!--        <item name="android:textSize">30dp</item>-->
+<!--        <item name="android:textColor">@color/checkuMain</item>-->
+<!--    </style>-->
 
 </resources>
