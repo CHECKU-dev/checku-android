@@ -28,7 +28,6 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.itemView.translationX = 0f
         val safePosition = holder.adapterPosition
         currentList[safePosition]?.let { holder.setData(it) }
     }

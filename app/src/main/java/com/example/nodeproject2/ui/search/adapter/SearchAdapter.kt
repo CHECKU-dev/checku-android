@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,15 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
-import com.example.nodeproject2.databinding.ItemRecyclerElectiveBinding
-import com.example.nodeproject2.ui.subject.ElectiveViewModel
+import com.example.nodeproject2.databinding.ItemRecyclerSearchBinding
+import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
+import com.example.nodeproject2.ui.search.SearchViewModel
+import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
 
-class ElectiveAdapter(val viewModel: ElectiveViewModel) :
-    ListAdapter<Subject, ElectiveAdapter.Holder>(diffUtil) {
-
+class SearchAdapter(val viewModel: SearchViewModel) :
+    ListAdapter<Subject, SearchAdapter.Holder>(SearchAdapter.diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemRecyclerElectiveBinding.inflate(
+        val binding = ItemRecyclerSearchBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -24,27 +25,28 @@ class ElectiveAdapter(val viewModel: ElectiveViewModel) :
     }
 
     override fun getItemCount(): Int {
-        return currentList.size
+        return super.getItemCount() - 1
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
-        currentList[position]?.let { holder.setData(it) }
-    }
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
+    override fun onBindViewHolder(holder: SearchAdapter.Holder, position: Int) {
+        val safePosition = holder.adapterPosition
+        currentList[safePosition]?.let { holder.setData(it) }
+    }
 
-    inner class Holder(val binding: ItemRecyclerElectiveBinding) :
+
+    inner class Holder(val binding: ItemRecyclerSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setData(data: Subject) {
-
             binding.data = data
             binding.viewModel = viewModel
             binding.executePendingBindings()
-
         }
+
 
     }
 

@@ -46,4 +46,5 @@ abstract class BaseFragment<B : ViewDataBinding>(
     fun hideLoadingDialog() {
         CheckuApplication.instance.hideLoadingDialog()
     }
+
 }

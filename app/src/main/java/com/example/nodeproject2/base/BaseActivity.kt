@@ -52,4 +52,5 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
 
 
+
 }
