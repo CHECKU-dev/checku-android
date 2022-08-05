@@ -122,7 +122,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="30dp"
                             android:paddingEnd="30dp"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                            app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
