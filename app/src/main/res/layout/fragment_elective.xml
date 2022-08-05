@@ -21,7 +21,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="30dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:layout_marginTop="24dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,7 +122,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="30dp"
                             android:paddingEnd="30dp"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                            app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -134,7 +135,7 @@
                     android:paddingStart="30dp"
                     android:paddingEnd="30dp"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_solid_w01_bottom_rounded_shadow_30">
+                    android:background="@drawable/bg_solid_w01_bottom_rounded_shadow_40">
 
                 <View
                         android:id="@+id/view_divider"

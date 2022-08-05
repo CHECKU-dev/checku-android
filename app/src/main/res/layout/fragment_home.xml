@@ -60,7 +60,7 @@
                 android:layout_marginTop="306dp"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
