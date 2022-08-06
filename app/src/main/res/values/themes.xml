@@ -16,7 +16,7 @@
     </style>
 
     <!-- 액션 바 스타일 시작 -->
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
     </style>
 
     <style name="CustomActionBarTheme" parent="@style/AppTheme">

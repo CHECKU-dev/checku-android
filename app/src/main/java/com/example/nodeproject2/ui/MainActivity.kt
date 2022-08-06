@@ -1,12 +1,7 @@
 package com.example.nodeproject2.ui
 
-import android.animation.ObjectAnimator
 import android.view.View
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.replace
-import androidx.transition.Visibility
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
 import com.example.nodeproject2.databinding.ActivityMainBinding
@@ -14,101 +9,73 @@ import com.example.nodeproject2.ui.home.HomeFragment
 import com.example.nodeproject2.ui.search.SearchFragment
 import com.example.nodeproject2.ui.subject.ElectiveFragment
 import com.example.nodeproject2.ui.subject.SubjectFragment
-import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 import com.example.nodeproject2.ui.timetable.TimetableFragment
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private var isFabOpen = false
-
     override fun init() {
-//        fabOff()
-
         showFragment(HomeFragment(), "HomeFragment")
+        initBottomNavigation()
+        initTab()
+    }
 
+    private fun initBottomNavigation() {
         binding.mainBtmNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_main_btm_nav_home -> {
-//                    fabOff()
                     showFragment(HomeFragment(), "HomeFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_subject -> {
-//                    fabOn()
                     showFragment(SubjectFragment(), "SubjectFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_timetable -> {
-//                    fabOff()
                     showFragment(TimetableFragment(), "TimetableFragment")
                     return@setOnItemSelectedListener true
                 }
             }
             false
         }
-
-//        initFab()
     }
-//
-//    private fun initFab() {
-//        binding.apply {
-//            fabMain.setOnClickListener {
-//                toggleFab()
-//            }
-//            fabMajor.setOnClickListener {
-//                showFragment(SubjectFragment(), "SubjectFragment")
-//                closeFab()
-//            }
-//            fabElective.setOnClickListener {
-//                showFragment(ElectiveFragment(), "ElectiveFragment")
-//                closeFab()
-//            }
-//        }
-//    }
 
-//    private fun toggleFab() {
-//        binding.apply {
-//            if (isFabOpen) {
-//                closeFab()
-//            } else {
-//                openFab()
-//            }
-//        }
-//    }
+    private fun initTab() {
+        binding.apply {
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
 
-//    private fun closeFab() {
-//        binding.apply {
-//            ObjectAnimator.ofFloat(fabMajor, "translationY", 0f).apply { start() }
-//            ObjectAnimator.ofFloat(fabElective, "translationY", 0f).apply { start() }
-//            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 45f, 0f).apply { start() }
-//        }
-//        isFabOpen = !isFabOpen
-//    }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
 
-//    private fun openFab() {
-//        binding.apply {
-//            ObjectAnimator.ofFloat(fabMajor, "translationY", -360f).apply { start() }
-//            ObjectAnimator.ofFloat(fabElective, "translationY", -180f).apply { start() }
-//            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 0f, 45f).apply { start() }
-//        }
-//        isFabOpen = !isFabOpen
-//    }
-//
-//    private fun fabOn() {
-//        binding.fabMain.visibility = View.VISIBLE
-//        binding.fabMajor.visibility = View.VISIBLE
-//        binding.fabElective.visibility = View.VISIBLE
-//    }
-//
-//    private fun fabOff() {
-//        binding.fabMain.visibility = View.GONE
-//        binding.fabMajor.visibility = View.GONE
-//        binding.fabElective.visibility = View.GONE
-//    }
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    when (tab!!.position) {
+                        0 -> showFragment(SubjectFragment(), "SubjectFragment")
+                        1 -> showFragment(ElectiveFragment(), "ElectiveFragment")
+                    }
+                }
+            })
+        }
+    }
 
     private fun showFragment(fragment: Fragment, tag: String) {
+        when (tag) {
+            "HomeFragment" -> {
+                supportActionBar!!.show()
+                binding.tabLayout.visibility = View.GONE
+            }
+            "SubjectFragment" -> {
+                supportActionBar!!.hide()
+                binding.tabLayout.visibility = View.VISIBLE
+            }
+            "TimetableFragment" -> {
+                supportActionBar!!.show()
+                binding.tabLayout.visibility = View.GONE
+            }
+        }
         val findFragment = supportFragmentManager.findFragmentByTag(tag)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -128,14 +95,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     fun changeToSearch() {
         binding.mainBtmNav.visibility = View.GONE
         showFragment(SearchFragment(), "SearchFragment")
-//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commit();
     }
 
     fun changeToSubject() {
         binding.mainBtmNav.visibility = View.VISIBLE
         showFragment(SubjectFragment(), "SubjectFragment")
-//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SubjectFragment()).commit();
     }
-
 
 }

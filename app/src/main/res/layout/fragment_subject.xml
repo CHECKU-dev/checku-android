@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:layout_marginTop="0dp">
+                android:layout_marginTop="15dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/search_layout"
@@ -176,6 +176,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:orientation="horizontal">
+
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
                                 android:includeFontPadding="false"
@@ -222,7 +223,7 @@
                                 android:text="2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -236,7 +237,7 @@
                                 android:text="3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -250,7 +251,7 @@
                                 android:text="4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                     </RadioGroup>
 
@@ -317,7 +318,7 @@
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -338,7 +339,7 @@
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
 
                         <RadioButton
@@ -386,6 +387,5 @@
 
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
     </LinearLayout>
-
 
 </layout>

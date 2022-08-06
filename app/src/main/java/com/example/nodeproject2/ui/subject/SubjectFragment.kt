@@ -1,7 +1,5 @@
 package com.example.nodeproject2.ui.subject
 
-import android.view.View
-import android.view.View.OnClickListener
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
@@ -9,6 +7,7 @@ import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
