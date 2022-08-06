@@ -24,24 +24,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private var isFabOpen = false
 
     override fun init() {
-        fabOff()
+//        fabOff()
 
         showFragment(HomeFragment(), "HomeFragment")
 
         binding.mainBtmNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_main_btm_nav_home -> {
-                    fabOff()
+//                    fabOff()
                     showFragment(HomeFragment(), "HomeFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_subject -> {
-                    fabOn()
+//                    fabOn()
                     showFragment(SubjectFragment(), "SubjectFragment")
                     return@setOnItemSelectedListener true
                 }
                 R.id.menu_main_btm_nav_timetable -> {
-                    fabOff()
+//                    fabOff()
                     showFragment(TimetableFragment(), "TimetableFragment")
                     return@setOnItemSelectedListener true
                 }
@@ -49,64 +49,64 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             false
         }
 
-        initFab()
+//        initFab()
     }
+//
+//    private fun initFab() {
+//        binding.apply {
+//            fabMain.setOnClickListener {
+//                toggleFab()
+//            }
+//            fabMajor.setOnClickListener {
+//                showFragment(SubjectFragment(), "SubjectFragment")
+//                closeFab()
+//            }
+//            fabElective.setOnClickListener {
+//                showFragment(ElectiveFragment(), "ElectiveFragment")
+//                closeFab()
+//            }
+//        }
+//    }
 
-    private fun initFab() {
-        binding.apply {
-            fabMain.setOnClickListener {
-                toggleFab()
-            }
-            fabMajor.setOnClickListener {
-                showFragment(SubjectFragment(), "SubjectFragment")
-                closeFab()
-            }
-            fabElective.setOnClickListener {
-                showFragment(ElectiveFragment(), "ElectiveFragment")
-                closeFab()
-            }
-        }
-    }
+//    private fun toggleFab() {
+//        binding.apply {
+//            if (isFabOpen) {
+//                closeFab()
+//            } else {
+//                openFab()
+//            }
+//        }
+//    }
 
-    private fun toggleFab() {
-        binding.apply {
-            if (isFabOpen) {
-                closeFab()
-            } else {
-                openFab()
-            }
-        }
-    }
+//    private fun closeFab() {
+//        binding.apply {
+//            ObjectAnimator.ofFloat(fabMajor, "translationY", 0f).apply { start() }
+//            ObjectAnimator.ofFloat(fabElective, "translationY", 0f).apply { start() }
+//            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 45f, 0f).apply { start() }
+//        }
+//        isFabOpen = !isFabOpen
+//    }
 
-    private fun closeFab() {
-        binding.apply {
-            ObjectAnimator.ofFloat(fabMajor, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(fabElective, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 45f, 0f).apply { start() }
-        }
-        isFabOpen = !isFabOpen
-    }
-
-    private fun openFab() {
-        binding.apply {
-            ObjectAnimator.ofFloat(fabMajor, "translationY", -360f).apply { start() }
-            ObjectAnimator.ofFloat(fabElective, "translationY", -180f).apply { start() }
-            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 0f, 45f).apply { start() }
-        }
-        isFabOpen = !isFabOpen
-    }
-
-    private fun fabOn() {
-        binding.fabMain.visibility = View.VISIBLE
-        binding.fabMajor.visibility = View.VISIBLE
-        binding.fabElective.visibility = View.VISIBLE
-    }
-
-    private fun fabOff() {
-        binding.fabMain.visibility = View.GONE
-        binding.fabMajor.visibility = View.GONE
-        binding.fabElective.visibility = View.GONE
-    }
+//    private fun openFab() {
+//        binding.apply {
+//            ObjectAnimator.ofFloat(fabMajor, "translationY", -360f).apply { start() }
+//            ObjectAnimator.ofFloat(fabElective, "translationY", -180f).apply { start() }
+//            ObjectAnimator.ofFloat(fabMain, View.ROTATION, 0f, 45f).apply { start() }
+//        }
+//        isFabOpen = !isFabOpen
+//    }
+//
+//    private fun fabOn() {
+//        binding.fabMain.visibility = View.VISIBLE
+//        binding.fabMajor.visibility = View.VISIBLE
+//        binding.fabElective.visibility = View.VISIBLE
+//    }
+//
+//    private fun fabOff() {
+//        binding.fabMain.visibility = View.GONE
+//        binding.fabMajor.visibility = View.GONE
+//        binding.fabElective.visibility = View.GONE
+//    }
 
     private fun showFragment(fragment: Fragment, tag: String) {
         val findFragment = supportFragmentManager.findFragmentByTag(tag)
@@ -126,8 +126,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     fun changeToSearch() {
-        binding.mainBtmNav.visibility
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commit();
+        binding.mainBtmNav.visibility = View.GONE
+        showFragment(SearchFragment(), "SearchFragment")
+//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commit();
     }
+
+    fun changeToSubject() {
+        binding.mainBtmNav.visibility = View.VISIBLE
+        showFragment(SubjectFragment(), "SubjectFragment")
+//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SubjectFragment()).commit();
+    }
+
 
 }

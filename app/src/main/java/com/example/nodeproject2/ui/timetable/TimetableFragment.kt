@@ -14,7 +14,8 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private val viewModel by viewModels<TimeTableViewModel>()
 
     private lateinit var timeTableAdapter: TimeTableAdapter
-    private lateinit var swipeHelperCallback:SwipeHelperCallback
+    private lateinit var swipeHelperCallback: SwipeHelperCallback
+
     companion object {
         fun newInstance() = TimetableFragment()
         const val TAG = "TimetableFragment"
@@ -63,7 +64,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         binding.rvFavorite.adapter = timeTableAdapter
 
         swipeHelperCallback = SwipeHelperCallback().apply {
-            setClamp(resources.displayMetrics.widthPixels.toFloat() / 3)
+            setClamp(resources.displayMetrics.widthPixels.toFloat() / 2.5)
         }
         val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.rvFavorite)
@@ -81,9 +82,9 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     // TODO 데이터 새로 추가 시 열려있음;
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(hidden) {
+        if (hidden) {
             swipeHelperCallback.closeClamp(binding.rvFavorite)
-        }else {
+        } else {
             viewModel.getInitData()
         }
     }

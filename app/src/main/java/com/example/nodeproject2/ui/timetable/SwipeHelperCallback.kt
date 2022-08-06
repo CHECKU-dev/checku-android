@@ -70,7 +70,7 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             val view = getView(viewHolder)
             val isClamped = getTag(viewHolder)
-            val x =  clampViewPositionHorizontal(view, dX, isClamped, isCurrentlyActive)
+            val x = clampViewPositionHorizontal(view, dX, isClamped, isCurrentlyActive)
 
             currentDx = x
             getDefaultUIUtil().onDraw(
@@ -91,9 +91,9 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
         dX: Float,
         isClamped: Boolean,
         isCurrentlyActive: Boolean
-    ) : Float {
+    ): Float {
         // View의 가로 길이의 절반까지만 swipe 되도록
-        val min: Float = -view.width.toFloat()/2
+        val min: Float = -view.width.toFloat() / 2
         // RIGHT 방향으로 swipe 막기
         val max = 0f
 
@@ -112,22 +112,22 @@ class SwipeHelperCallback : ItemTouchHelper.Callback() {
         viewHolder.itemView.tag = isClamped
     }
 
-    private fun getTag(viewHolder: RecyclerView.ViewHolder) : Boolean {
+    private fun getTag(viewHolder: RecyclerView.ViewHolder): Boolean {
         // isClamped를 view의 tag로 관리
         return viewHolder.itemView.tag as? Boolean ?: false
     }
 
-    private fun getView(viewHolder: RecyclerView.ViewHolder) : View {
+    private fun getView(viewHolder: RecyclerView.ViewHolder): View {
         return (viewHolder as TimeTableAdapter.Holder).itemView.item_time_table_layout
     }
 
-    fun setClamp(clamp: Float) {
-        this.clamp = clamp
+    fun setClamp(clamp: Double) {
+        this.clamp = clamp.toFloat()
     }
 
 
     fun removePreviousClamp(recyclerView: RecyclerView) {
-        if (currentPosition == previousPosition)return
+        if (currentPosition == previousPosition) return
 
         previousPosition?.let {
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(it) ?: return

@@ -39,6 +39,9 @@ class SearchFragment  : BaseFragment<FragmentSearchBinding>(R.layout.fragment_se
             }
         }
         upKeyboard()
+        binding.backButton.setOnClickListener {
+            (activity as MainActivity).changeToSubject()
+        }
 
         initRecyclerView()
         observeRecyclerView()
