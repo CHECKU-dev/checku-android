@@ -1,7 +1,9 @@
 package com.example.nodeproject2.ui.subject
 
+import android.content.Context
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
@@ -32,6 +34,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
             (activity as MainActivity).changeToSearch()
         }
     }
+
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {

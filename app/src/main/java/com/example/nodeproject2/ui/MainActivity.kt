@@ -1,8 +1,13 @@
 package com.example.nodeproject2.ui
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.replace
@@ -17,6 +22,7 @@ import com.example.nodeproject2.ui.subject.SubjectFragment
 import com.example.nodeproject2.ui.timetable.TimeTableViewModel
 import com.example.nodeproject2.ui.timetable.TimetableFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -127,15 +133,35 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSearch() {
         binding.mainBtmNav.visibility = View.GONE
-        showFragment(SearchFragment(), "SearchFragment")
-//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commit();
+        val params = ConstraintLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
+        )
+        binding.fragmentContainer.layoutParams = params
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
+//        showFragment(SearchFragment(), "SearchFragment")
     }
 
+
+
     fun changeToSubject() {
+//        softkeyboardHide()
+
         binding.mainBtmNav.visibility = View.VISIBLE
+        val params = ConstraintLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT
+        )
+        val dm = resources.displayMetrics
+        val size = (60 * dm.density).roundToInt()
+        params.bottomMargin = size
+        binding.fragmentContainer.layoutParams = params
         showFragment(SubjectFragment(), "SubjectFragment")
-//        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SubjectFragment()).commit();
     }
+//
+//    fun softkeyboardHide() {
+//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//        imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+//    }
+
 
 
 }
