@@ -9,9 +9,10 @@ import javax.inject.Singleton
 class SearchRepository @Inject constructor(private val api: Api){
 
     suspend fun getSubjectBySearch(
+        userId: Long,
         searchQuery: String,
         page: Int?
-    ) = api.getSubjectBySearch(searchQuery, page)
+    ) = api.getSubjectBySearch(userId, searchQuery, page)
 
     suspend fun addOrRemoveSubject(
         request: AddOrRemoveSubjectRequest

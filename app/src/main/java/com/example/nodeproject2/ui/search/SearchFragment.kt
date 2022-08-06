@@ -14,7 +14,7 @@ import com.example.nodeproject2.ui.subject.SubjectFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment  : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search){
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 
     private lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
@@ -31,7 +31,8 @@ class SearchFragment  : BaseFragment<FragmentSearchBinding>(R.layout.fragment_se
 
         binding.etSearch.setText("")
         binding.etSearch.setOnKeyListener { _, keyCode, event ->
-            if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                downKeyboard()
                 viewModel.changeSubject()
                 return@setOnKeyListener true
             } else {
@@ -40,14 +41,13 @@ class SearchFragment  : BaseFragment<FragmentSearchBinding>(R.layout.fragment_se
         }
         upKeyboard()
         binding.backButton.setOnClickListener {
+            downKeyboard()
             (activity as MainActivity).changeToSubject()
         }
 
         initRecyclerView()
         observeRecyclerView()
     }
-
-
 
     private fun initRecyclerView() {
         searchAdapter = SearchAdapter(viewModel)
@@ -82,6 +82,13 @@ class SearchFragment  : BaseFragment<FragmentSearchBinding>(R.layout.fragment_se
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
             binding.etSearch.requestFocus()
+        }
+    }
+
+    private fun downKeyboard() {
+        activity?.also { activity ->
+            val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
         }
     }
 
