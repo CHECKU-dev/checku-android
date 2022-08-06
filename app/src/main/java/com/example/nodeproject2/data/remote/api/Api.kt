@@ -61,6 +61,7 @@ interface Api {
 
     @GET("/api/subjects/search")
     suspend fun getSubjectBySearch(
+        @Query("userId") userId: Long,
         @Query("searchQuery") searchQuery: String,
         @Query("page") page: Int? = 0
     ): ApiResponse<SubjectListDto>

@@ -19,8 +19,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/item_notification_layout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="70dp"
             android:background="@color/white"
+            android:padding="10dp"
             android:layout_marginBottom="10dp">
 
         <TextView
@@ -33,6 +34,7 @@
                 android:textColor="@color/checkuMain"
                 tools:text="0265"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
 
@@ -57,11 +59,10 @@
                 android:gravity="left"
                 tools:text="믹키"
                 android:textSize="12dp"
+                android:text="@{data.professor}"
                 android:layout_marginStart="57dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subject_name"/>
-
-        <!--                android:text="@{data.professor}"-->
 
 
         <ImageButton
@@ -70,6 +71,7 @@
                 android:layout_height="25dp"
                 android:background="@drawable/ic_notification_cancel_button"
                 android:onClick="@{() -> viewModel.cancelNotification(data.subjectNumber)}"
+                android:layout_marginRight="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -79,10 +81,10 @@
                 android:id="@+id/view_divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="60dp"
                 android:background="@color/gray_g10"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
