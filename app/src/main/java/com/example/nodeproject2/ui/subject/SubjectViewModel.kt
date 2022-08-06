@@ -113,7 +113,14 @@ class SubjectViewModel @Inject constructor(
 
     private fun setChecked(subjectNumber: String, success: Boolean) {
         if (success) {
-            _subjectList.value?.forEach { if (it!!.subjectNumber == subjectNumber) it.isMySubject = !it.isMySubject }
+            _subjectList.value?.forEach {
+                if (it != null) {
+                    if (it!!.subjectNumber == subjectNumber) {
+                        it.isMySubject = !it.isMySubject
+                        return@forEach
+                    }
+                }
+            }
             _subjectList.value = _subjectList.value
         }
     }
