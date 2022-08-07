@@ -1,9 +1,12 @@
 package com.example.nodeproject2.ui.subject
 
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentElectiveBinding
+import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.subject.adapter.ElectiveAdapter
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +26,15 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
 
         initRecyclerView()
         observeRecyclerView()
+
+        binding.searchLayout.setOnClickListener {
+            (activity as MainActivity).changeToSearch()
+        }
+
+        initSlidingPanel()
+
+
+
     }
 
     private fun observeRecyclerView() {
@@ -46,6 +58,25 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         electiveAdapter = ElectiveAdapter(viewModel)
         binding.rvSubject.adapter = electiveAdapter
     }
+
+    private fun initSlidingPanel() {
+        binding.apply {
+            slidingUpPanelLayout.setFadeOnClickListener {
+                slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            }
+
+            rvSubject.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (slidingUpPanelLayout.panelState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                        slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+                    }
+                }
+            })
+
+        }
+    }
+
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)

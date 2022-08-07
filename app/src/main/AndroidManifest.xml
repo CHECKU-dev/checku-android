@@ -8,11 +8,16 @@
     <application
             android:name=".di.CheckuApplication"
             android:allowBackup="true"
+
             android:icon="@mipmap/ic_checku_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_checku_launcher_round"
             android:supportsRtl="true"
             android:usesCleartextTraffic="true">
+        <activity
+                android:name=".ui.syllabus.SyllabusActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                android:exported="true"/>
 
         <service
                 android:name=".data.remote.FirebaseService"
@@ -21,6 +26,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
         <activity
                 android:name=".ui.splash.SplashActivity"
                 android:exported="true"
@@ -32,10 +38,12 @@
             </intent-filter>
         </activity>
         <activity
-                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
-                android:theme="@style/CustomActionBarTheme"
                 android:name=".ui.MainActivity"
-                android:exported="true">
+                android:exported="true"
+                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                android:launchMode="singleTask">
+
         </activity>
     </application>
 

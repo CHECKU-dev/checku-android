@@ -1,12 +1,6 @@
 package com.example.nodeproject2.ui.home
 
-import android.annotation.SuppressLint
-import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentHomeBinding
@@ -22,7 +16,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     @Inject
     lateinit var scheduleRepository: ScheduleRepository
 
-    private lateinit var viewPager: ViewPager2
     private lateinit var homeAdapter: HomeAdapter
 
     private val viewModel by viewModels<HomeViewModel>()
@@ -79,35 +72,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.rvSchedule.adapter = homeAdapter
 
     }
-
-//    private fun initViewPager() {
-//
-//        viewPager = binding.vpHome
-//        viewPager.adapter = homeAdapter
-//
-//        viewPager.offscreenPageLimit = 2
-//        viewPager.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
-//        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-//            @SuppressLint("NotifyDataSetChanged")
-//            override fun onPageSelected(position: Int) {
-//                homeAdapter.setPageSelected(position)
-//                homeAdapter.notifyDataSetChanged()
-//            }
-//
-//        })
-//
-//        var transform = CompositePageTransformer()
-//        transform.addTransformer(MarginPageTransformer(8))
-//
-////        transform.addTransformer { view: View, _: Float ->
-//////            var v = 1 - abs(fl)
-//////            view.scaleY = 0.8f + v * 0.2f
-////        }
-//
-//        viewPager.setPageTransformer(transform)
-//
-//
-//    }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)

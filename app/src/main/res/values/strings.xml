@@ -14,6 +14,8 @@
     <string name="notification">알림</string>
     <string name="delete">삭제</string>
 
+    <string name="default_notification_channel_id">notification</string>
+
     <string-array name="my_header_title">
         <item></item>
         <item>Mon</item>

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ChecKU" parent="Theme.AppCompat.Light">
+    <style name="Theme.ChecKU" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/point_p01</item>
         <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
@@ -31,15 +31,6 @@
         <item name="displayOptions">showHome|useLogo</item>
         <item name="logo">@drawable/ic_actionbar_logo</item>
         <item name="background">@color/white</item>
-<!--        <item name="background">@drawable/actionbar_background</item>-->
-<!--        <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
     </style>
-    <!-- 액션 바 스타일 끝 -->
-
-<!--    <style name="CustomActionBarTextStyle" parent="android:TextAppearance">-->
-<!--        <item name="android:fontFamily">@font/changwon_dangam_asac</item>-->
-<!--        <item name="android:textSize">30dp</item>-->
-<!--        <item name="android:textColor">@color/checkuMain</item>-->
-<!--    </style>-->
 
 </resources>

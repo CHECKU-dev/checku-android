@@ -1,9 +1,11 @@
 package com.example.nodeproject2.ui.search
 
 import android.content.Context
+import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
@@ -23,6 +25,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         fun newInstance() = SearchFragment()
         const val TAG = "SearchFragment"
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // This callback will only be called when MyFragment is at least Started.
+//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+//            downKeyboard()
+//            (activity as MainActivity).changeToSubject()
+//        }
+    }
+
+
 
     override fun doViewCreated() {
 
@@ -42,6 +54,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         upKeyboard()
         binding.backButton.setOnClickListener {
             downKeyboard()
+//            activity!!.onBackPressed()
             (activity as MainActivity).changeToSubject()
         }
 
@@ -77,6 +90,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     }
 
+
     private fun upKeyboard() {
         activity?.also { activity ->
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -91,6 +105,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             imm.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
         }
     }
+
+
 
 
 }
