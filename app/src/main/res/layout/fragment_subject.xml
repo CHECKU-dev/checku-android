@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:layout_marginTop="0dp">
+                android:layout_marginTop="15dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/search_layout"
@@ -41,7 +41,7 @@
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="70dp"
-                    android:background="@drawable/bg_solid_w01_rounded_shadow_20">
+                    android:background="@drawable/bg_gray_color_round_20">
 
                 <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
@@ -88,6 +88,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                android:id="@+id/sliding_up_panel_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -115,8 +116,8 @@
                             android:id="@+id/rv_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
+                            android:paddingStart="25dp"
+                            android:paddingEnd="25dp"
                             app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
 
@@ -176,6 +177,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:orientation="horizontal">
+
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
                                 android:includeFontPadding="false"
@@ -222,7 +224,7 @@
                                 android:text="2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -236,7 +238,7 @@
                                 android:text="3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -250,7 +252,7 @@
                                 android:text="4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                     </RadioGroup>
 
@@ -317,7 +319,7 @@
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
                         <RadioButton
                                 android:fontFamily="@font/noto_sans_regular"
@@ -338,7 +340,7 @@
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                        />
+                                />
 
 
                         <RadioButton
@@ -386,6 +388,5 @@
 
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
     </LinearLayout>
-
 
 </layout>

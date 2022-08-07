@@ -46,7 +46,7 @@ class SearchViewModel @Inject constructor(
         paging.resetPage()
 
         viewModelScope.launch {
-            val response = searchRepository.getSubjectBySearch(searchQuery, paging.page.value ?: 0);
+            val response = searchRepository.getSubjectBySearch(userId, searchQuery, paging.page.value ?: 0);
             if (response is ApiResponse.Success) {
                 response.onSuccess {
                     paging.loadData(
@@ -68,7 +68,7 @@ class SearchViewModel @Inject constructor(
             _subjectWaitEvent.setValue(true)
         }
         viewModelScope.launch {
-            val response = searchRepository.getSubjectBySearch(searchQuery, paging.page.value ?: 0);
+            val response = searchRepository.getSubjectBySearch(userId, searchQuery, paging.page.value ?: 0);
             if (response is ApiResponse.Success) {
                 response.onSuccess {
                     paging.loadData(
@@ -96,7 +96,15 @@ class SearchViewModel @Inject constructor(
 
     private fun setChecked(subjectNumber: String, success: Boolean) {
         if (success) {
-            _subjectList.value?.forEach { if (it!!.subjectNumber == subjectNumber) it.isMySubject = !it.isMySubject }
+            _subjectList.value?.forEach {
+                if (it != null) {
+                    if (it!!.subjectNumber == subjectNumber) {
+                        it.isMySubject = !it.isMySubject
+                        return@forEach
+                    }
+                }
+
+            }
             _subjectList.value = _subjectList.value
         }
     }

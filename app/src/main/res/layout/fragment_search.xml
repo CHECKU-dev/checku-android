@@ -13,46 +13,74 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:background="@color/white">
+
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/search_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginBottom="24dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:background="@drawable/bg_solid_w01_rounded_shadow_20">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/backButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_search_button"
-                    android:id="@+id/appCompatImageView"/>
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_back"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    app:layout_constraintLeft_toLeftOf="@+id/search_layout"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/et_search"
-                    android:fontFamily="@font/noto_sans_regular"
-                    android:includeFontPadding="false"
-                    android:layout_width="match_parent"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/search_edit_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_weight="10"
+                    android:background="@drawable/bg_gray_color_round_20">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_search_button"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search"
+                        android:fontFamily="@font/noto_sans_regular"
+                        android:includeFontPadding="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@={viewModel.searchQuery}"
+                        android:hint="과목명으로 검색하기"
+                        android:textSize="16dp"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:layout_marginLeft="8dp"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@={viewModel.searchQuery}"
-                    android:hint="과목명으로 검색하기"
-                    android:textSize="16dp"
-                    android:imeOptions="actionSearch"
-                    android:maxLines="1"
-                    android:background="@null"
-                    android:inputType="text"
-                    android:layout_marginLeft="8dp"/>
-
+                    android:layout_weight="1.5"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -76,11 +104,12 @@
                 android:id="@+id/rv_search"
                 android:layout_width="match_parent"
                 doScrollBottom="@{() -> viewModel.searchSubject()}"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="100dp"
                 android:background="@color/white"
                 app:layout_constraintTop_toTopOf="@+id/search_layout"
-                app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
+                app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
