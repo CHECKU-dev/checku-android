@@ -116,8 +116,8 @@
                             android:id="@+id/rv_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingStart="30dp"
-                            android:paddingEnd="30dp"
+                            android:paddingStart="25dp"
+                            android:paddingEnd="25dp"
                             app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
 
