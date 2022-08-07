@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.subject.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.subject.SubjectViewModel
+import com.example.nodeproject2.ui.syllabus.SyllabusActivity
+import kotlinx.android.synthetic.main.item_recycler_notification.view.*
 
 class SubjectAdapter(val viewModel: SubjectViewModel) :
     ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {
@@ -39,10 +42,19 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
 
     inner class Holder(val binding: ItemRecyclerSubjectBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private val context = binding.root.context
+
         fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
             binding.executePendingBindings()
+
+            itemView.setOnClickListener {
+                val intent = Intent(context, SyllabusActivity::class.java)
+                intent.putExtra("subjectNumber", data.subjectNumber.toString())
+                intent.run { context.startActivity(this) }
+            }
         }
 
 

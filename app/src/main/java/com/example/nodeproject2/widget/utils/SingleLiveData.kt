@@ -1,6 +1,5 @@
 package com.example.nodeproject2.widget.utils
 
-
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 
