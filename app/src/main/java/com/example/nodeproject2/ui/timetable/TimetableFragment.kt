@@ -75,11 +75,9 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
                 false
             }
         }
-//        timeTableAdapter.setHasStableIds(true)
 
     }
 
-    // TODO 데이터 새로 추가 시 열려있음;
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (hidden) {

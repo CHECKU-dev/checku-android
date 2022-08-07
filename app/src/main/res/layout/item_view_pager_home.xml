@@ -10,10 +10,11 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/schedule_item_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/bg_solid_w01_rounded_shadow_20">
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:padding="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_gray_color_round_20">
 
         <TextView
                 android:fontFamily="@font/noto_sans_bold"
@@ -21,8 +22,6 @@
                 android:id="@+id/tv_deadline"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
                 android:textSize="24dp"
                 tools:text="D-21"
                 android:textColor="@color/checkuMain"
@@ -36,8 +35,7 @@
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="45dp"
                 android:text="@{data.title}"
                 android:textSize="14dp"
                 tools:text="장애학우 수강신청"
@@ -51,8 +49,7 @@
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="83dp"
+                android:layout_marginTop="73dp"
                 android:text="@{data.date}"
                 android:textSize="12dp"
                 tools:text="8/12 금"
@@ -66,8 +63,7 @@
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="103dp"
+                android:layout_marginTop="93dp"
                 android:autoSizeTextType="uniform"
                 android:text="@{data.time}"
                 tools:text="9:30 ~ 17:00"

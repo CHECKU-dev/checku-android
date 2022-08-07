@@ -42,9 +42,9 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
             binding.tvDeadline.text = Utils.getDeadline(data.deadline.toLocalDate())
             binding.data = data
             if (selectedPosition == adapterPosition) {
-                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_solid_main_color_rounded_shadow_20)
+                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_gray_color_round_20)
             }else {
-                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_solid_w01_rounded_shadow_20)
+                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_gray_color_round_20)
             }
         }
     }
