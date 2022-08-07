@@ -88,6 +88,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                android:id="@+id/sliding_up_panel_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -115,8 +116,8 @@
                             android:id="@+id/rv_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
+                            android:paddingStart="30dp"
+                            android:paddingEnd="30dp"
                             app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
 
