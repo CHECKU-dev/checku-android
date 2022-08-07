@@ -34,7 +34,6 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
     inner class Holder(val binding: ItemViewPagerHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-//        @RequiresApi(Build.VERSION_CODES.O)
         fun setData(data: Schedule) {
             binding.tvDeadline.text = Utils.getDeadline(data.deadline.toLocalDate())
             binding.data = data

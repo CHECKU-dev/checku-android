@@ -25,51 +25,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-    <LinearLayout
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="horizontal"
-            android:id="@+id/item_subject_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
         <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                android:id="@+id/item_subject_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/ripple_custom">
 
-            <TextView
-                    android:fontFamily="@font/noto_sans_bold"
-                    android:includeFontPadding="false"
-                    android:id="@+id/emptySeat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:textSize="20dp"
-                    android:text="@{data.emptySeat}"
-                    android:textColor="@color/checkuMain"
-                    tools:text="255"
-                    android:layout_gravity="center"
-                    />
+            <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <TextView
-                    android:fontFamily="@font/noto_sans_regular"
-                    android:includeFontPadding="false"
-                    android:id="@+id/number_of_people"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="14dp"
-                    android:text="@{data.numberOfPeople}"
-                    tools:text="0/255"
+                <TextView
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:includeFontPadding="false"
+                        android:id="@+id/emptySeat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:textSize="20dp"
+                        android:text="@{data.emptySeat}"
+                        android:textColor="@color/checkuMain"
+                        tools:text="255"
+                        android:layout_gravity="center"
+                />
 
-                    />
+                <TextView
+                        android:fontFamily="@font/noto_sans_regular"
+                        android:includeFontPadding="false"
+                        android:id="@+id/number_of_people"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        android:text="@{data.numberOfPeople}"
+                        tools:text="0/255"
 
-        </LinearLayout>
+                />
+
+            </LinearLayout>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,7 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    >
+            >
 
                 <TextView
                         android:fontFamily="@font/noto_sans_bold"
@@ -150,7 +152,7 @@
                         android:background="@drawable/selector_zzim"
                         android:button="@null"
                         android:onClick="@{() -> viewModel.addOrRemoveSubject(data.subjectNumber)}"
-                        />
+                />
 
             </LinearLayout>
 
@@ -168,7 +170,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/gray_g10"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </layout>

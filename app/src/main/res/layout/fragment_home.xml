@@ -79,7 +79,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
-                    app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"
+                    android:foregroundGravity="center"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
