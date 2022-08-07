@@ -1,16 +1,15 @@
 package com.example.nodeproject2.ui.subject
 
-import android.content.Context
-import android.view.View
-import android.view.View.OnClickListener
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
@@ -33,8 +32,9 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         binding.searchLayout.setOnClickListener {
             (activity as MainActivity).changeToSearch()
         }
-    }
 
+        initSlidingPanel()
+    }
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
@@ -69,5 +69,22 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }
     }
 
+    private fun initSlidingPanel() {
+        binding.apply {
+            slidingUpPanelLayout.setFadeOnClickListener {
+                slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            }
+
+            rvSubject.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (slidingUpPanelLayout.panelState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                        slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+                    }
+                }
+            })
+
+        }
+    }
 
 }
