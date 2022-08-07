@@ -96,8 +96,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:23.0.6'
 
     implementation "com.github.skydoves:sandwich:1.2.5"
-    implementation "com.github.skydoves:elasticviews:2.1.0"
-    implementation "com.github.skydoves:balloon:1.4.2"
 
     // Room
     def room_version = "2.2.6"
@@ -109,6 +107,10 @@ dependencies {
 
     //loading
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    implementation "androidx.work:work-runtime-ktx:2.7.0"
+
+//    implementation "com.google.android.gms:play-services-ads:20.5.0"
 
 
 

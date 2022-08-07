@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui
 
+import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.nodeproject2.R
@@ -107,6 +108,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     fun changeToElective() {
         binding.mainBtmNav.visibility = View.VISIBLE
         showFragment(ElectiveFragment(), "ElectiveFragment")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val startId = intent?.getIntExtra("startId", R.id.fragment_home_layout) ?: R.id.fragment_home_layout
+
+        println("====================================")
+        showFragment(HomeFragment(), "HomeFragment")
+
     }
 
 }

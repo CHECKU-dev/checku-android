@@ -42,7 +42,7 @@
                 android:exported="true"
                 android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:launchMode="singleInstance">
+                android:launchMode="singleTask">
 
         </activity>
     </application>

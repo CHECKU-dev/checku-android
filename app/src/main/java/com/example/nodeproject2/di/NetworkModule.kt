@@ -39,21 +39,6 @@ object NetworkModule {
             .build()
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideRetrofitInstance(
-//        gsonConverterFactory: GsonConverterFactory
-//    ): Retrofit {
-//        return Retrofit.Builder()
-//            .baseUrl(BASE_URL)
-//            //json 변화기 Factory
-//            .client(provideHttpClient())
-////            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .addConverterFactory(gsonConverterFactory)
-//            .build()
-//
-//    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     @Provides
     @Singleton
