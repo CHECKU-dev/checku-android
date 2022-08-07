@@ -38,18 +38,13 @@
             </intent-filter>
         </activity>
         <activity
-<<<<<<< HEAD
-                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:launchMode="singleInstance"
-=======
->>>>>>> e000dcbd551f0480917fb58115cff1fa357eab8d
                 android:name=".ui.MainActivity"
                 android:exported="true"
-                android:theme="@style/CustomActionBarTheme"
-                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                android:launchMode="singleInstance">
+
         </activity>
     </application>
-    <!--        android:theme="@style/CustomActionBarTheme"-->
 
 </manifest>
