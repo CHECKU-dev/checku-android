@@ -64,15 +64,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun showFragment(fragment: Fragment, tag: String) {
         when (tag) {
             "HomeFragment" -> {
-                supportActionBar!!.show()
+//                supportActionBar!!.show()
                 binding.tabLayout.visibility = View.GONE
             }
             "SubjectFragment" -> {
-                supportActionBar!!.hide()
+//                supportActionBar!!.hide()
                 binding.tabLayout.visibility = View.VISIBLE
             }
             "TimetableFragment" -> {
-                supportActionBar!!.show()
+//                supportActionBar!!.show()
                 binding.tabLayout.visibility = View.GONE
             }
         }
@@ -94,12 +94,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSearch() {
         binding.mainBtmNav.visibility = View.GONE
-        showFragment(SearchFragment(), "SearchFragment")
+//        supportFragmentManager.beginTransaction().addToBackStack("SubjectFragment")
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
+//        showFragment(SearchFragment(), "SearchFragment")
     }
 
     fun changeToSubject() {
         binding.mainBtmNav.visibility = View.VISIBLE
         showFragment(SubjectFragment(), "SubjectFragment")
+    }
+
+    fun changeToElective() {
+        binding.mainBtmNav.visibility = View.VISIBLE
+        showFragment(ElectiveFragment(), "ElectiveFragment")
     }
 
 }

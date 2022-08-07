@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment
 import com.example.nodeproject2.di.CheckuApplication
 
 // Fragment의 기본을 작성, 뷰 바인딩 활용
-abstract class BaseFragment<B : ViewDataBinding>(
+abstract class BaseFragment<B : ViewDataBinding>
+    (
     @LayoutRes val layoutId: Int
 ) : Fragment() {
     lateinit var binding: B

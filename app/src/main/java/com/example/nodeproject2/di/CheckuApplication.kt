@@ -12,7 +12,7 @@ import com.example.nodeproject2.widget.utils.PrefsManager
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class CheckuApplication :Application(){
+class CheckuApplication : Application() {
     companion object {
         lateinit var prefs: PrefsManager
 
@@ -39,21 +39,21 @@ class CheckuApplication :Application(){
     }
 
     fun showLoadingDialog(activity: Activity) {
-        if(activity.isFinishing || loadingDialog?.isShowing == true)    return
+        if (activity.isFinishing || loadingDialog?.isShowing == true) return
         loadingDialog = Dialog(activity)
-        loadingDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        loadingDialog?.window!!.setDimAmount(0f)
-        loadingDialog?.setContentView(R.layout.dialog_loading)
+        loadingDialog?.setContentView(R.layout.dialog_progress)
+        loadingDialog?.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        loadingDialog?.setCancelable(false)
         loadingDialog?.setCanceledOnTouchOutside(false)
         loadingDialog?.setOnCancelListener { activity.onBackPressed() }
         loadingDialog?.show()
+
     }
 
     fun hideLoadingDialog() {
-        if(loadingDialog?.isShowing == true)
+        if (loadingDialog?.isShowing == true)
             loadingDialog?.dismiss()
     }
-
 
 
 }

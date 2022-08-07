@@ -1,9 +1,5 @@
 package com.example.nodeproject2.base
 
-import android.app.Activity
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,9 +17,6 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
 
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutResId)
-//        super.onCreate(savedInstanceState)
-//        binding = inflate(layoutInflater)
-//        setContentView(binding.root)
         init()
     }
 
@@ -39,10 +32,13 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
 
 
     override fun onBackPressed() {
+
         if (System.currentTimeMillis() - waitTime >= 1500) {
             waitTime = System.currentTimeMillis()
             Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
         } else finish()
+
+
     }
 
     protected fun shortShowToast(msg: String) =
@@ -50,7 +46,6 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
 
     protected fun longShowToast(msg: String) =
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-
 
 
 }

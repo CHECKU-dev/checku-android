@@ -34,11 +34,13 @@ class SplashActivity : AppCompatActivity() {
         private const val SPLASH_DELAY_TIME = 2000L
     }
 
+
     //TODO 서버 통신 실패 알림 추가
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 //        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
 //        binding.splashImg.startAnimation(splashAnimation)
@@ -51,7 +53,6 @@ class SplashActivity : AppCompatActivity() {
         var fcmToken: String? = null
 
         val userId = CheckuApplication.prefs.getUserId() ?: ""
-
 
         if (userId == 0L) {
             getSchedule()
