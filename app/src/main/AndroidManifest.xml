@@ -13,6 +13,10 @@
             android:roundIcon="@mipmap/ic_checku_launcher_round"
             android:supportsRtl="true"
             android:usesCleartextTraffic="true">
+        <activity
+                android:name=".ui.syllabus.SyllabusActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                android:exported="true"/>
 
         <service
                 android:name=".data.remote.FirebaseService"
@@ -21,6 +25,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
         <activity
                 android:name=".ui.splash.SplashActivity"
                 android:exported="true"
@@ -32,10 +37,10 @@
             </intent-filter>
         </activity>
         <activity
-                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
-                android:theme="@style/CustomActionBarTheme"
                 android:name=".ui.MainActivity"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/CustomActionBarTheme"
+                android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
         </activity>
     </application>
 
