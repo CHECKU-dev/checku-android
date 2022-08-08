@@ -6,6 +6,7 @@ import com.example.nodeproject2.databinding.FragmentListBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
 
@@ -31,6 +32,8 @@ class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = tabTitleArray[position]
             }.attach()
+
+            viewPager.isUserInputEnabled = false
         }
     }
 

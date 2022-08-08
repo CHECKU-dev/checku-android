@@ -53,6 +53,10 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
             showLoadingDialog()
         }
 
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            electiveAdapter.notifyItemChanged(it.first, it.second)
+        }
+
     }
 
     private fun initRecyclerView() {
