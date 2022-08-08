@@ -45,7 +45,7 @@ class FirebaseService : FirebaseMessagingService() {
             NotificationCompat.Builder(this, "channel")
 
         builder
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.mipmap.ic_checku_launcher)
             .setContentTitle(title)
             .setContentText(body)
             .setDefaults(NotificationCompat.DEFAULT_ALL)

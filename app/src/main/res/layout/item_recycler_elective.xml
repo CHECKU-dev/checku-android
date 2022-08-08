@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <import type="android.view.View"/>
 
@@ -65,9 +66,7 @@
                         android:layout_gravity="center"
                         android:textSize="14dp"
                         android:text="@{data.numberOfPeople}"
-                        tools:text="0/255"
-
-                        />
+                        tools:text="0/255"/>
 
             </LinearLayout>
 

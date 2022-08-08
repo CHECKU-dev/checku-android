@@ -46,12 +46,12 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
         fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
-
-            itemView.setOnClickListener {
+            binding.itemTimeTableLayout.setOnClickListener {
                 val intent = Intent(context, SyllabusActivity::class.java)
                 intent.putExtra("subjectNumber", data.subjectNumber)
                 intent.run { context.startActivity(this) }
             }
+
         }
 
     }
