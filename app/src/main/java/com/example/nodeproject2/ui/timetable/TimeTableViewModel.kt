@@ -70,7 +70,6 @@ class TimeTableViewModel @Inject constructor(
     }
 
 
-
     fun removeSubject(subjectNumber: String) {
         viewModelScope.launch {
             val response = timetableRepository.removeSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
@@ -85,10 +84,10 @@ class TimeTableViewModel @Inject constructor(
     }
 
 
-    fun applyNotification(subjectNumber: String, subjectName: String) {
+    fun applyNotification(subject: Subject) {
         viewModelScope.launch {
 
-            val request = NotificationRequest(userId, subjectNumber, subjectName)
+            val request = NotificationRequest(userId, subject.subjectNumber, subject.subjectName, subject.professor)
             val response = timetableRepository.applyNotification(request)
             if (response is ApiResponse.Success) {
                 _notificationApplySuccessEvent.setValue(true)
@@ -98,8 +97,6 @@ class TimeTableViewModel @Inject constructor(
         }
 
     }
-
-
 
 
 }
