@@ -17,7 +17,7 @@
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
+                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
     </data>
 

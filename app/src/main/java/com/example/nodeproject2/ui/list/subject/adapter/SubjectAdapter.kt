@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.list.subject.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
-import com.example.nodeproject2.ui.subject.SubjectViewModel
+import com.example.nodeproject2.ui.list.subject.SubjectViewModel
 import com.example.nodeproject2.ui.syllabus.SyllabusActivity
-import kotlinx.android.synthetic.main.item_recycler_notification.view.*
 
 class SubjectAdapter(val viewModel: SubjectViewModel) :
     ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {

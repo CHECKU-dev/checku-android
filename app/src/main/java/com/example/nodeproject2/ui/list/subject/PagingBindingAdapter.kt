@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.subject
 
 import android.util.Log
 import androidx.databinding.BindingAdapter

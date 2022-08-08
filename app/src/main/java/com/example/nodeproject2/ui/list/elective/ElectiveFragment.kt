@@ -1,25 +1,23 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.elective
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
-import com.example.nodeproject2.databinding.FragmentSubjectBinding
+import com.example.nodeproject2.databinding.FragmentElectiveBinding
 import com.example.nodeproject2.ui.MainActivity
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.ui.list.elective.adapter.ElectiveAdapter
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
+class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodeproject2.R.layout.fragment_elective) {
 
-    private val viewModel by viewModels<SubjectViewModel>()
-    private lateinit var subjectAdapter: SubjectAdapter
+    private val viewModel by viewModels<ElectiveViewModel>()
+    private lateinit var electiveAdapter: ElectiveAdapter
 
     companion object {
-        fun newInstance() = SubjectFragment()
-        const val TAG = "SubjectFragment"
+        fun newInstance() = ElectiveFragment()
+        const val TAG = "ElectiveFragment"
     }
 
     override fun doViewCreated() {
@@ -34,11 +32,14 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }
 
         initSlidingPanel()
+
+
+
     }
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
-            subjectAdapter.submitList(it.toMutableList())
+            electiveAdapter.submitList(it)
             hideLoadingDialog()
         }
 
@@ -51,22 +52,11 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
             showLoadingDialog()
         }
 
-
     }
 
     private fun initRecyclerView() {
-
-        subjectAdapter = SubjectAdapter(viewModel)
-        binding.rvSubject.adapter = subjectAdapter
-
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (hidden) {
-        } else {
-            viewModel.getSubjectData()
-        }
+        electiveAdapter = ElectiveAdapter(viewModel)
+        binding.rvSubject.adapter = electiveAdapter
     }
 
     private fun initSlidingPanel() {
@@ -84,6 +74,15 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
                 }
             })
 
+        }
+    }
+
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(hidden) {
+        }else {
+            viewModel.getElectives()
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.model
+package com.example.nodeproject2.ui.list.subject.model
 
 enum class SubjectType {
     ALL,

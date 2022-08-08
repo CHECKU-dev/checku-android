@@ -9,7 +9,7 @@ import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSearchBinding
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.search.SearchViewModel
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.ui.list.subject.adapter.SubjectAdapter
 
 class SearchAdapter(val viewModel: SearchViewModel) :
     ListAdapter<Subject, SearchAdapter.Holder>(SearchAdapter.diffUtil) {
