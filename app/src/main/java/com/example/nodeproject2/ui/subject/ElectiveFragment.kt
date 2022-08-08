@@ -28,7 +28,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         observeRecyclerView()
 
         binding.searchLayout.setOnClickListener {
-            (activity as MainActivity).changeToSearch()
+            (activity as MainActivity).changeToSearch(TAG)
         }
 
         initSlidingPanel()

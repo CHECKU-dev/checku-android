@@ -24,7 +24,7 @@
             android:padding="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
-            android:background="@drawable/ripple_effect_gray"
+            android:background="@drawable/ripple_effect_gray05_fill_white"
             android:onClick="@{() -> viewModel.cancelNotification(data.subjectNumber)}">
 
         <TextView

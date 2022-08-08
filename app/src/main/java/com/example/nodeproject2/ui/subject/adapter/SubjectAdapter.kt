@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.subject.SubjectViewModel
@@ -31,8 +32,17 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+        println(position)
         val safePosition = holder.adapterPosition
-        currentList[safePosition]?.let { holder.setData(it) }
+
+        currentList[safePosition]?.let {
+            holder.setData(it)
+
+//            if (it.isMySubject) {
+//            }
+
+        }
     }
 
     override fun getItemId(position: Int): Long {
@@ -46,8 +56,17 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
         private val context = binding.root.context
 
         fun setData(data: Subject) {
+            println(data)
             binding.data = data
             binding.viewModel = viewModel
+            binding.position = adapterPosition
+
+//            if (data.isMySubject) {
+//                binding.cbCheckButton.setBackgroundResource(R.drawable.ic_zzim_active)
+//            }else {
+//                binding.cbCheckButton.setBackgroundResource(R.drawable.ic_zzim_inactive)
+//            }
+
             binding.executePendingBindings()
 
             itemView.setOnClickListener {
@@ -55,6 +74,8 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
                 intent.putExtra("subjectNumber", data.subjectNumber.toString())
                 intent.run { context.startActivity(this) }
             }
+
+
         }
 
 

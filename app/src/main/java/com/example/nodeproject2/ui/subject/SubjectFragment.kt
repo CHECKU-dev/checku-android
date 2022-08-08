@@ -30,7 +30,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         observeRecyclerView()
 
         binding.searchLayout.setOnClickListener {
-            (activity as MainActivity).changeToSearch()
+            (activity as MainActivity).changeToSearch(TAG)
         }
 
         initSlidingPanel()
@@ -49,6 +49,12 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         viewModel.subjectWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
+        }
+
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            println("checkecheck")
+
+            subjectAdapter.notifyItemChanged(it.first, it.second)
         }
 
 

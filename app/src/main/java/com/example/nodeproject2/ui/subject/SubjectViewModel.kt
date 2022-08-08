@@ -56,7 +56,8 @@ class SubjectViewModel @Inject constructor(
     private val _vacancy = MutableLiveData<Boolean>(false)
     val vacancy: LiveData<Boolean> = _vacancy
 
-
+    private val _updateRecyclerViewItemEvent = MutableSingleLiveData<Pair<Int, Subject>>()
+    val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
 
 
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -100,29 +101,23 @@ class SubjectViewModel @Inject constructor(
         _refreshed.value = false
     }
 
-    fun addOrRemoveSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subject: Subject, position: Int) {
+
+
         viewModelScope.launch {
-            val response = subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
+            val response =
+                subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subject.subjectNumber))
             response.onSuccess {
-                setChecked(subjectNumber, true)
+                setChecked(subject, position)
             }.onFailure {
-                setChecked(subjectNumber, false)
+
             }
         }
     }
 
-    private fun setChecked(subjectNumber: String, success: Boolean) {
-        if (success) {
-            _subjectList.value?.forEach {
-                if (it != null) {
-                    if (it!!.subjectNumber == subjectNumber) {
-                        it.isMySubject = !it.isMySubject
-                        return@forEach
-                    }
-                }
-            }
-            _subjectList.value = _subjectList.value
-        }
+    private fun setChecked(subject: Subject, position: Int) {
+            subject.isMySubject = !subject.isMySubject
+            _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
     }
 
 
@@ -145,7 +140,6 @@ class SubjectViewModel @Inject constructor(
         _vacancy.value = check
         getSubjectData()
     }
-
 
 
 }

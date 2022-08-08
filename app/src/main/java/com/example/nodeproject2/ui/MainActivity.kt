@@ -17,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
+    private var curFragment = "SearchFragment";
+
     override fun init() {
         showFragment(HomeFragment(), "HomeFragment")
         initBottomNavigation()
@@ -93,8 +95,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
-    fun changeToSearch() {
+    fun changeToSearch(fragment: String) {
         binding.mainBtmNav.visibility = View.GONE
+        curFragment = fragment
 //        supportFragmentManager.beginTransaction().addToBackStack("SubjectFragment")
         supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
 //        showFragment(SearchFragment(), "SearchFragment")
@@ -102,21 +105,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSubject() {
         binding.mainBtmNav.visibility = View.VISIBLE
-        showFragment(SubjectFragment(), "SubjectFragment")
-    }
 
-    fun changeToElective() {
-        binding.mainBtmNav.visibility = View.VISIBLE
-        showFragment(ElectiveFragment(), "ElectiveFragment")
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        val startId = intent?.getIntExtra("startId", R.id.fragment_home_layout) ?: R.id.fragment_home_layout
-
-        println("====================================")
-        showFragment(HomeFragment(), "HomeFragment")
+        if (curFragment == "SubjectFragment") {
+            showFragment(SubjectFragment(), "SubjectFragment")
+        }else {
+            showFragment(ElectiveFragment(), "ElectiveFragment")
+        }
 
     }
+
+//    fun changeToElective() {
+//        binding.mainBtmNav.visibility = View.VISIBLE
+//        showFragment(ElectiveFragment(), "ElectiveFragment")
+//    }
+//
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        val startId = intent?.getIntExtra("startId", R.id.fragment_home_layout) ?: R.id.fragment_home_layout
+//
+//        println("====================================")
+//        showFragment(HomeFragment(), "HomeFragment")
+//
+//    }
 
 }
