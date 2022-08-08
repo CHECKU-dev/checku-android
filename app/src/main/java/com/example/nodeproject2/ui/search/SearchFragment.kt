@@ -74,6 +74,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             showLoadingDialog()
         }
 
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            searchAdapter.notifyItemChanged(it.first, it.second)
+        }
+
     }
 
 

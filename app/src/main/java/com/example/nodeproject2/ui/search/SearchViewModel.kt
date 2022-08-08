@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
-import com.example.nodeproject2.data.model.Notification
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
-import com.example.nodeproject2.repository.NotificationRepository
 import com.example.nodeproject2.repository.SearchRepository
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.Paging
@@ -40,6 +38,8 @@ class SearchViewModel @Inject constructor(
     private val _subjectWaitEvent = MutableSingleLiveData<Boolean>()
     val subjectWaitEvent: SingleLiveData<Boolean> = _subjectWaitEvent
 
+    private val _updateRecyclerViewItemEvent = MutableSingleLiveData<Pair<Int, Subject>>()
+    val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
 
     fun changeSubject() {
         _subjectWaitEvent.setValue(true)
@@ -83,30 +83,21 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun addOrRemoveSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subject: Subject, position: Int) {
         viewModelScope.launch {
-            val response = searchRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
+            val response =
+                searchRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subject.subjectNumber))
             response.onSuccess {
-                setChecked(subjectNumber, true)
+                setChecked(subject, position)
             }.onFailure {
-                setChecked(subjectNumber, false)
+
             }
         }
     }
 
-    private fun setChecked(subjectNumber: String, success: Boolean) {
-        if (success) {
-            _subjectList.value?.forEach {
-                if (it != null) {
-                    if (it!!.subjectNumber == subjectNumber) {
-                        it.isMySubject = !it.isMySubject
-                        return@forEach
-                    }
-                }
-
-            }
-            _subjectList.value = _subjectList.value
-        }
+    private fun setChecked(subject: Subject, position: Int) {
+        subject.isMySubject = !subject.isMySubject
+        _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
     }
 
 

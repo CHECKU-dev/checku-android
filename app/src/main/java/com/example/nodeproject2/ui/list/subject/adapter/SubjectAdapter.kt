@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
+import com.example.nodeproject2.ui.MainActivity
+import com.example.nodeproject2.ui.list.list.ListFragment
 import com.example.nodeproject2.ui.list.subject.SubjectViewModel
 import com.example.nodeproject2.ui.syllabus.SyllabusActivity
+import com.example.nodeproject2.widget.utils.OnSwipeTouchListener
 
 class SubjectAdapter(val viewModel: SubjectViewModel) :
     ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {
@@ -37,10 +39,6 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
 
         currentList[safePosition]?.let {
             holder.setData(it)
-
-//            if (it.isMySubject) {
-//            }
-
         }
     }
 
@@ -55,25 +53,16 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
         private val context = binding.root.context
 
         fun setData(data: Subject) {
-            println(data)
             binding.data = data
             binding.viewModel = viewModel
             binding.position = adapterPosition
-
-//            if (data.isMySubject) {
-//                binding.cbCheckButton.setBackgroundResource(R.drawable.ic_zzim_active)
-//            }else {
-//                binding.cbCheckButton.setBackgroundResource(R.drawable.ic_zzim_inactive)
-//            }
-
             binding.executePendingBindings()
 
             itemView.setOnClickListener {
                 val intent = Intent(context, SyllabusActivity::class.java)
-                intent.putExtra("subjectNumber", data.subjectNumber.toString())
+                intent.putExtra("subjectNumber", data.subjectNumber)
                 intent.run { context.startActivity(this) }
             }
-
 
         }
 

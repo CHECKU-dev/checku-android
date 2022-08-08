@@ -12,14 +12,15 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
             android:background="@color/white">
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:id="@+id/search_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,6 +86,8 @@
 
 
         <TextView
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:id="@+id/tv_search_result"
                 android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
@@ -92,13 +95,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:gravity="left"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
                 android:text="검색어를 입력해주세요."
                 android:textSize="12dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search_layout"/>
-
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_search"

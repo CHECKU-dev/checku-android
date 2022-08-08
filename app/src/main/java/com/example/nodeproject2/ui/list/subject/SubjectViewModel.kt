@@ -14,7 +14,6 @@ import com.example.nodeproject2.repository.SubjectRepository
 import com.example.nodeproject2.ui.list.subject.model.SubjectGrade
 import com.example.nodeproject2.ui.list.subject.model.SubjectType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
-import com.example.nodeproject2.widget.utils.Paging
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.onFailure
@@ -59,26 +58,16 @@ class SubjectViewModel @Inject constructor(
     private val _updateRecyclerViewItemEvent = MutableSingleLiveData<Pair<Int, Subject>>()
     val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
 
-
+    // TODO 학과명 변환
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         _department.value = parent!!.selectedItem.toString().replace(" ", "_")
         getSubjectData()
-
-        //pos                                 get selected item position
-        //view.getText()                      get lable of selected item
-        //parent.getAdapter().getItem(pos)    get item by pos
-        //parent.getAdapter().getCount()      get item count
-        //parent.getCount()                   get item count
-        //parent.getSelectedItem()            get selected item
-        //and other...
     }
 
     fun getSubjectData() {
         _subjectWaitEvent.setValue(true)
 
-        // 플로팅 버튼 전공일 경우
         viewModelScope.launch {
-            //TODO null 체크 확인해보기
             val mySubjectsResponse =
                 subjectRepository.getSubjects(
                     userId,
@@ -102,8 +91,6 @@ class SubjectViewModel @Inject constructor(
     }
 
     fun addOrRemoveSubject(subject: Subject, position: Int) {
-
-
         viewModelScope.launch {
             val response =
                 subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subject.subjectNumber))
