@@ -1,22 +1,20 @@
 package com.example.nodeproject2.ui.search
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSearchBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.search.adapter.SearchAdapter
-import com.example.nodeproject2.ui.subject.SubjectFragment
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search), MainActivity.OnBackPressedListener {
 
     private lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
@@ -25,16 +23,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         fun newInstance() = SearchFragment()
         const val TAG = "SearchFragment"
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // This callback will only be called when MyFragment is at least Started.
-//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-//            downKeyboard()
-//            (activity as MainActivity).changeToSubject()
-//        }
-    }
-
-
 
     override fun doViewCreated() {
 
@@ -54,7 +42,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         upKeyboard()
         binding.backButton.setOnClickListener {
             downKeyboard()
-//            activity!!.onBackPressed()
             (activity as MainActivity).changeToSubject()
         }
 
@@ -68,9 +55,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
-            binding.tvSearchResult.setText("\'" + viewModel.searchQuery + "\'" + "(으)로 검색 결과")
+            binding.tvSearchResult.text = "\'" + viewModel.searchQuery + "\'" + "(으)로 검색 결과"
             searchAdapter.submitList(it.toMutableList()) {
                 if (viewModel.paging.page.value == 1) {
                     binding.rvSearch.scrollToPosition(0)
@@ -80,12 +68,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
         viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 
         viewModel.subjectWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
+        }
+
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            searchAdapter.notifyItemChanged(it.first, it.second)
         }
 
     }
@@ -106,7 +98,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
     }
 
-
-
+    override fun onBackPressed() {
+        (activity as MainActivity).changeToSubject()
+    }
 
 }

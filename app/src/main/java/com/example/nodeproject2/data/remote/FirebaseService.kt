@@ -5,9 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
 import androidx.core.app.NotificationManagerCompat
 import com.example.nodeproject2.R
 import com.example.nodeproject2.ui.MainActivity
@@ -35,13 +33,6 @@ class FirebaseService : FirebaseMessagingService() {
 
     private fun sendNotification(title: String, body: String) {
         val intent = Intent(this, MainActivity::class.java)
-            .setAction(Intent.ACTION_MAIN)
-            .addCategory(Intent.CATEGORY_LAUNCHER)
-        intent.addFlags(
-            Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT or
-                    Intent.FLAG_ACTIVITY_SINGLE_TOP
-        )
-        intent.putExtra("startId", startId)
 
         val pendingIntent = PendingIntent.getActivity(
             this,
@@ -50,18 +41,16 @@ class FirebaseService : FirebaseMessagingService() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val builder =
             NotificationCompat.Builder(this, "channel")
-        } else NotificationCompat.Builder(this)
 
         builder
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.mipmap.ic_checku_launcher)
             .setContentTitle(title)
             .setContentText(body)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
-            .setForegroundServiceBehavior(FOREGROUND_SERVICE_IMMEDIATE)
             .setFullScreenIntent(pendingIntent, true)
             .setAutoCancel(true)
 
@@ -73,23 +62,17 @@ class FirebaseService : FirebaseMessagingService() {
     private fun createNotificationChannel() {
         val name = "name"
         val descriptionText = "description"
-        val importance = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        val importance =
             NotificationManager.IMPORTANCE_HIGH
-        } else {
-            NotificationCompat.PRIORITY_HIGH
-        }
-        val channel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val channel =
             NotificationChannel("channel", name, importance).apply {
                 description = descriptionText
             }
-        } else null
 
-        if(channel == null) return
 
         val notificationManager: NotificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            notificationManager.createNotificationChannel(channel)
+        notificationManager.createNotificationChannel(channel)
 
     }
 

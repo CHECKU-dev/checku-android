@@ -1,5 +1,6 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.list.elective.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,7 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerElectiveBinding
-import com.example.nodeproject2.ui.subject.ElectiveViewModel
+import com.example.nodeproject2.ui.list.elective.ElectiveViewModel
+import com.example.nodeproject2.ui.syllabus.SyllabusActivity
 
 class ElectiveAdapter(val viewModel: ElectiveViewModel) :
     ListAdapter<Subject, ElectiveAdapter.Holder>(diffUtil) {
@@ -38,12 +40,20 @@ class ElectiveAdapter(val viewModel: ElectiveViewModel) :
 
     inner class Holder(val binding: ItemRecyclerElectiveBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setData(data: Subject) {
 
+        private val context = binding.root.context
+
+        fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
+            binding.position = adapterPosition
             binding.executePendingBindings()
 
+            itemView.setOnClickListener {
+                val intent = Intent(context, SyllabusActivity::class.java)
+                intent.putExtra("subjectNumber", data.subjectNumber)
+                intent.run { context.startActivity(this) }
+            }
         }
 
     }

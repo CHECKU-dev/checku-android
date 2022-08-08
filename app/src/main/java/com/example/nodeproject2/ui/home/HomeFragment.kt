@@ -7,6 +7,8 @@ import com.example.nodeproject2.databinding.FragmentHomeBinding
 import com.example.nodeproject2.repository.ScheduleRepository
 import com.example.nodeproject2.ui.home.adapter.HomeAdapter
 import com.example.nodeproject2.ui.home.adapter.NotificationAdapter
+import com.example.nodeproject2.widget.utils.NOTIFICATION_CANCEL_SUCCESS_MESSAGE
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -20,6 +22,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val viewModel by viewModels<HomeViewModel>()
     private lateinit var notificationAdapter: NotificationAdapter
+    private lateinit var dialogFragment: HomeNotificationDialog
+
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -31,10 +35,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        dialogFragment = HomeNotificationDialog(viewModel)
+
 
         viewModel.getInitData()
 
-//        initViewPager()
         initRecyclerView()
         observeRecyclerView()
 
@@ -47,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
 
         viewModel.homeErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 
@@ -56,9 +61,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
 
         viewModel.homeSuccessToastEvent.observe(viewLifecycleOwner) {
-            // TODO String 상수 관리
-            showCustomToast("알림 삭제 성공!!")
+            dialogFragment.dismiss()
+            showCustomToast(NOTIFICATION_CANCEL_SUCCESS_MESSAGE)
         }
+
+
+        viewModel.dialogShowEvent.observe(viewLifecycleOwner) {
+            dialogFragment.show(requireActivity().supportFragmentManager, dialogFragment.tag)
+        }
+
+        viewModel.dialogDismissEvent.observe(viewLifecycleOwner) {
+            dialogFragment.dismiss()
+        }
+
 
     }
 
@@ -75,13 +90,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(hidden) {
-        }else {
+        if (hidden) {
+        } else {
             viewModel.getInitData()
         }
     }
-
-
 
 
 }

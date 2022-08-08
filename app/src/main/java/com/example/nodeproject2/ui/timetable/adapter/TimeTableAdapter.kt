@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.timetable.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerTimeTableBinding
+import com.example.nodeproject2.ui.syllabus.SyllabusActivity
 import com.example.nodeproject2.ui.timetable.TimeTableViewModel
-import kotlinx.android.synthetic.main.fragment_subject.view.*
 import kotlinx.android.synthetic.main.item_recycler_time_table.view.*
 
 class TimeTableAdapter(val viewModel: TimeTableViewModel) :
@@ -40,9 +41,17 @@ class TimeTableAdapter(val viewModel: TimeTableViewModel) :
     inner class Holder(val binding: ItemRecyclerTimeTableBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        private val context = binding.root.context
+
         fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
+            binding.itemTimeTableLayout.setOnClickListener {
+                val intent = Intent(context, SyllabusActivity::class.java)
+                intent.putExtra("subjectNumber", data.subjectNumber)
+                intent.run { context.startActivity(this) }
+            }
+
         }
 
     }

@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.search.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,9 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSearchBinding
-import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.search.SearchViewModel
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.ui.syllabus.SyllabusActivity
 
 class SearchAdapter(val viewModel: SearchViewModel) :
     ListAdapter<Subject, SearchAdapter.Holder>(SearchAdapter.diffUtil) {
@@ -41,12 +41,21 @@ class SearchAdapter(val viewModel: SearchViewModel) :
 
     inner class Holder(val binding: ItemRecyclerSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private val context = binding.root.context
+
         fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
+            binding.position = adapterPosition
             binding.executePendingBindings()
-        }
 
+            itemView.setOnClickListener {
+                val intent = Intent(context, SyllabusActivity::class.java)
+                intent.putExtra("subjectNumber", data.subjectNumber)
+                intent.run { context.startActivity(this) }
+            }
+        }
 
     }
 

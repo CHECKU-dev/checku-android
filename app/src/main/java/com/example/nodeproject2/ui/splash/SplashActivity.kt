@@ -40,12 +40,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-//        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.activity_fade_in)
-//        binding.splashImg.startAnimation(splashAnimation)
-//        binding.splashText.startAnimation(splashAnimation)
-
         start()
     }
 

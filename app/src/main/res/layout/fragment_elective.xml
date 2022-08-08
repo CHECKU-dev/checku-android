@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.example.nodeproject2.ui.subject.model.ElectiveType"/>
+        <import type="com.example.nodeproject2.ui.list.elective.model.ElectiveType"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.ElectiveViewModel"/>
+                type="com.example.nodeproject2.ui.list.elective.ElectiveViewModel"/>
     </data>
 
     <LinearLayout
@@ -103,7 +103,7 @@
                         android:id="@+id/swipe_refresh_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="70dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:onRefreshListener="@{() -> viewModel.refreshData()}"
@@ -113,8 +113,6 @@
                             android:id="@+id/rv_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingStart="30dp"
-                            android:paddingEnd="30dp"
                             app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

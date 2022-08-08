@@ -1,11 +1,12 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.elective
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentElectiveBinding
 import com.example.nodeproject2.ui.MainActivity
-import com.example.nodeproject2.ui.subject.adapter.ElectiveAdapter
+import com.example.nodeproject2.ui.list.elective.adapter.ElectiveAdapter
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         observeRecyclerView()
 
         binding.searchLayout.setOnClickListener {
-            (activity as MainActivity).changeToSearch()
+            (activity as MainActivity).changeToSearch(TAG)
         }
 
         initSlidingPanel()
@@ -44,12 +45,16 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         }
 
         viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 
         viewModel.subjectWaitEvent.observe(viewLifecycleOwner) {
             showLoadingDialog()
+        }
+
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            electiveAdapter.notifyItemChanged(it.first, it.second)
         }
 
     }

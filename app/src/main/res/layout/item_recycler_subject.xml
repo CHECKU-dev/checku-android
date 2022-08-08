@@ -8,8 +8,8 @@
         <import type="android.view.View"/>
 
         <variable
-                name="label"
-                type="String"/>
+                name="position"
+                type="Integer"/>
 
         <variable
                 name="data"
@@ -17,15 +17,19 @@
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
+                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:background="@drawable/ripple_effect_white">
+            android:background="@drawable/ripple_effect_gray05_fill_white">
+
+
         <LinearLayout
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +41,7 @@
 
 
             <LinearLayout
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -74,12 +78,13 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_subject_info"
                     android:layout_weight="5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-            >
+                    android:layout_marginTop="10dp">
+
 
                 <TextView
                         android:fontFamily="@font/noto_sans_bold"
@@ -136,25 +141,31 @@
                         app:layout_constraintTop_toBottomOf="@+id/professor"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
             <LinearLayout
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="10dp"
                     android:layout_height="match_parent">
 
-                <CheckBox
-                        android:layout_marginStart="5dp"
+                <LinearLayout
+                        android:id="@+id/check_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:id="@+id/cb_checkButton"
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:layout_margin="10dp"
-                        android:checked="@{data.isMySubject}"
-                        android:background="@drawable/selector_zzim"
-                        android:button="@null"
-                        android:elevation="1dp"
-                        android:onClick="@{() -> viewModel.addOrRemoveSubject(data.subjectNumber)}"
-                />
+                        android:checkable="true"
+                        android:background="@drawable/ripple_effect_gray07_fill_white_oval"
+                        android:onClick="@{() -> viewModel.addOrRemoveSubject(data, position)}">
+
+                    <ImageView
+                            android:id="@+id/cb_checkButton"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp"
+                            android:clickable="false"
+                            isChecked="@{data.isMySubject}"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

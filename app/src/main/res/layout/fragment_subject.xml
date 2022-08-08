@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.example.nodeproject2.ui.subject.model.SubjectGrade"/>
+        <import type="com.example.nodeproject2.ui.list.subject.model.SubjectGrade"/>
 
-        <import type="com.example.nodeproject2.ui.subject.model.SubjectType"/>
+        <import type="com.example.nodeproject2.ui.list.subject.model.SubjectType"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
+                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
 
     </data>
@@ -116,8 +116,6 @@
                             android:id="@+id/rv_subject"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingStart="25dp"
-                            android:paddingEnd="25dp"
                             app:layoutManager=".widget.utils.LinearLayoutManagerWrapper"/>
 
 

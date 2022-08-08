@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.model
+package com.example.nodeproject2.ui.list.elective.model
 
 enum class ElectiveType {
     BASIC_ELECTIVE,

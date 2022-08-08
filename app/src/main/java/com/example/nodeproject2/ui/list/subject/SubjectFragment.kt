@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.subject
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -6,7 +6,8 @@ import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
-import com.example.nodeproject2.ui.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.ui.list.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +31,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         observeRecyclerView()
 
         binding.searchLayout.setOnClickListener {
-            (activity as MainActivity).changeToSearch()
+            (activity as MainActivity).changeToSearch(TAG)
         }
 
         initSlidingPanel()
@@ -43,7 +44,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }
 
         viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 
@@ -51,14 +52,25 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
             showLoadingDialog()
         }
 
+        viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
+            subjectAdapter.notifyItemChanged(it.first, it.second)
+        }
+
 
     }
 
     private fun initRecyclerView() {
-
         subjectAdapter = SubjectAdapter(viewModel)
         binding.rvSubject.adapter = subjectAdapter
 
+//        binding.searchLayout.setOnTouchListener(object : OnSwipeTouchListener(binding.root.context) {
+//            override fun onSwipeLeft() {
+//                Toast.makeText(requireActivity(), "zz", Toast.LENGTH_SHORT).show()
+//                val listFragment =
+//                    requireActivity().supportFragmentManager.findFragmentByTag("ListFragment") as ListFragment
+//                listFragment.changeTab()
+//            }
+//        })
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

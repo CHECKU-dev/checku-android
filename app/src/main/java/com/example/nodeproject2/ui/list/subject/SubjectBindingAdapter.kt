@@ -1,9 +1,11 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.subject
 
 import android.util.Log
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nodeproject2.R
 
 @BindingAdapter("doScrollBottom")
 fun RecyclerView.infiniteScrolls(doScrollBottom: () -> Unit) {
@@ -21,5 +23,13 @@ fun RecyclerView.infiniteScrolls(doScrollBottom: () -> Unit) {
             }
         }
     }))
+}
+
+@BindingAdapter("isChecked")
+fun checkChecked(imageView: ImageView, isMySubject: Boolean) {
+    if(isMySubject)
+        imageView.setBackgroundResource(R.drawable.ic_zzim_active)
+    else
+        imageView.setBackgroundResource(R.drawable.ic_zzim_inactive)
 }
 

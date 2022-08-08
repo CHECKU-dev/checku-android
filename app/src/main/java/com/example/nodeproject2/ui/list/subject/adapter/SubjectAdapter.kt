@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.list.subject.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
-import com.example.nodeproject2.ui.subject.SubjectViewModel
+import com.example.nodeproject2.ui.MainActivity
+import com.example.nodeproject2.ui.list.list.ListFragment
+import com.example.nodeproject2.ui.list.subject.SubjectViewModel
 import com.example.nodeproject2.ui.syllabus.SyllabusActivity
-import kotlinx.android.synthetic.main.item_recycler_notification.view.*
+import com.example.nodeproject2.widget.utils.OnSwipeTouchListener
 
 class SubjectAdapter(val viewModel: SubjectViewModel) :
     ListAdapter<Subject, SubjectAdapter.Holder>(diffUtil) {
@@ -31,8 +33,13 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+        println(position)
         val safePosition = holder.adapterPosition
-        currentList[safePosition]?.let { holder.setData(it) }
+
+        currentList[safePosition]?.let {
+            holder.setData(it)
+        }
     }
 
     override fun getItemId(position: Int): Long {
@@ -48,13 +55,15 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
         fun setData(data: Subject) {
             binding.data = data
             binding.viewModel = viewModel
+            binding.position = adapterPosition
             binding.executePendingBindings()
 
             itemView.setOnClickListener {
                 val intent = Intent(context, SyllabusActivity::class.java)
-                intent.putExtra("subjectNumber", data.subjectNumber.toString())
+                intent.putExtra("subjectNumber", data.subjectNumber)
                 intent.run { context.startActivity(this) }
             }
+
         }
 
 

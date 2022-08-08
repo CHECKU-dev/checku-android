@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.elective
 
 import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
@@ -9,10 +9,12 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
-import com.example.nodeproject2.ui.subject.model.ElectiveType
+import com.example.nodeproject2.ui.list.elective.model.ElectiveType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
+import com.skydoves.sandwich.onFailure
+import com.skydoves.sandwich.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -43,6 +45,9 @@ class ElectiveViewModel @Inject constructor(
     private val _vacancy = MutableLiveData<Boolean>(false)
     val vacancy: LiveData<Boolean> = _vacancy
 
+    private val _updateRecyclerViewItemEvent = MutableSingleLiveData<Pair<Int, Subject>>()
+    val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
+
     fun getElectives() {
         _subjectWaitEvent.setValue(true)
 
@@ -63,10 +68,21 @@ class ElectiveViewModel @Inject constructor(
         _refreshed.value = false
     }
 
-    fun addOrRemoveSubject(subjectNumber: String) {
+    fun addOrRemoveSubject(subject: Subject, position: Int) {
         viewModelScope.launch {
-            subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
+            val response =
+                subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subject.subjectNumber))
+            response.onSuccess {
+                setChecked(subject, position)
+            }.onFailure {
+
+            }
         }
+    }
+
+    private fun setChecked(subject: Subject, position: Int) {
+        subject.isMySubject = !subject.isMySubject
+        _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
     }
 
     fun updateElectiveType(type: ElectiveType) {
