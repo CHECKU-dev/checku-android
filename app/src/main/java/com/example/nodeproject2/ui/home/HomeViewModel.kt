@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nodeproject2.data.model.Notification
-import com.example.nodeproject2.data.model.Schedule
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.NotificationRepository
-import com.example.nodeproject2.repository.ScheduleRepository
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
@@ -18,9 +16,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val notificationRepository: NotificationRepository,
-    private val scheduleRepository: ScheduleRepository
+    private val notificationRepository: NotificationRepository
 ) : ViewModel() {
+
+    private var subjectNumber = ""
 
     private val userId = CheckuApplication.prefs.getUserId()
 
@@ -36,24 +35,30 @@ class HomeViewModel @Inject constructor(
     private val _homeWaitEvent = MutableSingleLiveData<Boolean>()
     val homeWaitEvent: SingleLiveData<Boolean> = _homeWaitEvent
 
-    private val _scheduleList = MutableLiveData<MutableList<Schedule>>()
-    val scheduleList: LiveData<MutableList<Schedule>> = _scheduleList
+    private val _dialogShowEvent = MutableSingleLiveData<Notification>()
+    val dialogShowEvent: SingleLiveData<Notification> = _dialogShowEvent
+
+    private val _dialogDismissEvent = MutableSingleLiveData<Boolean>()
+    val dialogDismissEvent: SingleLiveData<Boolean> = _dialogDismissEvent
+
+
 
     fun getInitData() {
         _homeWaitEvent.setValue(true)
         viewModelScope.launch {
 
-            val mynotification = notificationRepository.getNotifications(userId)
+            val myNotification = notificationRepository.getNotifications(userId)
 
-            if (mynotification is ApiResponse.Success) {
-                _notificationList.value = MutableList(mynotification.data.size) { mynotification.data[it] }
+            if (myNotification is ApiResponse.Success) {
+                _notificationList.value = MutableList(myNotification.data.size) { myNotification.data[it] }
             } else {
                 _homeErrorToastEvent.setValue(true)
             }
         }
     }
 
-    fun cancelNotification(subjectNumber: String) {
+    fun cancelNotification() {
+        _dialogDismissEvent.setValue(true)
 
         viewModelScope.launch {
             val response = notificationRepository.cancelNotification(userId, subjectNumber)
@@ -66,5 +71,18 @@ class HomeViewModel @Inject constructor(
 
         }
     }
+
+    fun showDialog(notification: Notification) {
+        this.subjectNumber = notification.subjectNumber
+        _dialogShowEvent.setValue(notification)
+    }
+
+    fun dismissBottomSheetDialog() {
+        this.subjectNumber = ""
+        _dialogDismissEvent.setValue(true)
+    }
+
+
+
 
 }

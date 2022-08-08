@@ -7,6 +7,9 @@ import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentTimeTableBinding
 import com.example.nodeproject2.ui.timetable.adapter.TimeTableAdapter
+import com.example.nodeproject2.widget.utils.FAVORITE_CANCEL_SUCCESS_MESSAGE
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
+import com.example.nodeproject2.widget.utils.NOTIFICATION_ADD_SUCCESS_MESSAGE
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +41,7 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         }
 
         viewModel.timeTableErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
 
         }
@@ -48,11 +51,11 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         }
 
         viewModel.subjectRemoveSuccessEvent.observe(viewLifecycleOwner) {
-            showCustomToast("즐겨찾기 삭제 성공!!!")
+            showCustomToast(NOTIFICATION_ADD_SUCCESS_MESSAGE)
         }
 
         viewModel.notificationApplySuccessEvent.observe(viewLifecycleOwner) {
-            showCustomToast("알림 신청 성공!!!")
+            showCustomToast(FAVORITE_CANCEL_SUCCESS_MESSAGE)
         }
 
     }

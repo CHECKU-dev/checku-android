@@ -11,10 +11,17 @@
 
     <string name="service_type_and_grade_and_subject_number">%s / %s / %s</string>
 
+    <string name="notification_content">%s(%s)</string>
+
+
     <string name="notification">알림</string>
     <string name="delete">삭제</string>
 
     <string name="default_notification_channel_id">notification</string>
+    <string name="question_delete">취소하시겠습니까?</string>
+    <string name="delete_cancel_content">취소</string>
+    <string name="delete_content">알림 취소</string>
+
 
     <string-array name="department_list">
         <item>KU융합과학기술원 미래에너지공학과</item>

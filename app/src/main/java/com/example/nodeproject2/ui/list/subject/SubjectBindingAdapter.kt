@@ -2,7 +2,6 @@ package com.example.nodeproject2.ui.list.subject
 
 import android.util.Log
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

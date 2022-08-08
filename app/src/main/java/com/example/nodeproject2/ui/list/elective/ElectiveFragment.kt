@@ -6,6 +6,7 @@ import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentElectiveBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.list.elective.adapter.ElectiveAdapter
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +45,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         }
 
         viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 
