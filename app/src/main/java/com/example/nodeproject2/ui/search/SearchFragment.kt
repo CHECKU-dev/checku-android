@@ -1,22 +1,18 @@
 package com.example.nodeproject2.ui.search
 
 import android.content.Context
-import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSearchBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.search.adapter.SearchAdapter
-import com.example.nodeproject2.ui.subject.SubjectFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search), MainActivity.OnBackPressedListener {
 
     private lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
@@ -25,16 +21,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         fun newInstance() = SearchFragment()
         const val TAG = "SearchFragment"
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // This callback will only be called when MyFragment is at least Started.
-//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-//            downKeyboard()
-//            (activity as MainActivity).changeToSubject()
-//        }
-    }
-
-
 
     override fun doViewCreated() {
 
@@ -106,7 +92,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
     }
 
-
-
+    override fun onBackPressed() {
+        (activity as MainActivity).changeToSubject()
+    }
 
 }

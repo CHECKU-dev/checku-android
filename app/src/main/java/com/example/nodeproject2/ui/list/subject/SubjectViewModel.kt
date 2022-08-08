@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.subject
 
 import android.view.View
 import android.widget.AdapterView
@@ -11,8 +11,8 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
-import com.example.nodeproject2.ui.subject.model.SubjectGrade
-import com.example.nodeproject2.ui.subject.model.SubjectType
+import com.example.nodeproject2.ui.list.subject.model.SubjectGrade
+import com.example.nodeproject2.ui.list.subject.model.SubjectType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.Paging
 import com.example.nodeproject2.widget.utils.SingleLiveData

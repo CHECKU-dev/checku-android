@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject.adapter
+package com.example.nodeproject2.ui.list.elective.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerElectiveBinding
-import com.example.nodeproject2.ui.subject.ElectiveViewModel
+import com.example.nodeproject2.ui.list.elective.ElectiveViewModel
 
 class ElectiveAdapter(val viewModel: ElectiveViewModel) :
     ListAdapter<Subject, ElectiveAdapter.Holder>(diffUtil) {

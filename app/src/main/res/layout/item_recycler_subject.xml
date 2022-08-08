@@ -17,7 +17,7 @@
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.SubjectViewModel"/>
+                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
     </data>
 
@@ -28,12 +28,6 @@
             android:background="@drawable/ripple_effect_gray05_fill_white">
 
 
-<!--    <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="0dp"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--               -->
         <LinearLayout
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

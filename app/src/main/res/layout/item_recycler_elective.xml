@@ -4,15 +4,16 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View"/>
+
         <variable
-                name="label"
-                type="String"/>
+                name="position"
+                type="Integer"/>
         <variable
                 name="data"
                 type="com.example.nodeproject2.data.model.Subject"/>
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.subject.ElectiveViewModel"/>
+                type="com.example.nodeproject2.ui.list.elective.ElectiveViewModel"/>
     </data>
 
     <FrameLayout

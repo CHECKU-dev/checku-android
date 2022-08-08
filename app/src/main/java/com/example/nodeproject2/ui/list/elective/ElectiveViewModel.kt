@@ -1,4 +1,4 @@
-package com.example.nodeproject2.ui.subject
+package com.example.nodeproject2.ui.list.elective
 
 import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
@@ -9,7 +9,7 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
 import com.example.nodeproject2.repository.SubjectRepository
-import com.example.nodeproject2.ui.subject.model.ElectiveType
+import com.example.nodeproject2.ui.list.elective.model.ElectiveType
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.SingleLiveData
 import com.skydoves.sandwich.ApiResponse
@@ -63,6 +63,7 @@ class ElectiveViewModel @Inject constructor(
         _refreshed.value = false
     }
 
+    //TODO 변경!
     fun addOrRemoveSubject(subjectNumber: String) {
         viewModelScope.launch {
             subjectRepository.addOrRemoveSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
