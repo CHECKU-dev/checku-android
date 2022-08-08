@@ -7,6 +7,7 @@ import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.list.subject.adapter.SubjectAdapter
+import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,7 +44,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }
 
         viewModel.subjectErrorToastEvent.observe(viewLifecycleOwner) {
-            showCustomToast("실패 실패 실패 실패")
+            showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
         }
 

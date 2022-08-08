@@ -51,11 +51,11 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         }
 
         viewModel.subjectRemoveSuccessEvent.observe(viewLifecycleOwner) {
-            showCustomToast(NOTIFICATION_ADD_SUCCESS_MESSAGE)
+            showCustomToast(FAVORITE_CANCEL_SUCCESS_MESSAGE)
         }
 
         viewModel.notificationApplySuccessEvent.observe(viewLifecycleOwner) {
-            showCustomToast(FAVORITE_CANCEL_SUCCESS_MESSAGE)
+            showCustomToast(NOTIFICATION_ADD_SUCCESS_MESSAGE)
         }
 
     }
