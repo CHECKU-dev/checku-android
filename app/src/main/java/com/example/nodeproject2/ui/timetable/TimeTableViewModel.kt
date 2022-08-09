@@ -52,7 +52,6 @@ class TimeTableViewModel @Inject constructor(
     fun getInitData() {
         _timeTableWaitEvent.setValue(true)
         viewModelScope.launch {
-
             val mySubjectsResponse = timetableRepository.getMySubjects(userId)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
@@ -85,6 +84,8 @@ class TimeTableViewModel @Inject constructor(
 
 
     fun applyNotification(subject: Subject) {
+        _timeTableWaitEvent.setValue(true)
+
         viewModelScope.launch {
 
             val request = NotificationRequest(userId, subject.subjectNumber, subject.subjectName, subject.professor)
