@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity() {
         start()
     }
 
-    private fun start(): String? {
+    private fun start() {
 //        var fcmToken: String? = null
 
 //        val userId = CheckuApplication.prefs.getUserId() ?: ""
