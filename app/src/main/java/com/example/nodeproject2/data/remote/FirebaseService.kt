@@ -15,8 +15,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseService : FirebaseMessagingService() {
 
-    private var startId = R.id.fragment_home_layout
-
     override fun onNewToken(token: String) {
         super.onNewToken(token)
     }

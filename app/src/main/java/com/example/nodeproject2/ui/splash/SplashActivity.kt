@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.splash
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
@@ -43,49 +45,32 @@ class SplashActivity : AppCompatActivity() {
         start()
     }
 
-    private fun start(): String? {
-//        var fcmToken: String? = null
-
-//        val userId = CheckuApplication.prefs.getUserId() ?: ""
+    private fun start() {
         getSchedule()
-        login()
 
-//        if (userId == 0L) {
-//            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-//                if (!task.isSuccessful) {
-//                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-//                    return@OnCompleteListener
-//                }
-//                // Get new FCM registration token
-//                fcmToken = task.result
-//
-//                fcmToken?.let {
-//                    login(LoginRequest(it))
-//                }
-//
-//                Log.d(TAG, "FCM: $fcmToken")
-//            })
-//        } else {
-//            CoroutineScope(Dispatchers.IO).launch {
-//                delay(SPLASH_DELAY_TIME)
-//
-//                val intent = Intent(baseContext, MainActivity::class.java)
-//
-//                withContext(Dispatchers.Main) {
-//                    startActivity(intent)
-//                    finish()
-//                }
-//            }
-//        }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            // Get new FCM registration token
+            val fcmToken = task.result
+            println(fcmToken)
 
-//        return fcmToken
+            fcmToken?.let {
+                login(LoginRequest(it))
+            }
+
+            Log.d(TAG, "FCM: $fcmToken")
+        })
+
     }
 
     private fun getSchedule() {
         CoroutineScope(Dispatchers.IO).launch {
             val schedule = scheduleRepository.getScheduleFromServer()
             if (schedule is ApiResponse.Success) {
-                if (scheduleRepository.getSchedule() == null) {
+                if (scheduleRepository.getSchedule().isEmpty()) {
                     scheduleRepository.insertSchedule(schedule.data)
                 }
             }else {
@@ -93,26 +78,21 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun login() {
+
+    private fun login(loginRequest: LoginRequest) {
         CoroutineScope(Dispatchers.IO).launch {
             delay(SPLASH_DELAY_TIME)
-            val token = getFcmToken()
-            val login = loginRepository.login(LoginRequest(token))
+            val login = loginRepository.login(loginRequest)
 
             if (login is ApiResponse.Success) {
+                Log.d(
+                    TAG, "LOGIN API RESPONSE (\n" +
+                            "userId: ${login.data.userId},\n" +
+                            "fcmToken: ${login.data.fcmToken},\nuserId: ${login.data.userId}\n" +
+                            ")"
+                )
                 CheckuApplication.prefs.saveUserId(login.data.userId)
-            }else {
-                // TODO 실패 시
             }
-
-//            if (login is ApiResponse.Success) {
-//                Log.d(
-//                    TAG, "LOGIN API RESPONSE (\n" +
-//                            "userId: ${login.data.userId},\n" +
-//                            "fcmToken: ${login.data.fcmToken},\nuserId: ${login.data.userId}\n" +
-//                            ")"
-//                )
-//            }
 
             val intent = Intent(baseContext, MainActivity::class.java)
 
@@ -123,55 +103,6 @@ class SplashActivity : AppCompatActivity() {
             }
 
         }
-
     }
 
-//    private fun login(loginRequest: LoginRequest) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            delay(SPLASH_DELAY_TIME)
-//            val login = loginRepository.login(loginRequest)
-//
-//            if (login is ApiResponse.Success) {
-//                Log.d(
-//                    TAG, "LOGIN API RESPONSE (\n" +
-//                            "userId: ${login.data.userId},\n" +
-//                            "fcmToken: ${login.data.fcmToken},\nuserId: ${login.data.userId}\n" +
-//                            ")"
-//                )
-//                CheckuApplication.prefs.saveUserId(login.data.userId)
-//            }
-//
-//            val intent = Intent(baseContext, MainActivity::class.java)
-//
-//            withContext(Dispatchers.Main) {
-//
-//                startActivity(intent)
-//                finish()
-//            }
-//
-//        }
-//    }
-
-    private fun getFcmToken() :String {
-        var fcmToken = ""
-
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-            // Get new FCM registration token
-            fcmToken = task.result
-//
-//            fcmToken?.let {
-//                login(LoginRequest(it))
-//            }
-
-            Log.d(TAG, "FCM: $fcmToken")
-        })
-
-        fcmToken?.let {
-            return it
-        }
-    }
 }
