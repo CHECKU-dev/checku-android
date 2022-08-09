@@ -46,6 +46,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun start() {
+
         getSchedule()
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->

@@ -62,15 +62,6 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     private fun initRecyclerView() {
         subjectAdapter = SubjectAdapter(viewModel)
         binding.rvSubject.adapter = subjectAdapter
-
-//        binding.searchLayout.setOnTouchListener(object : OnSwipeTouchListener(binding.root.context) {
-//            override fun onSwipeLeft() {
-//                Toast.makeText(requireActivity(), "zz", Toast.LENGTH_SHORT).show()
-//                val listFragment =
-//                    requireActivity().supportFragmentManager.findFragmentByTag("ListFragment") as ListFragment
-//                listFragment.changeTab()
-//            }
-//        })
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

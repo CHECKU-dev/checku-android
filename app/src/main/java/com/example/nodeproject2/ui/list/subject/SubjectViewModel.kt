@@ -60,7 +60,11 @@ class SubjectViewModel @Inject constructor(
 
     // TODO 학과명 변환
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-        _department.value = parent!!.selectedItem.toString().replace(" ", "_")
+        _department.value = parent!!.selectedItem.toString()
+            .replace(" ","_")
+            .replace("(","_")
+            .replace(")", "")
+            .replace("·","_")
         getSubjectData()
     }
 
