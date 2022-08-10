@@ -25,8 +25,6 @@ class TimeTableViewModel @Inject constructor(
     private val timetableRepository: TimetableRepository
 ) : ViewModel() {
 
-    private val gson = Gson()
-
     private val userId = CheckuApplication.prefs.getUserId()
 
     private val _subjectList = MutableLiveData<MutableList<Subject>>()
