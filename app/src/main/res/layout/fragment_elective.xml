@@ -27,39 +27,41 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/search_layout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_empty_button"
                     android:layout_marginBottom="24dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="70dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="70dp"
                     android:background="@drawable/bg_gray_color_round_20">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_search_button"
                         android:id="@+id/appCompatImageView"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_gravity="center_vertical"
                         android:id="@+id/tv_search"
                         android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="과목명으로 검색하기"
-                        android:textSize="16dp"
-                        android:layout_marginLeft="8dp"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp"
                         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"/>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_gravity="center_vertical"
                     android:fontFamily="@font/noto_sans_regular"
                     android:includeFontPadding="false"
                     android:id="@+id/rb_empty_button"
@@ -72,16 +74,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/search_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="24dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:checked="@{viewModel.vacancy}"
                     android:onCheckedChanged="@{viewModel.onCheckboxVacancyChange}"
                     android:text="빈 강의"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -148,7 +150,7 @@
                             android:text="종류"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:layout_gravity="center"/>
 
                     <RadioGroup
@@ -172,7 +174,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="기교"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -192,7 +194,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="심교"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -213,7 +215,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="일선"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
