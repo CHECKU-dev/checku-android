@@ -27,25 +27,28 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/search_layout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_empty_button"
                     android:layout_marginBottom="24dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="70dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="70dp"
                     android:background="@drawable/bg_gray_color_round_20">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_search_button"
                         android:id="@+id/appCompatImageView"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_gravity="center_vertical"
                         android:id="@+id/tv_search"
                         android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
@@ -53,13 +56,12 @@
                         android:layout_height="wrap_content"
                         android:hint="과목명으로 검색하기"
                         android:textSize="16dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"/>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_gravity="center_vertical"
                     android:fontFamily="@font/noto_sans_regular"
                     android:includeFontPadding="false"
                     android:id="@+id/rb_empty_button"
@@ -72,6 +74,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/search_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="24dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
@@ -81,7 +84,6 @@
                     android:checked="@{viewModel.vacancy}"
                     android:onCheckedChanged="@{viewModel.onCheckboxVacancyChange}"
                     android:text="빈 강의"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.sothree.slidinguppanel.SlidingUpPanelLayout
