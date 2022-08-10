@@ -23,6 +23,7 @@
                 app:tabGravity="center"
                 app:tabIndicatorColor="@color/checkuMain"
                 app:tabRippleColor="@color/transparent"
+                app:tabTextAppearance="@style/CustomTabText"
         />
 
         <androidx.viewpager2.widget.ViewPager2

@@ -86,9 +86,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
             searchAdapter.notifyItemChanged(it.first, it.second)
         }
-
     }
-
 
     private fun upKeyboard() {
         activity?.also { activity ->
@@ -101,7 +99,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     private fun downKeyboard() {
         activity?.also { activity ->
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
+            activity.currentFocus?.let {
+                imm.hideSoftInputFromWindow(it.windowToken, 0)
+            }
         }
     }
 

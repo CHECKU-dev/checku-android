@@ -17,13 +17,13 @@
             android:background="@color/white">
 
         <TextView
-                android:fontFamily="@font/noto_sans_bold"
                 android:includeFontPadding="false"
                 android:id="@+id/actionBar"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:text="검색"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="10dp"/>
@@ -74,7 +74,6 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_search"
-                        android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -102,7 +101,6 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:id="@+id/tv_search_result"
-                android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"

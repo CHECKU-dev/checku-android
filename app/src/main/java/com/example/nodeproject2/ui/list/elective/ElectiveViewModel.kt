@@ -50,7 +50,6 @@ class ElectiveViewModel @Inject constructor(
 
     fun getElectives() {
 
-        println("======================getElectives")
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {

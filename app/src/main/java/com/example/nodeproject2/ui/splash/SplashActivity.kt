@@ -74,7 +74,6 @@ class SplashActivity : AppCompatActivity() {
             }
             // Get new FCM registration token
             val fcmToken = task.result
-            println(fcmToken)
 
             fcmToken?.let {
                 login(LoginRequest(it))

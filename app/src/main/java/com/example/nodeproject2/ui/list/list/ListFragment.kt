@@ -1,6 +1,5 @@
 package com.example.nodeproject2.ui.list.list
 
-import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentListBinding
 import com.example.nodeproject2.ui.list.elective.ElectiveFragment
@@ -10,7 +9,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
+class ListFragment : BaseFragment<FragmentListBinding>(com.example.nodeproject2.R.layout.fragment_list) {
+
+    private var currentTab = "SubjectFragment"
 
     private val tabTitleArray = arrayOf(
         "전공",
@@ -42,13 +43,26 @@ class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
     fun changeTab() {
         binding.apply {
             if (viewPager.currentItem == 0) {
+                currentTab = "ElectiveFragment"
                 viewPager.setCurrentItem(1, true)
             } else {
+                currentTab = "SubjectFragment"
                 viewPager.setCurrentItem(0, true)
             }
         }
     }
 
-
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            if (currentTab.equals("SubjectFragment")) {
+                val fragment = requireActivity().supportFragmentManager.findFragmentByTag("f0") as SubjectFragment
+                fragment.refresh()
+            } else {
+                val fragment = requireActivity().supportFragmentManager.findFragmentByTag("f1") as ElectiveFragment
+                fragment.refresh()
+            }
+        }
+    }
 
 }

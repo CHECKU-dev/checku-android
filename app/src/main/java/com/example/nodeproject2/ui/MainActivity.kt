@@ -1,6 +1,8 @@
 package com.example.nodeproject2.ui
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseActivity
@@ -15,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private var curFragment = "SearchFragment";
     var isSearchFragmentOn = false
 
     override fun init() {
@@ -71,9 +72,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSearch(fragment: String) {
         binding.mainBtmNav.visibility = View.GONE
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
         isSearchFragmentOn = true
-//        showFragment(SearchFragment(), "SearchFragment")
+        showFragment(SearchFragment(), "SearchFragment")
+
     }
 
     fun changeToSubject() {
@@ -100,6 +101,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             super.onBackPressed()
         }
     }
+
+
 }
 
 
