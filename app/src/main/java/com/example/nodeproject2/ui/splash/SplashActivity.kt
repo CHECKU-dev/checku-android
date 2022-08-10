@@ -1,10 +1,15 @@
 package com.example.nodeproject2.ui.splash
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import com.example.nodeproject2.data.model.LoginRequest
 import com.example.nodeproject2.databinding.ActivitySplashBinding
 import com.example.nodeproject2.di.CheckuApplication
@@ -17,6 +22,7 @@ import com.skydoves.sandwich.ApiResponse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
+
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
@@ -42,11 +48,23 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        start()
+        start ()
+
+    }
+
+    private fun checkNetworkConnection(): Boolean {
+        val cm = baseContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
+        if (!isConnected) {
+            Toast.makeText(baseContext, "네트워크 연결이 원활하지 않습니다.", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+        return isConnected
     }
 
     private fun start() {
-
         getSchedule()
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
@@ -98,12 +116,15 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, MainActivity::class.java)
 
             withContext(Dispatchers.Main) {
-
-                startActivity(intent)
+                if(checkNetworkConnection()) {
+                    startActivity(intent)
+                }
                 finish()
             }
 
         }
     }
+
+
 
 }

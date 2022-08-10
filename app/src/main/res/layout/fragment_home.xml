@@ -34,7 +34,6 @@
                     android:background="@color/white">
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_medium"
                         android:includeFontPadding="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -46,6 +45,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@string/application_classes_schedule"
+                        android:textStyle="bold"
                         android:id="@+id/textView"/>
 
                 <androidx.recyclerview.widget.RecyclerView
