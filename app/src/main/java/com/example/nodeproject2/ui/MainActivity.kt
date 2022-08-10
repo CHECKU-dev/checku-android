@@ -71,15 +71,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSearch(fragment: String) {
         binding.mainBtmNav.visibility = View.GONE
-//        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        supportFragmentManager.fragments.forEach { fm ->
+            fragmentTransaction.hide(fm)
+        }
+        fragmentTransaction.add(R.id.fragment_container, SearchFragment()).commit()
         isSearchFragmentOn = true
-        showFragment(SearchFragment(), "SearchFragment")
+//        showFragment(SearchFragment(), "SearchFragment")
     }
 
     fun changeToSubject() {
         binding.mainBtmNav.visibility = View.VISIBLE
         showFragment(ListFragment(), "ListFragment")
     }
+
 
     //Listener역할을 할 Interface 생성
     interface OnBackPressedListener {
