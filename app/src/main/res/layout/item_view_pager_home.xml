@@ -17,7 +17,7 @@
             android:background="@drawable/bg_gray_color_round_20">
 
         <TextView
-                android:fontFamily="@font/noto_sans_bold"
+                android:textStyle="bold"
                 android:includeFontPadding="false"
                 android:id="@+id/tv_deadline"
                 android:layout_width="wrap_content"
@@ -26,12 +26,11 @@
                 tools:text="D-21"
                 android:textColor="@color/checkuMain"
                 android:gravity="center"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-                android:fontFamily="@font/noto_sans_medium"
+                android:textStyle="bold"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +44,6 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-                android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-                android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

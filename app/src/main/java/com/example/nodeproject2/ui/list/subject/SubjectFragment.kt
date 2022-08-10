@@ -90,4 +90,18 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         }
     }
 
+    fun refresh() {
+        viewModel.getSubjectData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+    }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.getSubjectData()
+//    }
+
 }

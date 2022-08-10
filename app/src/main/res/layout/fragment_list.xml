@@ -18,11 +18,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 app:tabGravity="center"
                 app:tabIndicatorColor="@color/checkuMain"
                 app:tabRippleColor="@color/transparent"
+                app:tabTextAppearance="@style/CustomTabText"
         />
 
         <androidx.viewpager2.widget.ViewPager2

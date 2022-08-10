@@ -71,9 +71,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     fun changeToSearch(fragment: String) {
         binding.mainBtmNav.visibility = View.GONE
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
+//        supportFragmentManager.beginTransaction().add(R.id.fragment_container, SearchFragment()).commit()
         isSearchFragmentOn = true
-//        showFragment(SearchFragment(), "SearchFragment")
+        showFragment(SearchFragment(), "SearchFragment")
     }
 
     fun changeToSubject() {
