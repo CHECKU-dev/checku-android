@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="data"
-                type="com.example.nodeproject2.data.model.Schedule"/>
+                type="com.yoon.nodeproject2.data.model.Schedule"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/schedule_item_layout"

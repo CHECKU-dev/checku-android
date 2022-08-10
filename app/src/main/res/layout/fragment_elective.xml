@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.example.nodeproject2.ui.list.elective.model.ElectiveType"/>
+        <import type="com.yoon.nodeproject2.ui.list.elective.model.ElectiveType"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.list.elective.ElectiveViewModel"/>
+                type="com.yoon.nodeproject2.ui.list.elective.ElectiveViewModel"/>
     </data>
 
     <LinearLayout

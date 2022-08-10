@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.timetable.TimeTableViewModel" />
+                type="com.yoon.nodeproject2.ui.timetable.TimeTableViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

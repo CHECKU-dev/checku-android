@@ -6,11 +6,11 @@
     <data>
         <variable
                 name="data"
-                type="com.example.nodeproject2.data.model.Notification"/>
+                type="com.yoon.nodeproject2.data.model.Notification"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.home.HomeViewModel"/>
+                type="com.yoon.nodeproject2.ui.home.HomeViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
