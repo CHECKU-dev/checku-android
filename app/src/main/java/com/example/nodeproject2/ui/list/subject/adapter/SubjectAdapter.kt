@@ -34,13 +34,11 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-
-        println(position)
         val safePosition = holder.adapterPosition
-
         currentList[safePosition]?.let {
             holder.setData(it)
         }
+
     }
 
     override fun getItemId(position: Int): Long {
@@ -73,7 +71,7 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Subject>() {
             override fun areItemsTheSame(oldItem: Subject, newItem: Subject): Boolean {
-                return oldItem.subjectNumber.equals(newItem.subjectNumber)
+                return oldItem.subjectNumber == newItem.subjectNumber
             }
 
             override fun areContentsTheSame(
