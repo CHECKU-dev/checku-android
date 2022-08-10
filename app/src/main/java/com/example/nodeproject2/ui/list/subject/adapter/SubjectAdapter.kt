@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
