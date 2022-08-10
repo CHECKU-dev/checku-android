@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="과목명으로 검색하기"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:layout_marginStart="8dp"
                         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -84,7 +84,7 @@
                     android:minHeight="0dp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:checked="@{viewModel.vacancy}"
                     android:onCheckedChanged="@{viewModel.onCheckboxVacancyChange}"
                     android:text="빈 강의"/>
@@ -170,7 +170,7 @@
                             android:text="학년"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:layout_gravity="center"/>
 
                     <RadioGroup
@@ -194,7 +194,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="전체"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -271,7 +271,7 @@
                             android:text="종류"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:layout_gravity="center"/>
 
                     <RadioGroup
@@ -295,7 +295,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="전체"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -315,7 +315,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="전필"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -336,7 +336,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="전선"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
@@ -358,7 +358,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="기타"
-                                android:textSize="13dp"
+                                android:textSize="13sp"
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:layout_width="wrap_content"
