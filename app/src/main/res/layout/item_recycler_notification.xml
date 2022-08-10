@@ -19,8 +19,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/item_notification_layout"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:padding="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
@@ -29,6 +29,7 @@
 
 
         <TextView
+                android:includeFontPadding="false"
                 android:id="@+id/subject_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,12 +43,13 @@
 
 
         <TextView
+                android:includeFontPadding="false"
                 android:id="@+id/subject_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="@{data.subjectName}"
-                tools:text="피부생명공학"
+                tools:text="알기쉬운화장품과피부과학이야기"
                 android:textColor="@color/checkuText"
                 android:textSize="14sp"
                 android:layout_marginTop="10dp"
@@ -56,6 +58,7 @@
 
 
         <TextView
+                android:includeFontPadding="false"
                 android:id="@+id/professor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

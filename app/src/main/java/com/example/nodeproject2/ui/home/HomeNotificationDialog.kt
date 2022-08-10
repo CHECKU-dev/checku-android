@@ -30,10 +30,4 @@ class HomeNotificationDialog(
    }
 
 
-//
-//    fun setText(subjectName: String, subjectNumber: String) {
-//        val text = "$subjectName($subjectNumber) 알림을 취소하시겠습니까?"
-//        binding.tvMessage.text = text
-//    }
-
 }

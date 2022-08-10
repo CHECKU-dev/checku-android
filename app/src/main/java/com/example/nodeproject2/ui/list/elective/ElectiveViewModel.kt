@@ -49,6 +49,8 @@ class ElectiveViewModel @Inject constructor(
     val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
 
     fun getElectives() {
+
+        println("======================getElectives")
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {

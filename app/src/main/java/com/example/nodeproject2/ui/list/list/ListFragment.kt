@@ -3,6 +3,8 @@ package com.example.nodeproject2.ui.list.list
 import com.example.nodeproject2.R
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentListBinding
+import com.example.nodeproject2.ui.list.elective.ElectiveFragment
+import com.example.nodeproject2.ui.list.subject.SubjectFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,5 +48,7 @@ class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
             }
         }
     }
+
+
 
 }

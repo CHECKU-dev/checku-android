@@ -8,34 +8,37 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSearchBinding
+import com.example.nodeproject2.databinding.ItemRecyclerSearchLoadingBinding
 import com.example.nodeproject2.ui.search.SearchViewModel
 import com.example.nodeproject2.ui.syllabus.SyllabusActivity
+import com.example.nodeproject2.widget.utils.SearchRecyclerViewType.CONTENT
+import com.example.nodeproject2.widget.utils.SearchRecyclerViewType.LOADING
 
 class SearchAdapter(val viewModel: SearchViewModel) :
-    ListAdapter<Subject, SearchAdapter.Holder>(SearchAdapter.diffUtil) {
+    ListAdapter<Subject, RecyclerView.ViewHolder>(diffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemRecyclerSearchBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-
-        return Holder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
+            CONTENT -> {
+                val binding = ItemRecyclerSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                Holder(binding)
+            }
+            else -> {
+                val binding = ItemRecyclerSearchLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                LoadingHolder(binding)
+            }
+        }
     }
 
-    override fun getItemCount(): Int {
-        return super.getItemCount() - 1
-    }
-
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun onBindViewHolder(holder: SearchAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val safePosition = holder.adapterPosition
-        currentList[safePosition]?.let { holder.setData(it) }
+        currentList[safePosition]?.let { (holder as Holder).setData(it) }
+    }
+
+
+    override fun getItemViewType(position: Int): Int {
+        return if(currentList[position] == null) LOADING
+        else CONTENT
     }
 
 
@@ -59,6 +62,10 @@ class SearchAdapter(val viewModel: SearchViewModel) :
 
     }
 
+    inner class LoadingHolder(binding: ItemRecyclerSearchLoadingBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Subject>() {
             override fun areItemsTheSame(oldItem: Subject, newItem: Subject): Boolean {
@@ -73,6 +80,7 @@ class SearchAdapter(val viewModel: SearchViewModel) :
             }
         }
     }
+
 
 
 }

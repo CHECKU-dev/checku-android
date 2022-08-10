@@ -64,9 +64,8 @@ class SearchViewModel @Inject constructor(
     fun searchSubject() {
         if (paging.isLastPage) {
             return
-        } else {
-            _subjectWaitEvent.setValue(true)
         }
+
         viewModelScope.launch {
             val response = searchRepository.getSubjectBySearch(userId, searchQuery, paging.page.value ?: 0);
             if (response is ApiResponse.Success) {

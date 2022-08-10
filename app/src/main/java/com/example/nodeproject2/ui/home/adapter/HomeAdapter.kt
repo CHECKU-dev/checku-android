@@ -1,15 +1,13 @@
 package com.example.nodeproject2.ui.home.adapter
 
 import android.content.Context
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Schedule
-import com.example.nodeproject2.databinding.ItemViewPagerHomeBinding
+import com.example.nodeproject2.databinding.ItemRecyclerHomeBinding
 import com.example.nodeproject2.widget.utils.Utils
 
 class HomeAdapter(val context: Context, val schedule: List<Schedule>) : RecyclerView.Adapter<HomeAdapter.Holder>() {
@@ -22,7 +20,7 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
         return Holder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(context),
-                R.layout.item_view_pager_home,
+                R.layout.item_recycler_home,
                 parent,
                 false
             )
@@ -31,17 +29,13 @@ class HomeAdapter(val context: Context, val schedule: List<Schedule>) : Recycler
 
 
 
-    inner class Holder(val binding: ItemViewPagerHomeBinding) :
+    inner class Holder(val binding: ItemRecyclerHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun setData(data: Schedule) {
             binding.tvDeadline.text = Utils.getDeadline(data.deadline.toLocalDate())
             binding.data = data
-//            if (selectedPosition == adapterPosition) {
-//                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_gray_color_round_20)
-//            }else {
-//                binding.scheduleItemLayout.setBackgroundResource(R.drawable.bg_gray_color_round_20)
-//            }
+
         }
     }
 

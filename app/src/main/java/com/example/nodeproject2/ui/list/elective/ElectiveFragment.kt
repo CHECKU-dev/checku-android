@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodeproject2.R.layout.fragment_elective) {
 
-    private val viewModel by viewModels<ElectiveViewModel>()
+    val viewModel by viewModels<ElectiveViewModel>()
     private lateinit var electiveAdapter: ElectiveAdapter
 
     companion object {

@@ -128,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{data.timeAndPlace.trim()}"
+                        android:text="@{data.timeAndPlace}"
                         tools:text="월 12:00-13:30(산학208), 목 09:00-10:30(산학208)"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"

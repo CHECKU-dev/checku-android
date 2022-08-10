@@ -30,7 +30,7 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun getItemCount(): Int {
-        return super.getItemCount() - 1
+        return currentList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {

@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_subject) {
 
-    private val viewModel by viewModels<SubjectViewModel>()
+    val viewModel by viewModels<SubjectViewModel>()
     private lateinit var subjectAdapter: SubjectAdapter
 
     companion object {

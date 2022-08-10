@@ -12,9 +12,11 @@ import com.example.nodeproject2.ui.MainActivity
 import com.example.nodeproject2.ui.search.adapter.SearchAdapter
 import com.example.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_search.*
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search), MainActivity.OnBackPressedListener {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
+    MainActivity.OnBackPressedListener {
 
     private lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
@@ -32,8 +34,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         binding.etSearch.setText("")
         binding.etSearch.setOnKeyListener { _, keyCode, event ->
             if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if (binding.etSearch.text.isNullOrEmpty()) {
+                    showCustomToast("검색어를 입력해주세요.")
+                    return@setOnKeyListener true
+                }
                 downKeyboard()
                 viewModel.changeSubject()
+
                 return@setOnKeyListener true
             } else {
                 return@setOnKeyListener false
