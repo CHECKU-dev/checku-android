@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.list.subject
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.R
@@ -37,6 +38,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         initSlidingPanel()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             subjectAdapter.submitList(it.toMutableList())
@@ -55,7 +57,6 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         viewModel.updateRecyclerViewItemEvent.observe(viewLifecycleOwner) {
             subjectAdapter.notifyItemChanged(it.first, it.second)
         }
-
 
     }
 
