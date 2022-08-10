@@ -14,7 +14,7 @@
     <item
             android:id="@+id/menu_main_btm_nav_subject"
             android:enabled="true"
-            android:icon="@drawable/ic_bottom_item_list_1"
+            android:icon="@drawable/ic_bottom_item_list"
             android:title="@string/main_btm_nav_subject_title"
             app:showAsAction="always"/>
 

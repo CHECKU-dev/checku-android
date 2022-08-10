@@ -1,22 +1,18 @@
 package com.example.nodeproject2.ui.list.list
 
-import android.util.Log
-import androidx.fragment.app.viewModels
-import com.example.nodeproject2.R
+import android.widget.TextView
+import androidx.core.view.children
 import com.example.nodeproject2.base.BaseFragment
 import com.example.nodeproject2.databinding.FragmentListBinding
 import com.example.nodeproject2.ui.list.elective.ElectiveFragment
-import com.example.nodeproject2.ui.list.elective.ElectiveViewModel
 import com.example.nodeproject2.ui.list.subject.SubjectFragment
-import com.example.nodeproject2.ui.list.subject.SubjectViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_list.*
 
 
 @AndroidEntryPoint
-class ListFragment : BaseFragment<FragmentListBinding>(R.layout.fragment_list) {
+class ListFragment : BaseFragment<FragmentListBinding>(com.example.nodeproject2.R.layout.fragment_list) {
 
     private var currentTab = "SubjectFragment"
 
