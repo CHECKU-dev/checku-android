@@ -10,6 +10,7 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -36,11 +37,11 @@
                         android:fontFamily="@font/noto_sans_medium"
                         android:includeFontPadding="false"
                         android:layout_width="wrap_content"
-                        android:layout_height="23dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="30dp"
                         android:textColor="@color/checkuText"
                         android:gravity="center"
                         android:textSize="16dp"
@@ -65,9 +66,9 @@
                         android:fontFamily="@font/noto_sans_medium"
                         android:includeFontPadding="false"
                         android:layout_width="wrap_content"
-                        android:layout_height="23dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:textColor="@color/checkuText"
                         android:gravity="center"
