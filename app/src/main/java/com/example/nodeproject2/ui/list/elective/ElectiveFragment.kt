@@ -91,4 +91,18 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(com.example.nodep
         }
     }
 
+    fun refresh() {
+        viewModel.getElectives()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+    }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.getElectives()
+//    }
+
 }

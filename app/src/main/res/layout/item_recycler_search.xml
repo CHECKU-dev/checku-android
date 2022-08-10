@@ -51,14 +51,14 @@
                     android:orientation="vertical">
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_bold"
+                        android:textStyle="bold"
                         android:includeFontPadding="false"
                         android:id="@+id/emptySeat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_marginTop="20dp"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:text="@{data.emptySeat}"
                         android:textColor="@color/checkuMain"
                         tools:text="9"
@@ -66,13 +66,12 @@
                         />
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
                         android:id="@+id/number_of_people"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:text="@{data.numberOfPeople}"
                         tools:text="0/255"
 
@@ -91,7 +90,7 @@
 
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_bold"
+                        android:textStyle="bold"
                         android:includeFontPadding="false"
                         android:id="@+id/subject_name"
                         android:layout_width="wrap_content"
@@ -99,13 +98,12 @@
                         android:gravity="start"
                         android:text="@{data.subjectName}"
                         tools:text="대학영어1"
-                        android:textColor="#00603D"
-                        android:textSize="16dp"
+                        android:textColor="@color/checkuText"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_medium"
                         android:includeFontPadding="false"
                         android:id="@+id/subject_type"
                         android:layout_width="wrap_content"
@@ -113,13 +111,12 @@
                         android:gravity="start"
                         android:text="@{@string/service_type_and_grade_and_subject_number(data.subjectType, data.grade, data.subjectNumber)}"
                         tools:text="지교 / 1학년 / 1225"
-                        android:textColor="#00603D"
-                        android:textSize="13dp"
+                        android:textColor="@color/checkuText"
+                        android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"
                         app:layout_constraintTop_toBottomOf="@id/subject_name"/>
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
                         android:id="@+id/professor"
                         android:layout_width="wrap_content"
@@ -127,12 +124,11 @@
                         android:gravity="start"
                         android:text="@{data.professor.trim()}"
                         tools:text="믹키"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"
                         app:layout_constraintTop_toBottomOf="@+id/subject_type"/>
 
                 <TextView
-                        android:fontFamily="@font/noto_sans_regular"
                         android:includeFontPadding="false"
                         android:id="@+id/time_and_place"
                         android:layout_width="wrap_content"
@@ -140,7 +136,7 @@
                         android:gravity="start"
                         android:text="@{data.timeAndPlace.trim()}"
                         tools:text="월 12:00-13:30(산학208), 목 09:00-10:30(산학208)"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"
                         app:layout_constraintTop_toBottomOf="@+id/professor"/>
 

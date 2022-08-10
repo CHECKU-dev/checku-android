@@ -81,7 +81,14 @@ class ElectiveViewModel @Inject constructor(
     }
 
     private fun setChecked(subject: Subject, position: Int) {
-        subject.isMySubject = !subject.isMySubject
+        _subjectList.value?.forEach {
+            if (it != null) {
+                if (it == subject) {
+                    it.isMySubject = !it.isMySubject
+                }
+            }
+        }
+        _subjectList.value = _subjectList.value
         _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
     }
 

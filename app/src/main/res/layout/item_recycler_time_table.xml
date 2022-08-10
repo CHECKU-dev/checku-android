@@ -2,25 +2,28 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <import type="android.view.View"/>
 
 
         <variable
                 name="label"
                 type="String"/>
+
         <variable
                 name="data"
                 type="com.example.nodeproject2.data.model.Subject"/>
+
         <variable
                 name="viewModel"
                 type="com.example.nodeproject2.ui.timetable.TimeTableViewModel"/>
     </data>
 
     <FrameLayout
+            android:background="@color/white"
             android:id="@+id/frame_layout"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -30,6 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp"
                 android:background="@drawable/ripple_effect_gray05_fill_white">
 
 
@@ -40,7 +46,8 @@
                     android:orientation="horizontal"
                     android:id="@+id/item_subject_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false">
 
 
                 <LinearLayout
@@ -50,32 +57,31 @@
                         android:orientation="vertical">
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_bold"
+                            android:textStyle="bold"
                             android:includeFontPadding="false"
                             android:id="@+id/emptySeat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:layout_marginTop="20dp"
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:text="@{data.emptySeat}"
                             android:textColor="@color/checkuMain"
                             tools:text="9"
                             android:layout_gravity="center"
-                    />
+                            />
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_regular"
                             android:includeFontPadding="false"
                             android:id="@+id/number_of_people"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:text="@{data.numberOfPeople}"
                             tools:text="0/255"
 
-                    />
+                            />
 
                 </LinearLayout>
 
@@ -90,7 +96,7 @@
 
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_bold"
+                            android:textStyle="bold"
                             android:includeFontPadding="false"
                             android:id="@+id/subject_name"
                             android:layout_width="wrap_content"
@@ -98,13 +104,12 @@
                             android:gravity="start"
                             android:text="@{data.subjectName}"
                             tools:text="대학영어1"
-                            android:textColor="#00603D"
-                            android:textSize="16dp"
+                            android:textColor="@color/checkuText"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_medium"
                             android:includeFontPadding="false"
                             android:id="@+id/subject_type"
                             android:layout_width="wrap_content"
@@ -112,13 +117,12 @@
                             android:gravity="start"
                             android:text="@{@string/service_type_and_grade_and_subject_number(data.subjectType, data.grade, data.subjectNumber)}"
                             tools:text="지교 / 1학년 / 1225"
-                            android:textColor="#00603D"
-                            android:textSize="13dp"
+                            android:textColor="@color/checkuText"
+                            android:textSize="13sp"
                             app:layout_constraintStart_toStartOf="@id/subject_name"
                             app:layout_constraintTop_toBottomOf="@id/subject_name"/>
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_regular"
                             android:includeFontPadding="false"
                             android:id="@+id/professor"
                             android:layout_width="wrap_content"
@@ -126,12 +130,11 @@
                             android:gravity="start"
                             android:text="@{data.professor.trim()}"
                             tools:text="믹키"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@id/subject_name"
                             app:layout_constraintTop_toBottomOf="@+id/subject_type"/>
 
                     <TextView
-                            android:fontFamily="@font/noto_sans_regular"
                             android:includeFontPadding="false"
                             android:id="@+id/time_and_place"
                             android:layout_width="wrap_content"
@@ -139,37 +142,29 @@
                             android:gravity="start"
                             android:text="@{data.timeAndPlace.trim()}"
                             tools:text="월 12:00-13:30(산학208), 목 09:00-10:30(산학208)"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@id/subject_name"
                             app:layout_constraintTop_toBottomOf="@+id/professor"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <LinearLayout
                         android:layout_weight="1"
-                        android:layout_width="10dp"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent">
-
 
                 </LinearLayout>
 
             </LinearLayout>
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-                android:id="@+id/view_divider"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_g10"
-                android:layout_gravity="bottom"/>
 
         <LinearLayout
+                android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:elevation="-1dp"
                 android:weightSum="5">
@@ -178,29 +173,49 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/white"
                     android:layout_weight="1"/>
 
-            <ImageView
+            <TextView
                     android:id="@+id/iv_notification"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ic_notification_button"
-                    android:onClick="@{() -> viewModel.applyNotification(data.subjectNumber, data.subjectName)}"
+                    android:text="알림"
+                    android:background="#00a569"
+                    android:onClick="@{() -> viewModel.applyNotification(data)}"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_weight="2"/>
 
-            <ImageView
+            <TextView
                     android:id="@+id/iv_delete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ic_delete_button"
+                    android:text="삭제"
+                    android:background="#FF856A"
                     android:onClick="@{() -> viewModel.removeSubject(data.subjectNumber)}"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_weight="2"/>
 
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <View
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/view_divider"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_g10"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </FrameLayout>

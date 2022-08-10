@@ -60,7 +60,11 @@ class SubjectViewModel @Inject constructor(
 
     // TODO 학과명 변환
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-        _department.value = parent!!.selectedItem.toString().replace(" ", "_")
+        _department.value = parent!!.selectedItem.toString()
+            .replace(" ", "_")
+            .replace("(", "_")
+            .replace(")", "")
+            .replace("·", "_")
         getSubjectData()
     }
 
@@ -77,7 +81,8 @@ class SubjectViewModel @Inject constructor(
                     vacancy.value!!
                 )
             if (mySubjectsResponse is ApiResponse.Success) {
-                _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
+                _subjectList.value = mySubjectsResponse.data
+//                _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
             } else {
                 _subjectErrorToastEvent.setValue(true)
             }
@@ -103,8 +108,15 @@ class SubjectViewModel @Inject constructor(
     }
 
     private fun setChecked(subject: Subject, position: Int) {
-            subject.isMySubject = !subject.isMySubject
-            _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
+        _subjectList.value?.forEach {
+            if (it != null) {
+                if (it == subject) {
+                    it.isMySubject = !it.isMySubject
+                }
+            }
+        }
+        _subjectList.value = _subjectList.value
+        _updateRecyclerViewItemEvent.setValue(Pair(position, subject))
     }
 
 

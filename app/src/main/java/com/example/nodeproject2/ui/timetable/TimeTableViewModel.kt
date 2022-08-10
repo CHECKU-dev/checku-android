@@ -8,21 +8,24 @@ import com.example.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.example.nodeproject2.data.model.NotificationRequest
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.di.CheckuApplication
-import com.example.nodeproject2.repository.SubjectRepository
 import com.example.nodeproject2.repository.TimetableRepository
 import com.example.nodeproject2.widget.utils.MutableSingleLiveData
 import com.example.nodeproject2.widget.utils.SingleLiveData
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.onFailure
-import com.skydoves.sandwich.onSuccess
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import com.skydoves.sandwich.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import javax.inject.Inject
+
 
 @HiltViewModel
 class TimeTableViewModel @Inject constructor(
     private val timetableRepository: TimetableRepository
 ) : ViewModel() {
+
+    private val gson = Gson()
 
     private val userId = CheckuApplication.prefs.getUserId()
 
@@ -38,6 +41,9 @@ class TimeTableViewModel @Inject constructor(
     private val _timeTableErrorToastEvent = MutableSingleLiveData<Boolean>()
     val timeTableErrorToastEvent: SingleLiveData<Boolean> = _timeTableErrorToastEvent
 
+    private val _notificationErrorToastEvent = MutableSingleLiveData<String>()
+    val notificationErrorToastEvent: SingleLiveData<String> = _notificationErrorToastEvent
+
     private val _timeTableWaitEvent = MutableSingleLiveData<Boolean>()
     val timeTableWaitEvent: SingleLiveData<Boolean> = _timeTableWaitEvent
 
@@ -52,7 +58,6 @@ class TimeTableViewModel @Inject constructor(
     fun getInitData() {
         _timeTableWaitEvent.setValue(true)
         viewModelScope.launch {
-
             val mySubjectsResponse = timetableRepository.getMySubjects(userId)
             if (mySubjectsResponse is ApiResponse.Success) {
                 _subjectList.value = MutableList(mySubjectsResponse.data.size) { mySubjectsResponse.data[it] }
@@ -70,7 +75,6 @@ class TimeTableViewModel @Inject constructor(
     }
 
 
-
     fun removeSubject(subjectNumber: String) {
         viewModelScope.launch {
             val response = timetableRepository.removeSubject(AddOrRemoveSubjectRequest(userId, subjectNumber))
@@ -85,21 +89,28 @@ class TimeTableViewModel @Inject constructor(
     }
 
 
-    fun applyNotification(subjectNumber: String, subjectName: String) {
+    fun applyNotification(subject: Subject) {
+        _timeTableWaitEvent.setValue(true)
+
         viewModelScope.launch {
 
-            val request = NotificationRequest(userId, subjectNumber, subjectName)
+            val request = NotificationRequest(userId, subject.subjectNumber, subject.subjectName, subject.professor)
             val response = timetableRepository.applyNotification(request)
-            if (response is ApiResponse.Success) {
+            response.onSuccess {
                 _notificationApplySuccessEvent.setValue(true)
-            } else {
-                _timeTableErrorToastEvent.setValue(true)
             }
+                .onError {
+                    val jsonParser = JsonParser()
+                    val parse = jsonParser.parse(this.errorBody?.string())
+                    val jsonObj = parse.asJsonObject
+                    _notificationErrorToastEvent.setValue(
+                        jsonObj.get("errorMessages").asString
+                    )
+                }
+
         }
 
     }
-
-
 
 
 }

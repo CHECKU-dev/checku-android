@@ -43,7 +43,6 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
         viewModel.timeTableErrorToastEvent.observe(viewLifecycleOwner) {
             showCustomToast(NETWORK_ERROR_MESSAGE)
             hideLoadingDialog()
-
         }
 
         viewModel.timeTableWaitEvent.observe(viewLifecycleOwner) {
@@ -56,6 +55,13 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
 
         viewModel.notificationApplySuccessEvent.observe(viewLifecycleOwner) {
             showCustomToast(NOTIFICATION_ADD_SUCCESS_MESSAGE)
+            hideLoadingDialog()
+
+        }
+
+        viewModel.notificationErrorToastEvent.observe(viewLifecycleOwner) {
+            showCustomToast(it)
+            hideLoadingDialog()
         }
 
     }

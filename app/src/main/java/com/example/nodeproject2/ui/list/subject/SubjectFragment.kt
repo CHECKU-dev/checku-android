@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.list.subject
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nodeproject2.R
@@ -37,6 +38,7 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
         initSlidingPanel()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             subjectAdapter.submitList(it.toMutableList())
@@ -56,21 +58,11 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
             subjectAdapter.notifyItemChanged(it.first, it.second)
         }
 
-
     }
 
     private fun initRecyclerView() {
         subjectAdapter = SubjectAdapter(viewModel)
         binding.rvSubject.adapter = subjectAdapter
-
-//        binding.searchLayout.setOnTouchListener(object : OnSwipeTouchListener(binding.root.context) {
-//            override fun onSwipeLeft() {
-//                Toast.makeText(requireActivity(), "zz", Toast.LENGTH_SHORT).show()
-//                val listFragment =
-//                    requireActivity().supportFragmentManager.findFragmentByTag("ListFragment") as ListFragment
-//                listFragment.changeTab()
-//            }
-//        })
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -98,5 +90,19 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
 
         }
     }
+
+    fun refresh() {
+        viewModel.getSubjectData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.slidingUpPanelLayout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+    }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.getSubjectData()
+//    }
 
 }

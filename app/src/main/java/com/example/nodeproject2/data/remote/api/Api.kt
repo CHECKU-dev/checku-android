@@ -6,6 +6,7 @@ import com.example.nodeproject2.data.model.dao.GetNotificationResponse
 import com.finder.android.mbti.dataobj.SubjectListDto
 import com.google.gson.JsonElement
 import com.skydoves.sandwich.ApiResponse
+import org.json.JSONObject
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -39,16 +40,9 @@ interface Api {
         @Body request: AddOrRemoveSubjectRequest
     ): ApiResponse<JsonElement>
 
-//    @DELETE("/api/my-subjects")
-//    suspend fun removeSubject(
-//        @Query("userId") userId: Long,
-//        @Query("subjectNumber") subjectNumber: String
-//    ): ApiResponse<JsonElement>
-
     @GET("/api/schedule")
     suspend fun getSchedule(): ApiResponse<GetScheduleResponse>
 
-    //TODO 확인
     @GET("/api/notification")
     suspend fun getNotifications(@Query("userId") userId: Long): ApiResponse<GetNotificationResponse>
 

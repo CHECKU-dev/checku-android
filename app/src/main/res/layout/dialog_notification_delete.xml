@@ -24,11 +24,10 @@
 
         <TextView
                 android:id="@+id/tv_message1"
-                android:fontFamily="@font/noto_sans_medium"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -38,11 +37,10 @@
 
         <TextView
                 android:id="@+id/tv_message2"
-                android:fontFamily="@font/noto_sans_medium"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -52,11 +50,10 @@
 
         <TextView
                 android:id="@+id/tv_cancel"
-                android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:gravity="bottom"
                 android:textColor="@color/checkuMain"
                 android:layout_marginTop="15dp"
@@ -70,13 +67,12 @@
 
         <TextView
                 android:id="@+id/tv_notification_delete"
-                android:fontFamily="@font/noto_sans_regular"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/checkuMain"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:gravity="bottom"
                 android:layout_marginStart="10dp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_cancel"

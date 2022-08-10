@@ -1,5 +1,6 @@
 package com.example.nodeproject2.ui.splash
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
@@ -43,53 +45,40 @@ class SplashActivity : AppCompatActivity() {
         start()
     }
 
-    private fun start(): String? {
-        var fcmToken: String? = null
+    private fun start() {
 
-        val userId = CheckuApplication.prefs.getUserId() ?: ""
+        getSchedule()
 
-        if (userId == 0L) {
-            getSchedule()
-
-            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                    return@OnCompleteListener
-                }
-                // Get new FCM registration token
-                fcmToken = task.result
-
-                fcmToken?.let {
-                    login(LoginRequest(it))
-                }
-
-                Log.d(TAG, "FCM: $fcmToken")
-            })
-        } else {
-            CoroutineScope(Dispatchers.IO).launch {
-                delay(SPLASH_DELAY_TIME)
-
-                val intent = Intent(baseContext, MainActivity::class.java)
-
-                withContext(Dispatchers.Main) {
-                    startActivity(intent)
-                    finish()
-                }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
             }
-        }
+            // Get new FCM registration token
+            val fcmToken = task.result
+            println(fcmToken)
 
-        return fcmToken
+            fcmToken?.let {
+                login(LoginRequest(it))
+            }
+
+            Log.d(TAG, "FCM: $fcmToken")
+        })
+
     }
 
     private fun getSchedule() {
         CoroutineScope(Dispatchers.IO).launch {
             val schedule = scheduleRepository.getScheduleFromServer()
             if (schedule is ApiResponse.Success) {
-                scheduleRepository.insertSchedule(schedule.data)
+                if (scheduleRepository.getSchedule().isEmpty()) {
+                    scheduleRepository.insertSchedule(schedule.data)
+                }
             }else {
             }
         }
     }
+
 
     private fun login(loginRequest: LoginRequest) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -116,6 +105,5 @@ class SplashActivity : AppCompatActivity() {
 
         }
     }
-
 
 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nodeproject2.R
 import com.example.nodeproject2.data.model.Subject
 import com.example.nodeproject2.databinding.ItemRecyclerSubjectBinding
 import com.example.nodeproject2.ui.MainActivity
@@ -33,13 +34,11 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-
-        println(position)
         val safePosition = holder.adapterPosition
-
         currentList[safePosition]?.let {
             holder.setData(it)
         }
+
     }
 
     override fun getItemId(position: Int): Long {
@@ -72,7 +71,7 @@ class SubjectAdapter(val viewModel: SubjectViewModel) :
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Subject>() {
             override fun areItemsTheSame(oldItem: Subject, newItem: Subject): Boolean {
-                return oldItem.subjectNumber.equals(newItem.subjectNumber)
+                return oldItem.subjectNumber == newItem.subjectNumber
             }
 
             override fun areContentsTheSame(

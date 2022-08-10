@@ -15,8 +15,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 class FirebaseService : FirebaseMessagingService() {
 
-    private var startId = R.id.fragment_home_layout
-
     override fun onNewToken(token: String) {
         super.onNewToken(token)
     }
@@ -36,7 +34,7 @@ class FirebaseService : FirebaseMessagingService() {
 
         val pendingIntent = PendingIntent.getActivity(
             this,
-            System.currentTimeMillis().toInt(),
+            0,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -55,7 +53,7 @@ class FirebaseService : FirebaseMessagingService() {
             .setAutoCancel(true)
 
         with(NotificationManagerCompat.from(this)) {
-            notify(1, builder.build())
+            notify(System.currentTimeMillis().toInt(), builder.build())
         }
     }
 

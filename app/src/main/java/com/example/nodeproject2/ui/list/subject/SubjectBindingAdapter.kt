@@ -27,6 +27,7 @@ fun RecyclerView.infiniteScrolls(doScrollBottom: () -> Unit) {
 
 @BindingAdapter("isChecked")
 fun checkChecked(imageView: ImageView, isMySubject: Boolean) {
+
     if(isMySubject)
         imageView.setBackgroundResource(R.drawable.ic_zzim_active)
     else
