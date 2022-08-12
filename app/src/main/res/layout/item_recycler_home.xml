@@ -30,44 +30,45 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:id="@+id/tv_title"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="20dp"
                 android:text="@{data.title}"
                 android:textSize="14sp"
                 tools:text="장애학우 수강신청"
                 android:textColor="@color/checkuText"
                 android:gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="@id/tv_deadline"
+                app:layout_constraintTop_toBottomOf="@id/tv_deadline"/>
 
         <TextView
+                android:id="@+id/tv_date"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="73dp"
+                android:layout_marginTop="5dp"
                 android:text="@{data.date}"
                 android:textSize="12sp"
                 tools:text="8/12 금"
-                android:textColor="@color/black"
                 android:gravity="start"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="@+id/tv_deadline"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"/>
 
         <TextView
+                android:id="@+id/tv_time"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="93dp"
+                android:layout_marginTop="5dp"
                 android:autoSizeTextType="uniform"
                 android:text="@{data.time}"
                 tools:text="9:30 ~ 17:00"
                 android:textSize="12sp"
-                android:textColor="@color/black"
                 android:gravity="start"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="@id/tv_deadline"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date"/>
 
 
 
