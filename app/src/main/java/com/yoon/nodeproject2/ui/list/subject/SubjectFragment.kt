@@ -1,6 +1,7 @@
 package com.yoon.nodeproject2.ui.list.subject
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -42,6 +43,11 @@ class SubjectFragment : BaseFragment<FragmentSubjectBinding>(R.layout.fragment_s
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             subjectAdapter.submitList(it.toMutableList())
+            if (it.size == 0) {
+                binding.emptyView.visibility = View.VISIBLE
+            } else {
+                binding.emptyView.visibility = View.GONE
+            }
             hideLoadingDialog()
         }
 

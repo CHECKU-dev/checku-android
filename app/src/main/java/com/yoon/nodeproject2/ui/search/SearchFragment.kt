@@ -3,6 +3,7 @@ package com.yoon.nodeproject2.ui.search
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import com.yoon.nodeproject2.R
@@ -12,7 +13,6 @@ import com.yoon.nodeproject2.ui.MainActivity
 import com.yoon.nodeproject2.ui.search.adapter.SearchAdapter
 import com.yoon.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_search.*
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search),
@@ -70,6 +70,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 if (viewModel.paging.page.value == 1) {
                     binding.rvSearch.scrollToPosition(0)
                 }
+            }
+            if (it.size == 0) {
+                binding.emptyView.visibility = View.VISIBLE
+            } else {
+                binding.emptyView.visibility = View.GONE
             }
             hideLoadingDialog()
         }

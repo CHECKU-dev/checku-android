@@ -1,5 +1,6 @@
 package com.yoon.nodeproject2.ui.home
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.yoon.nodeproject2.R
 import com.yoon.nodeproject2.base.BaseFragment
@@ -48,6 +49,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private fun observeRecyclerView() {
         viewModel.notificationList.observe(viewLifecycleOwner) {
             notificationAdapter.submitList(it)
+            if (it.size == 0) {
+                binding.notificationEmptyView.visibility = View.VISIBLE
+            } else {
+                binding.notificationEmptyView.visibility = View.GONE
+            }
             hideLoadingDialog()
         }
 

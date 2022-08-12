@@ -43,7 +43,7 @@ class SubjectViewModel @Inject constructor(
     private val _refreshed = MutableLiveData<Boolean>()
     val refreshed: LiveData<Boolean> = _refreshed
 
-    private val _department = MutableLiveData<String>("공과대학_컴퓨터공학부")
+    private val _department = MutableLiveData<String>("")
     private val department: LiveData<String> = _department
 
     private val _grade = MutableLiveData<SubjectGrade>(SubjectGrade.ALL)
@@ -60,6 +60,9 @@ class SubjectViewModel @Inject constructor(
 
     // TODO 학과명 변환
     fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+        if (parent!!.selectedItem.toString().equals("전공을 선택해주세요.")) {
+            return
+        }
         _department.value = parent!!.selectedItem.toString()
             .replace(" ", "_")
             .replace("(", "_")
@@ -69,6 +72,9 @@ class SubjectViewModel @Inject constructor(
     }
 
     fun getSubjectData() {
+        if (department.value.equals("")) {
+            return
+        }
         _subjectWaitEvent.setValue(true)
 
         viewModelScope.launch {
