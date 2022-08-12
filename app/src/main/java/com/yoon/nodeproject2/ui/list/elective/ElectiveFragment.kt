@@ -36,7 +36,6 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(R.layout.fragment
         initSlidingPanel()
 
 
-
     }
 
     private fun observeRecyclerView() {
@@ -86,8 +85,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(R.layout.fragment
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(hidden) {
-        }else {
+        if (!hidden) {
             viewModel.getElectives()
         }
     }
