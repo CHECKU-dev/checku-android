@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "966800192874",
-    "project_id": "checku-926be",
-    "storage_bucket": "checku-926be.appspot.com"
+    "project_number": "1005224055198",
+    "project_id": "checku-3a769",
+    "storage_bucket": "checku-3a769.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:966800192874:android:e8a51a91bd36b546312113",
+        "mobilesdk_app_id": "1:1005224055198:android:a97044fa997ef23fc6868f",
         "android_client_info": {
-          "package_name": "com.example.nodeproject2"
+          "package_name": "com.yoon.nodeproject2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "966800192874-04cdh7ghfdcapind0kts6rhjgo44r479.apps.googleusercontent.com",
+          "client_id": "1005224055198-kjj5mcamkdr2lkv65l3hdpbh6nfqlh62.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDtHzim3L57sJtWX_HxK6a2MB5r8Ag7RdQ"
+          "current_key": "AIzaSyA_mfBibFLgajsy9SQz-qpp5rW1uX-FX2U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "966800192874-04cdh7ghfdcapind0kts6rhjgo44r479.apps.googleusercontent.com",
+              "client_id": "1005224055198-kjj5mcamkdr2lkv65l3hdpbh6nfqlh62.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -13,11 +13,11 @@
 
         <variable
                 name="data"
-                type="com.example.nodeproject2.data.model.Subject"/>
+                type="com.yoon.nodeproject2.data.model.Subject"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
+                type="com.yoon.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
     </data>
 
@@ -54,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="25dp"
                         android:textSize="20sp"
                         android:text="@{data.emptySeat}"
                         android:textColor="@color/checkuMain"
@@ -63,6 +63,7 @@
                 />
 
                 <TextView
+                        android:layout_marginTop="5dp"
                         android:includeFontPadding="false"
                         android:id="@+id/number_of_people"
                         android:layout_width="wrap_content"
@@ -101,6 +102,7 @@
                         app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
+                        android:layout_marginTop="5dp"
                         android:includeFontPadding="false"
                         android:id="@+id/subject_type"
                         android:layout_width="wrap_content"
@@ -114,24 +116,26 @@
                         app:layout_constraintTop_toBottomOf="@id/subject_name"/>
 
                 <TextView
+                        android:layout_marginTop="3dp"
                         android:includeFontPadding="false"
                         android:id="@+id/professor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{data.professor.trim()}"
+                        android:text="@{data.professor}"
                         tools:text="믹키"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"
                         app:layout_constraintTop_toBottomOf="@+id/subject_type"/>
 
                 <TextView
+                        android:layout_marginTop="3dp"
                         android:includeFontPadding="false"
                         android:id="@+id/time_and_place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{data.timeAndPlace.trim()}"
+                        android:text="@{data.timeAndPlace}"
                         tools:text="월 12:00-13:30(산학208), 목 09:00-10:30(산학208)"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@id/subject_name"

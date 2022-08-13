@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.example.nodeproject2.ui.list.elective.model.ElectiveType"/>
+        <import type="com.yoon.nodeproject2.ui.list.elective.model.ElectiveType"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.list.elective.ElectiveViewModel"/>
+                type="com.yoon.nodeproject2.ui.list.elective.ElectiveViewModel"/>
     </data>
 
     <LinearLayout
@@ -73,7 +73,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/search_layout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="18dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:paddingStart="14dp"
@@ -98,6 +98,16 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                <TextView
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/empty_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="검색 조건에 맞는 결과가 없습니다."/>
 
                 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                         android:id="@+id/swipe_refresh_layout"
@@ -131,7 +141,7 @@
                 <View
                         android:id="@+id/view_divider"
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="24dp"
                         android:background="@color/gray_g11"/>
@@ -143,7 +153,6 @@
                         android:orientation="horizontal">
 
                     <TextView
-                            android:textStyle="bold"
                             android:includeFontPadding="false"
                             android:text="종류"
                             android:layout_width="wrap_content"
@@ -152,7 +161,6 @@
                             android:layout_gravity="center"/>
 
                     <RadioGroup
-                            android:checkedButton="@id/subject_type_all"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:orientation="horizontal">
