@@ -13,11 +13,11 @@
 
         <variable
                 name="data"
-                type="com.example.nodeproject2.data.model.Subject"/>
+                type="com.yoon.nodeproject2.data.model.Subject"/>
 
         <variable
                 name="viewModel"
-                type="com.example.nodeproject2.ui.list.subject.SubjectViewModel"/>
+                type="com.yoon.nodeproject2.ui.list.subject.SubjectViewModel"/>
 
     </data>
 
