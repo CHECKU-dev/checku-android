@@ -51,6 +51,7 @@ class HomeViewModel @Inject constructor(
 
             if (myNotification is ApiResponse.Success) {
                 _notificationList.value = MutableList(myNotification.data.size) { myNotification.data[it] }
+
             } else {
                 _homeErrorToastEvent.setValue(true)
             }

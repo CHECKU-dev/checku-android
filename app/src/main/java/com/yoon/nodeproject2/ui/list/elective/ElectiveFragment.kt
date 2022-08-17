@@ -1,5 +1,6 @@
 package com.yoon.nodeproject2.ui.list.elective
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -36,12 +37,16 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(R.layout.fragment
         initSlidingPanel()
 
 
-
     }
 
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             electiveAdapter.submitList(it)
+            if (it.size == 0) {
+                binding.emptyView.visibility = View.VISIBLE
+            } else {
+                binding.emptyView.visibility = View.GONE
+            }
             hideLoadingDialog()
         }
 
@@ -86,8 +91,7 @@ class ElectiveFragment : BaseFragment<FragmentElectiveBinding>(R.layout.fragment
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(hidden) {
-        }else {
+        if (!hidden) {
             viewModel.getElectives()
         }
     }

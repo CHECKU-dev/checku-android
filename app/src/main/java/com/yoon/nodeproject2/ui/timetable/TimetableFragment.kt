@@ -1,6 +1,7 @@
 package com.yoon.nodeproject2.ui.timetable
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.yoon.nodeproject2.R
@@ -37,6 +38,11 @@ class TimetableFragment : BaseFragment<FragmentTimeTableBinding>(R.layout.fragme
     private fun observeRecyclerView() {
         viewModel.subjectList.observe(viewLifecycleOwner) {
             timeTableAdapter.submitList(it)
+            if (it.size == 0) {
+                binding.emptyView.visibility = View.VISIBLE
+            } else {
+                binding.emptyView.visibility = View.GONE
+            }
             hideLoadingDialog()
         }
 

@@ -53,7 +53,7 @@
                 tools:text="알기쉬운화장품과피부과학이야기"
                 android:textColor="@color/checkuText"
                 android:textSize="14sp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subject_number"/>
 

@@ -39,7 +39,7 @@ class ElectiveViewModel @Inject constructor(
     private val _refreshed = MutableLiveData<Boolean>()
     val refreshed: LiveData<Boolean> = _refreshed
 
-    private val _type = MutableLiveData<ElectiveType>(ElectiveType.BASIC_ELECTIVE)
+    private val _type = MutableLiveData<ElectiveType>(null)
     val type: LiveData<ElectiveType> = _type
 
     private val _vacancy = MutableLiveData<Boolean>(false)
@@ -49,6 +49,10 @@ class ElectiveViewModel @Inject constructor(
     val updateRecyclerViewItemEvent: SingleLiveData<Pair<Int, Subject>> = _updateRecyclerViewItemEvent
 
     fun getElectives() {
+
+        if (type.value == null) {
+            return
+        }
 
         _subjectWaitEvent.setValue(true)
 
