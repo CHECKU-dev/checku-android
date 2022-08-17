@@ -32,9 +32,9 @@ object NetworkModule {
     @Singleton
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .readTimeout(30, TimeUnit.SECONDS)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
             .addInterceptor(getLoggingInterceptor())
             .build()
     }

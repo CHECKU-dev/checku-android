@@ -47,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        start ()
+        start()
 
     }
 
@@ -64,8 +64,8 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun start() {
-        getSchedule()
 
+        getSchedule()
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Log.w(TAG, "Fetching FCM registration token failed", task.exception)
@@ -75,7 +75,11 @@ class SplashActivity : AppCompatActivity() {
             val fcmToken = task.result
 
             fcmToken?.let {
-                login(LoginRequest(it))
+                login(
+                    LoginRequest(
+                         it
+                    )
+                )
             }
 
             Log.d(TAG, "FCM: $fcmToken")
@@ -90,7 +94,7 @@ class SplashActivity : AppCompatActivity() {
                 if (scheduleRepository.getSchedule().isEmpty()) {
                     scheduleRepository.insertSchedule(schedule.data)
                 }
-            }else {
+            } else {
             }
         }
     }
@@ -109,12 +113,14 @@ class SplashActivity : AppCompatActivity() {
                             ")"
                 )
                 CheckuApplication.prefs.saveUserId(login.data.userId)
+            }else {
+
             }
 
             val intent = Intent(baseContext, MainActivity::class.java)
 
             withContext(Dispatchers.Main) {
-                if(checkNetworkConnection()) {
+                if (checkNetworkConnection()) {
                     startActivity(intent)
                 }
                 finish()
@@ -122,7 +128,6 @@ class SplashActivity : AppCompatActivity() {
 
         }
     }
-
 
 
 }

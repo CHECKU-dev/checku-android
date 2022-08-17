@@ -18,7 +18,6 @@ object Utils {
             "D-Day"
         }else {
             "D-$day"
-
         }
     }
 

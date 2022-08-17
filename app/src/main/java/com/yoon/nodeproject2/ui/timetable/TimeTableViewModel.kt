@@ -6,15 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.JsonParser
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.onError
-import com.skydoves.sandwich.onSuccess
+import com.skydoves.sandwich.*
 import com.yoon.nodeproject2.data.model.AddOrRemoveSubjectRequest
 import com.yoon.nodeproject2.data.model.NotificationRequest
 import com.yoon.nodeproject2.data.model.Subject
 import com.yoon.nodeproject2.di.CheckuApplication
 import com.yoon.nodeproject2.repository.TimetableRepository
 import com.yoon.nodeproject2.widget.utils.MutableSingleLiveData
+import com.yoon.nodeproject2.widget.utils.NETWORK_ERROR_MESSAGE
 import com.yoon.nodeproject2.widget.utils.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -25,8 +24,6 @@ import javax.inject.Inject
 class TimeTableViewModel @Inject constructor(
     private val timetableRepository: TimetableRepository
 ) : ViewModel() {
-
-    private val gson = Gson()
 
     private val userId = CheckuApplication.prefs.getUserId()
 
@@ -106,6 +103,10 @@ class TimeTableViewModel @Inject constructor(
                     val jsonObj = parse.asJsonObject
                     _notificationErrorToastEvent.setValue(
                         jsonObj.get("errorMessages").asString
+                    )
+                }.onException {
+                    _notificationErrorToastEvent.setValue(
+                        NETWORK_ERROR_MESSAGE
                     )
                 }
 
