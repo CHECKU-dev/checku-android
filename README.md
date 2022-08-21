@@ -40,12 +40,11 @@
 
 ## 📚 Skill 
 
-[//]: # (- Java, Spring Boot, Spring Data JPA, Querydsl)
-
-[//]: # (- FCM, AWS S3, AWS RDS, AWS CodeDeploy, AWS EC2, Github Action)
-
-[//]: # (- MySQL, Redis)
-
-
-
+- kotlin
+- MVVM
+- Retrofit2
+- Hilt
+- Coroutine
+- LiveData
+- EncryptSharedPreference
 
