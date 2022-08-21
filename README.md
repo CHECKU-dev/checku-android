@@ -23,17 +23,20 @@
 <a>
   <img src="https://user-images.githubusercontent.com/83503188/185787676-c3b54fc9-b4fe-4346-a799-43d95cca5bd2.gif"/>
 </a>
+</p>
 
 ### 검색, 즐겨찾기 
 
 - 과목명으로 검색하기
 - 강의계획서, 빈 자리 알림 신청, 즐겨찾기 취소
-
-
-![검색](https://user-images.githubusercontent.com/83503188/185787677-aec2c704-0827-4e4c-888b-01284df290fc.gif)
-
-![즐겨찾기, 알림신청](https://user-images.githubusercontent.com/83503188/185787679-23b0a986-cd82-43dc-b44d-c1e2035ea924.gif)
-
+<p align="center">
+<a>
+  <img src="https://user-images.githubusercontent.com/83503188/185787677-aec2c704-0827-4e4c-888b-01284df290fc.gif"/>
+</a>
+<a>
+  <img src="https://user-images.githubusercontent.com/83503188/185787679-23b0a986-cd82-43dc-b44d-c1e2035ea924.gif"/>
+</a>
+</p>
 
 ## 📚 Skill 
 
