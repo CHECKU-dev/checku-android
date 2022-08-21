@@ -40,7 +40,7 @@
 
 ## 📚 Skill 
 
-- kotlin
+- Kotlin
 - MVVM
 - Retrofit2
 - Hilt
