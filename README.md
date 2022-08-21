@@ -41,15 +41,15 @@
 ## 📚 Skill 
 
 - Language
-  - Kotlin  
+**Kotlin**  
 
 <br>
 
 - Architecture
-  - MVVM
+**MVVM**
 
 <br>
 
 - Library
-  - Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
+Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
 
