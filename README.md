@@ -48,5 +48,12 @@
 **MVVM**
 
 - Library <br>
-Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
+  - Retrofit2
+  - Hilt
+  - Room
+  - Gson
+  - Coroutine
+  - LiveData
+  - EncryptSharedPreference
+  - FCM
 
