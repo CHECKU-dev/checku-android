@@ -46,8 +46,11 @@
 
 
 - Architecture <br>
+
 **MVVM**
 
 - Library <br>
+
+
 Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
 
