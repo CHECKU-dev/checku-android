@@ -42,12 +42,13 @@
 
 - Language
   - Kotlin  
+
 <br>
+
 - Architecture
   - MVVM
 
 <br>
-
 - Library
   - Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
 
