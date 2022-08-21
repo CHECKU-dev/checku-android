@@ -40,16 +40,14 @@
 
 ## 📚 Skill 
 
-- Language
+- Language <br>
+
 **Kotlin**  
 
-<br>
 
-- Architecture
+- Architecture <br>
 **MVVM**
 
-<br>
-
-- Library
+- Library <br>
 Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
 
