@@ -40,11 +40,10 @@
 
 ## 📚 Skill 
 
-- Kotlin
-- MVVM
-- Retrofit2
-- Hilt
-- Coroutine
-- LiveData
-- EncryptSharedPreference
+- Language
+  - Kotlin  
+- Architecture
+  - MVVM
+- Library
+  - Retrofit2, Hilt, Room, Gson, Coroutine, LiveData, EncryptSharedPreference, FCM
 
