@@ -41,11 +41,10 @@
 ## 📚 Skill 
 
 - Language <br>
-**Kotlin**  
-
+  - Kotlin
 
 - Architecture <br>
-**MVVM**
+  - MVVM
 
 - Library <br>
   - Retrofit2
