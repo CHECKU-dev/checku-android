@@ -16,7 +16,7 @@
 
 - 빈 자리 알림 취소
 - 강의 필터링, 빈 강의 확인
-<p align="center">
+<p>
 <a>
   <img src="https://user-images.githubusercontent.com/83503188/185787636-136cbab9-2dd1-4209-8ecd-4cc9af86332c.gif"/>
 </a>
@@ -29,7 +29,7 @@
 
 - 과목명으로 검색하기
 - 강의계획서, 빈 자리 알림 신청, 즐겨찾기 취소
-<p align="center">
+<p>
 <a>
   <img src="https://user-images.githubusercontent.com/83503188/185787677-aec2c704-0827-4e4c-888b-01284df290fc.gif"/>
 </a>
