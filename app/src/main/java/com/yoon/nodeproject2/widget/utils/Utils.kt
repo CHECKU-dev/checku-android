@@ -5,7 +5,6 @@ import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
 object Utils {
-    const val BASE_URL = "http://13.209.191.134:8000"
 
     fun getDeadline(deadline: LocalDate) : String {
 
