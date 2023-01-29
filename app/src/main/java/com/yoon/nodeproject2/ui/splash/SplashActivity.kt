@@ -9,7 +9,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Update
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.firebase.messaging.BuildConfig
 import com.google.firebase.messaging.FirebaseMessaging
 import com.skydoves.sandwich.ApiResponse
 import com.yoon.nodeproject2.data.model.LoginRequest
@@ -37,6 +43,9 @@ class SplashActivity : AppCompatActivity() {
 
     private val TAG = "SplashActivity.class"
 
+    private lateinit var appUpdateManager: AppUpdateManager
+    private val REQUEST_CODE_UPDATE = 9999
+
     companion object {
         private const val SPLASH_DELAY_TIME = 1500L
     }
@@ -47,8 +56,59 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        checkUpdate() // 업데이트 검사
         start()
 
+    }
+
+    private fun checkUpdate() {
+        appUpdateManager = AppUpdateManagerFactory.create(this)
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
+            ) {
+                val oldVersionCode = BuildConfig.VERSION_CODE
+                val newVersionCode = appUpdateInfo.availableVersionCode()
+
+                // 업데이트가 있으면 강제 업데이트
+                if (newVersionCode > oldVersionCode) {
+                    appUpdateManager.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        AppUpdateType.IMMEDIATE,
+                        this,
+                        REQUEST_CODE_UPDATE
+                    )
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CODE_UPDATE) {
+            if (resultCode != RESULT_OK) { // 업데이트 실패 또는 취소 시
+                checkUpdate() // 다시 업데이트 수행
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        appUpdateManager
+            .appUpdateInfo
+            .addOnSuccessListener { appUpdateInfo ->
+                // 업데이트가 중단되었다가 다시 포그라운드로 돌아왔을 때, 업데이트 진행 중이면 재개
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                    appUpdateManager.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        AppUpdateType.IMMEDIATE,
+                        this,
+                        REQUEST_CODE_UPDATE
+                    )
+                }
+        }
     }
 
     private fun checkNetworkConnection(): Boolean {
@@ -77,7 +137,7 @@ class SplashActivity : AppCompatActivity() {
             fcmToken?.let {
                 login(
                     LoginRequest(
-                         it
+                        it
                     )
                 )
             }
@@ -113,7 +173,7 @@ class SplashActivity : AppCompatActivity() {
                             ")"
                 )
                 CheckuApplication.prefs.saveUserId(login.data.userId)
-            }else {
+            } else {
 
             }
 
