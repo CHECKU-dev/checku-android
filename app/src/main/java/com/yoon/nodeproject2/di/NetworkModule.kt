@@ -7,7 +7,7 @@ import com.google.gson.JsonDeserializer
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import com.yoon.nodeproject2.data.remote.api.Api
 import com.yoon.nodeproject2.widget.utils.NullOnEmptyConverterFactory
-import com.yoon.nodeproject2.widget.utils.Utils.BASE_URL
+//import com.yoon.nodeproject2.widget.utils.Utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -85,7 +85,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Api {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("http://13.209.191.134:8000")
             .client(okHttpClient)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())

@@ -9,15 +9,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Update
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.firebase.messaging.BuildConfig
 import com.google.firebase.messaging.FirebaseMessaging
 import com.skydoves.sandwich.ApiResponse
+import com.yoon.nodeproject2.BuildConfig
 import com.yoon.nodeproject2.data.model.LoginRequest
 import com.yoon.nodeproject2.databinding.ActivitySplashBinding
 import com.yoon.nodeproject2.di.CheckuApplication
@@ -108,7 +107,7 @@ class SplashActivity : AppCompatActivity() {
                         REQUEST_CODE_UPDATE
                     )
                 }
-        }
+            }
     }
 
     private fun checkNetworkConnection(): Boolean {
@@ -152,7 +151,10 @@ class SplashActivity : AppCompatActivity() {
             val schedule = scheduleRepository.getScheduleFromServer()
             if (schedule is ApiResponse.Success) {
                 if (scheduleRepository.getSchedule().isEmpty()) {
+                    println()
                     scheduleRepository.insertSchedule(schedule.data)
+                } else {
+                    scheduleRepository.updateSchedule(schedule.data)
                 }
             } else {
             }

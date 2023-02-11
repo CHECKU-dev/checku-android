@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit
 
 object Utils {
 
+
     fun getDeadline(deadline: LocalDate) : String {
 
         val day = ChronoUnit.DAYS.between(LocalDateTime.now().toLocalDate(), deadline)
