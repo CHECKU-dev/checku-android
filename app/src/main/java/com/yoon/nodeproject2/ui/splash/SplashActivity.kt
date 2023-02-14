@@ -55,9 +55,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        checkUpdate() // 업데이트 검사
-        start()
-
+        checkUpdate() // 업데이트 검사 후 메인으로
     }
 
     private fun checkUpdate() {
@@ -79,6 +77,8 @@ class SplashActivity : AppCompatActivity() {
                         this,
                         REQUEST_CODE_UPDATE
                     )
+                } else {
+                    start()
                 }
             }
         }
