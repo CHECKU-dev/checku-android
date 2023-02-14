@@ -85,12 +85,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_UPDATE) {
-            if (resultCode != RESULT_OK) { // 업데이트 실패 또는 취소 시
-                checkUpdate() // 다시 업데이트 수행
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
+        finish()
     }
 
     override fun onResume() {
