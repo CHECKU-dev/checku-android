@@ -1,6 +1,7 @@
 package com.yoon.nodeproject2.data.model.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -19,5 +20,7 @@ interface ScheduleDao {
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     suspend fun  updateSchedule(schedule: List<Schedule>)
+    @Query("DELETE FROM SCHEDULE")
+    suspend fun deleteSchedule()
 
 }

@@ -3,11 +3,13 @@ package com.yoon.nodeproject2.widget.utils
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
+import kotlin.math.log
 
 object Utils {
 
 
     fun getDeadline(deadline: LocalDate) : String {
+
 
         val day = ChronoUnit.DAYS.between(LocalDateTime.now().toLocalDate(), deadline)
 
