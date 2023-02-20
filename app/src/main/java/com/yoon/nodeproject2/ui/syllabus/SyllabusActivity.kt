@@ -24,7 +24,7 @@ class SyllabusActivity : BaseActivity<ActivitySyllabusBinding>(R.layout.activity
                     }
                     webViewClient = WebViewClient()
                     webChromeClient = WebChromeClient()
-                    loadUrl("https://kupis.konkuk.ac.kr/sugang/acd/cour/plan/CourLecturePlanInq.jsp?ltYy=2022&ltShtm=B01012&sbjtId=$subjectNumber")
+                    loadUrl("https://kupis.konkuk.ac.kr/sugang/acd/cour/plan/CourLecturePlanInq.jsp?ltYy=2023&ltShtm=B01011&sbjtId=$subjectNumber")
                 }
             }
         }
